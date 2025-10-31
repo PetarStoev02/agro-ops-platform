@@ -6,8 +6,8 @@ const RootComponent = () => {
   return (
     <>
       <React.StrictMode>
-          <Outlet />
-          <Toaster />
+        <Outlet />
+        <Toaster />
       </React.StrictMode>
     </>
   );
