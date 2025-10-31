@@ -1,0 +1,5 @@
+src/app/routes.gen.ts
+src/types/**/*.d.ts
+.next/
+out/
+build/
