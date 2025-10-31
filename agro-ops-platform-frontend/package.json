@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "pnpm run generate:routes && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "pnpm run --stream \"/^test:.*/\"",
+    "test:types": "tsc -p .",
+    "test:prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
+    "test:eslint": "eslint",
+    "test:build": "next build",
     "fix": "pnpm run fix:eslint && pnpm run fix:prettier",
     "fix:eslint": "eslint --fix",
     "fix:prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "generate:routes": "npx @tanstack/router-cli generate --routesDirectory src/app/routes",
-    "dev": "pnpm run generate:routes && next dev",
     "postinstall": "pnpm run generate:routes"
   },
   "dependencies": {

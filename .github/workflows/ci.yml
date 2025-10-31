@@ -1,5 +1,5 @@
 # CI workflow to test builds on pull requests before merging to main
-name: CI - Build Test
+name: Test frontend / Build and Deploy Job (push)
 
 on:
   pull_request:
@@ -73,12 +73,7 @@ jobs:
         working-directory: ./agro-ops-platform-frontend
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       
-      - name: Lint
+      - name: Run tests (lint, prettier check, type-check, build)
         working-directory: ./agro-ops-platform-frontend
-        run: ${{ steps.detect-package-manager.outputs.runner }} run lint
-        continue-on-error: true
-      
-      - name: Build with Next.js
-        working-directory: ./agro-ops-platform-frontend
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: ${{ steps.detect-package-manager.outputs.runner }} run test
 
