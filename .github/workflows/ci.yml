@@ -1,0 +1,79 @@
+# CI workflow to test builds on pull requests before merging to main
+name: Test frontend / Build and Deploy Job (push)
+
+on:
+  pull_request:
+    branches: ["main"]
+  # Also allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # Build test job - validates that the code will build successfully
+  build-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./agro-ops-platform-frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Detect package manager
+        id: detect-package-manager
+        working-directory: ./agro-ops-platform-frontend
+        run: |
+          if [ -f "pnpm-lock.yaml" ]; then
+            echo "manager=pnpm" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=pnpm" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=yarn" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "package.json" ]; then
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            echo "Unable to determine package manager"
+            exit 1
+          fi
+      
+      - name: Setup pnpm
+        if: steps.detect-package-manager.outputs.manager == 'pnpm'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache-dependency-path: agro-ops-platform-frontend/pnpm-lock.yaml
+      
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            agro-ops-platform-frontend/.next/cache
+          # Generate a new cache whenever packages or source files change.
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('agro-ops-platform-frontend/pnpm-lock.yaml', 'agro-ops-platform-frontend/yarn.lock', 'agro-ops-platform-frontend/package-lock.json') }}-${{ hashFiles('agro-ops-platform-frontend/**.[jt]s', 'agro-ops-platform-frontend/**.[jt]sx') }}
+          # If source files changed but packages didn't, rebuild from a prior cache.
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('agro-ops-platform-frontend/pnpm-lock.yaml', 'agro-ops-platform-frontend/yarn.lock', 'agro-ops-platform-frontend/package-lock.json') }}-
+      
+      - name: Install dependencies
+        working-directory: ./agro-ops-platform-frontend
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      
+      - name: Run tests (lint, prettier check, type-check, build)
+        working-directory: ./agro-ops-platform-frontend
+        run: ${{ steps.detect-package-manager.outputs.runner }} run test
+
