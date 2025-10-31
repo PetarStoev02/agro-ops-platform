@@ -2,21 +2,22 @@
 
 import * as React from "react";
 import {
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  LifeBuoy,
-  Map,
-  PieChart,
-  Send,
-  Settings2,
-  SquareTerminal,
+  Building2,
+  Users,
+  Calendar,
+  MapPin,
+  Activity,
+  Warehouse,
+  FileText,
+  CreditCard,
+  ShieldCheck,
+  BarChart3,
+  Bell,
+  Upload,
+  LayoutDashboard,
 } from "lucide-react";
 
 import { NavMain } from "@/src/shared/components/nav-main";
-import { NavProjects } from "@/src/shared/components/nav-projects";
-import { NavSecondary } from "@/src/shared/components/nav-secondary";
 import { NavUser } from "@/src/shared/components/nav-user";
 import {
   Sidebar,
@@ -36,118 +37,82 @@ const data = {
   },
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
+      title: "Dashboard",
+      url: "/",
+      icon: LayoutDashboard,
+      isActive: false,
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
+      title: "Organizations & Roles",
+      url: "/organizations",
+      icon: Building2,
+      isActive: false,
     },
     {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
+      title: "Farm Profile",
+      url: "/farm-profile",
+      icon: Users,
+      isActive: false,
     },
     {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
+      title: "Seasons & Campaigns",
+      url: "/seasons",
+      icon: Calendar,
+      isActive: false,
     },
     {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
+      title: "Fields & Plots",
+      url: "/fields",
+      icon: MapPin,
+      isActive: false,
     },
     {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
+      title: "Activities",
+      url: "/activities",
+      icon: Activity,
+      isActive: false,
     },
     {
-      name: "Travel",
-      url: "#",
-      icon: Map,
+      title: "Warehouse & Inventory",
+      url: "/warehouse",
+      icon: Warehouse,
+      isActive: false,
+    },
+    {
+      title: "Diaries for БАБХ",
+      url: "/diaries",
+      icon: FileText,
+      isActive: false,
+    },
+    {
+      title: "Credits & Payments",
+      url: "/credits",
+      icon: CreditCard,
+      isActive: false,
+    },
+    {
+      title: "Audits & Compliance",
+      url: "/audits",
+      icon: ShieldCheck,
+      isActive: false,
+    },
+    {
+      title: "Reports & Analytics",
+      url: "/reports",
+      icon: BarChart3,
+      isActive: false,
+    },
+    {
+      title: "Notifications",
+      url: "/notifications",
+      icon: Bell,
+      isActive: false,
+    },
+    {
+      title: "Imports & Exports",
+      url: "/imports-exports",
+      icon: Upload,
+      isActive: false,
     },
   ],
 };
@@ -164,11 +129,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <Command className="size-4" />
+                  <Building2 className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">Acme Inc</span>
-                  <span className="truncate text-xs">Enterprise</span>
+                  <span className="truncate font-medium">
+                    Agro Ops Platform
+                  </span>
+                  <span className="truncate text-xs">MVP</span>
                 </div>
               </a>
             </SidebarMenuButton>
@@ -177,8 +144,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
