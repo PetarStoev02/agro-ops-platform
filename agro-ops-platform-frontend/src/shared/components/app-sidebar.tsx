@@ -17,6 +17,8 @@ import {
   Building2,
 } from "lucide-react";
 import { useOrganization } from "@clerk/nextjs";
+import { useLocation } from "@tanstack/react-router";
+import { Trans } from "@lingui/react";
 
 import { NavMain } from "@/src/shared/components/nav-main";
 import { NavOrganization } from "@/src/shared/components/nav-org";
@@ -28,98 +30,118 @@ import {
 
 const baseNavItems = [
   {
-    title: "Dashboard",
+    titleKey: "Dashboard",
     url: "/",
     icon: LayoutDashboard,
-    isActive: false,
   },
   {
-    title: "Organizations & Roles",
+    titleKey: "Organizations & Roles",
     url: "/organizations",
     icon: Building2,
-    isActive: false,
   },
   {
-    title: "Farm Profile",
+    titleKey: "Farm Profile",
     url: "/farm-profile",
     icon: Users,
-    isActive: false,
   },
   {
-    title: "Seasons & Campaigns",
+    titleKey: "Seasons & Campaigns",
     url: "/seasons",
     icon: Calendar,
-    isActive: false,
   },
   {
-    title: "Fields & Plots",
+    titleKey: "Fields & Plots",
     url: "/fields",
     icon: MapPin,
-    isActive: false,
   },
   {
-    title: "Activities",
+    titleKey: "Activities",
     url: "/activities",
     icon: Activity,
-    isActive: false,
   },
   {
-    title: "Warehouse & Inventory",
+    titleKey: "Warehouse & Inventory",
     url: "/warehouse",
     icon: Warehouse,
-    isActive: false,
   },
   {
-    title: "Diaries for БАБХ",
+    titleKey: "Diaries for БАБХ",
     url: "/diaries",
     icon: FileText,
-    isActive: false,
   },
   {
-    title: "Credits & Payments",
+    titleKey: "Credits & Payments",
     url: "/credits",
     icon: CreditCard,
-    isActive: false,
   },
   {
-    title: "Audits & Compliance",
+    titleKey: "Audits & Compliance",
     url: "/audits",
     icon: ShieldCheck,
-    isActive: false,
   },
   {
-    title: "Reports & Analytics",
+    titleKey: "Reports & Analytics",
     url: "/reports",
     icon: BarChart3,
-    isActive: false,
   },
   {
-    title: "Notifications",
+    titleKey: "Notifications",
     url: "/notifications",
     icon: Bell,
-    isActive: false,
   },
   {
-    title: "Imports & Exports",
+    titleKey: "Imports & Exports",
     url: "/imports-exports",
     icon: Upload,
-    isActive: false,
   },
 ];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { organization } = useOrganization();
+  const location = useLocation();
   const companySlug = organization?.slug;
 
-  // Build nav items with company slug prefix
-  const navMain = baseNavItems.map((item) => ({
-    ...item,
-    url: companySlug
+  // Get current route pathname (reactive to route changes)
+  const currentPath = location.pathname;
+
+  // Build nav items with company slug prefix and determine if active
+  const navMain = baseNavItems.map((item) => {
+    const fullUrl = companySlug
       ? item.url === "/"
         ? `/${companySlug}`
         : `/${companySlug}${item.url}`
-      : item.url,
-  }));
+      : item.url;
+
+    // Normalize paths for comparison (remove trailing slashes)
+    const normalizedCurrentPath = currentPath.replace(/\/$/, "") || "/";
+    const normalizedFullUrl = fullUrl.replace(/\/$/, "") || "/";
+
+    // Check if current path matches this item's URL
+    // For dashboard (/) route, only match exactly
+    // For other routes, match if path starts with the item URL
+    let isActive = false;
+    if (item.url === "/") {
+      // Dashboard: match exactly or with company slug
+      isActive =
+        normalizedCurrentPath === normalizedFullUrl ||
+        normalizedCurrentPath === `/${companySlug}` ||
+        normalizedCurrentPath === "/";
+    } else {
+      // Other routes: match if path starts with the full URL (with trailing slash check)
+      isActive =
+        normalizedCurrentPath === normalizedFullUrl ||
+        (normalizedCurrentPath.startsWith(normalizedFullUrl) &&
+          normalizedCurrentPath.length > normalizedFullUrl.length &&
+          normalizedCurrentPath[normalizedFullUrl.length] === "/");
+    }
+
+    return {
+      ...item,
+      url: fullUrl,
+      isActive,
+      title: <Trans id={item.titleKey} message={item.titleKey} />,
+    };
+  });
 
   const data = {
     user: {
