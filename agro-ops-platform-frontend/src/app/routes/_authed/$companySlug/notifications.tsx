@@ -5,6 +5,6 @@ const NotificationsRoute = () => {
   return <Page />;
 };
 
-export const Route = createFileRoute("/_authed/notifications")({
+export const Route = createFileRoute("/_authed/$companySlug/notifications")({
   component: NotificationsRoute,
 });

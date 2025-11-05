@@ -4,12 +4,10 @@ import { Toaster } from "@/src/shared/components/ui/sonner";
 
 const RootComponent = () => {
   return (
-    <>
-      <React.StrictMode>
-        <Outlet />
-        <Toaster />
-      </React.StrictMode>
-    </>
+    <React.StrictMode>
+      <Outlet />
+      <Toaster />
+    </React.StrictMode>
   );
 };
 

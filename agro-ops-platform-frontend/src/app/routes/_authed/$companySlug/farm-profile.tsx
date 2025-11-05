@@ -5,6 +5,6 @@ const FarmProfileRoute = () => {
   return <Page />;
 };
 
-export const Route = createFileRoute("/_authed/farm-profile")({
+export const Route = createFileRoute("/_authed/$companySlug/farm-profile")({
   component: FarmProfileRoute,
 });

@@ -5,6 +5,6 @@ const OrganizationsRoute = () => {
   return <Page />;
 };
 
-export const Route = createFileRoute("/_authed/organizations")({
+export const Route = createFileRoute("/_authed/$companySlug/organizations")({
   component: OrganizationsRoute,
 });
