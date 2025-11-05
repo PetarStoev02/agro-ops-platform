@@ -12,76 +12,76 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Dashboard"
+#~ msgstr "Табло"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Organizations & Roles"
+#~ msgstr "Организации и Роли"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Farm Profile"
+#~ msgstr "Фермерски Профил"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Seasons & Campaigns"
+#~ msgstr "Сезони и Кампании"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Fields & Plots"
+#~ msgstr "Полета и Парцели"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Activities"
+#~ msgstr "Дейности"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Warehouse & Inventory"
+#~ msgstr "Склад и Инвентар"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Diaries for БАБХ"
+#~ msgstr "Дневници за БАБХ"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Credits & Payments"
+#~ msgstr "Кредити и Плащания"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Audits & Compliance"
+#~ msgstr "Одити и Съответствие"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Reports & Analytics"
+#~ msgstr "Отчети и Аналитика"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Notifications"
+#~ msgstr "Известия"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx:
+#~ msgid "Imports & Exports"
+#~ msgstr "Вносове и Износове"
+
+#. js-lingui-explicit-id
 #: src/shared/components/site-header.tsx:17
 msgid "Agro Ops Platform"
 msgstr "Агро Опс Платформа"
 
 #. js-lingui-explicit-id
-#: src/shared/components/language-switcher.tsx:45
+#: src/shared/components/language-switcher.tsx:41
 msgid "Language"
 msgstr "Език"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Dashboard"
-msgstr "Табло"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Organizations & Roles"
-msgstr "Организации и Роли"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Farm Profile"
-msgstr "Фермерски Профил"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Seasons & Campaigns"
-msgstr "Сезони и Кампании"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Fields & Plots"
-msgstr "Полета и Парцели"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Activities"
-msgstr "Дейности"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Warehouse & Inventory"
-msgstr "Склад и Инвентар"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Diaries for БАБХ"
-msgstr "Дневници за БАБХ"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Credits & Payments"
-msgstr "Кредити и Плащания"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Audits & Compliance"
-msgstr "Одити и Съответствие"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Reports & Analytics"
-msgstr "Отчети и Аналитика"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Notifications"
-msgstr "Известия"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx
-msgid "Imports & Exports"
-msgstr "Вносове и Износове"
