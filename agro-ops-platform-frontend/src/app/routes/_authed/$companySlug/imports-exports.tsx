@@ -5,6 +5,6 @@ const ImportsExportsRoute = () => {
   return <Page />;
 };
 
-export const Route = createFileRoute("/_authed/imports-exports")({
+export const Route = createFileRoute("/_authed/$companySlug/imports-exports")({
   component: ImportsExportsRoute,
 });

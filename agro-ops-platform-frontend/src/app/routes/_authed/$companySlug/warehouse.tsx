@@ -5,6 +5,6 @@ const WarehouseRoute = () => {
   return <Page />;
 };
 
-export const Route = createFileRoute("/_authed/warehouse")({
+export const Route = createFileRoute("/_authed/$companySlug/warehouse")({
   component: WarehouseRoute,
 });

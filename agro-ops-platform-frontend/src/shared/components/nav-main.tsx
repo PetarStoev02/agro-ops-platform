@@ -1,11 +1,10 @@
 "use client";
 
 import { type LucideIcon } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 
 import {
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -27,12 +26,11 @@ export function NavMain({
 }) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.title}>
             <SidebarMenuButton asChild tooltip={item.title}>
-              <Link href={item.url}>
+              <Link to={item.url}>
                 <item.icon />
                 <span>{item.title}</span>
               </Link>
