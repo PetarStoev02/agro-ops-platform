@@ -14,6 +14,9 @@ jobs:
   # Build test job - validates that the code will build successfully
   build-test:
     runs-on: ubuntu-latest
+    # Add environment to access environment secrets
+    environment:
+      name: github-pages
     defaults:
       run:
         working-directory: ./agro-ops-platform-frontend

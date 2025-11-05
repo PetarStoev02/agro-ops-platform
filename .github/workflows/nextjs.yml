@@ -28,6 +28,9 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    # Add environment to access environment secrets
+    environment:
+      name: github-pages
     defaults:
       run:
         working-directory: ./agro-ops-platform-frontend
