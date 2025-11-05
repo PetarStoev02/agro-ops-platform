@@ -75,5 +75,10 @@ jobs:
       
       - name: Run tests (lint, prettier check, type-check, build)
         working-directory: ./agro-ops-platform-frontend
+        env:
+          # Clerk publishable key - stored as GitHub Secret to handle special characters like $
+          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
+          # Optional: Add Clerk secret key if needed for server-side operations
+          CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
         run: ${{ steps.detect-package-manager.outputs.runner }} run test
 
