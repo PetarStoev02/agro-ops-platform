@@ -4,7 +4,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useParams, useNavigate } from "@tanstack/react-router";
 import { useOrganization } from "@clerk/nextjs";
 import { useEffect } from "react";
-import Page from "@/src/pages/dashboard/page";
+import DashboardPage from "@/src/pages/dashboard/page";
 
 const CompanyDashboardRoute = () => {
   const { companySlug } = useParams({ from: "/_authed/$companySlug/" });
@@ -39,7 +39,7 @@ const CompanyDashboardRoute = () => {
     return null;
   }
 
-  return <Page />;
+  return <DashboardPage />;
 };
 
 export const Route = createFileRoute("/_authed/$companySlug/")({

@@ -1,0 +1,96 @@
+msgid ""
+msgstr ""
+"Language: en\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. js-lingui-explicit-id
+#: src/shared/components/site-header.tsx:17
+msgid "Agro Ops Platform"
+msgstr "Agro Ops Platform"
+
+#~ msgid "Agro Ops Platform"
+#~ msgstr "Agro Ops Platform"
+
+#~ msgid "Bulgarian"
+#~ msgstr "Bulgarian"
+
+#~ msgid "English"
+#~ msgstr "English"
+
+#. js-lingui-explicit-id
+#: src/shared/components/language-switcher.tsx:45
+msgid "Language"
+msgstr "Language"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Organizations & Roles"
+msgstr "Organizations & Roles"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Farm Profile"
+msgstr "Farm Profile"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Seasons & Campaigns"
+msgstr "Seasons & Campaigns"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Fields & Plots"
+msgstr "Fields & Plots"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Activities"
+msgstr "Activities"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Warehouse & Inventory"
+msgstr "Warehouse & Inventory"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Diaries for БАБХ"
+msgstr "Diaries for БАБХ"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Credits & Payments"
+msgstr "Credits & Payments"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Audits & Compliance"
+msgstr "Audits & Compliance"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Reports & Analytics"
+msgstr "Reports & Analytics"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Notifications"
+msgstr "Notifications"
+
+#. js-lingui-explicit-id
+#: src/shared/components/app-sidebar.tsx
+msgid "Imports & Exports"
+msgstr "Imports & Exports"
