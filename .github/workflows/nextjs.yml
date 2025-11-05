@@ -95,6 +95,8 @@ jobs:
       - name: Build with Next.js
         working-directory: ./agro-ops-platform-frontend
         env:
+          # Enable static export for GitHub Pages deployment
+          ENABLE_STATIC_EXPORT: "true"
           # Clerk publishable key - stored as GitHub Secret to handle special characters like $
           NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
           # Optional: Add Clerk secret key if needed for server-side operations
