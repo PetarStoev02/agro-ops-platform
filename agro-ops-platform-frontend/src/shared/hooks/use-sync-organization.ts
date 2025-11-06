@@ -22,14 +22,23 @@ export function useSyncOrganization() {
       isLoaded &&
       organization?.id &&
       organization.name &&
-      organization.slug &&
       !convexOrg // Only sync if not already in Convex
     ) {
+      // Generate slug from organization name if not provided
+      const slug =
+        organization.slug ||
+        organization.name
+          .toLowerCase()
+          .trim()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "") ||
+        organization.id.slice(0, 8); // Fallback to first 8 chars of ID
+
       // Sync organization to Convex
       upsertOrg({
         clerkOrgId: organization.id,
         name: organization.name,
-        slug: organization.slug,
+        slug: slug,
       }).catch((error) => {
         console.error("Failed to sync organization to Convex:", error);
       });

@@ -47,13 +47,13 @@ export async function activateLocale(locale: string) {
 // Initialize with default locale
 export async function initializeI18n() {
   if (typeof window !== "undefined") {
-    const savedLocale = localStorage.getItem("locale") || "en";
+    const savedLocale = localStorage.getItem("locale") || "bg";
     await activateLocale(savedLocale);
   } else {
-    // Default for SSR - load English messages
-    const messages = await loadMessages("en");
-    i18n.load("en", messages);
-    i18n.activate("en");
+    // Default for SSR - load Bulgarian messages
+    const messages = await loadMessages("bg");
+    i18n.load("bg", messages);
+    i18n.activate("bg");
   }
 }
 

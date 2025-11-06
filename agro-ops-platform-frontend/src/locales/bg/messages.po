@@ -95,45 +95,6 @@ msgid "Failed to create season"
 msgstr "Неуспешно създаване на сезон"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:183
-#: src/shared/components/activities/farm-activity-form.tsx:119
-#: src/shared/components/activities/fertilizer-form.tsx:173
-#: src/shared/components/activities/field-inspection-form.tsx:112
-msgid "Organization or user not found"
-msgstr "Организацията или потребителят не са намерени"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:132
-msgid "Field inspection updated successfully"
-msgstr "Инспекцията на полето е обновена успешно"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:149
-msgid "Field inspection created successfully"
-msgstr "Инспекцията на полето е създадена успешно"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:159
-msgid "Failed to save field inspection"
-msgstr "Неуспешно запазване на инспекцията на полето"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:316
-#: src/shared/components/activities/field-inspection-form.tsx:333
-msgid "Type of damage"
-msgstr "Вид на вреда"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:354
-msgid "Density or degree of attack"
-msgstr "Плътност или степен на нападение"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:376
-msgid "Phenological phase"
-msgstr "Фенологична фаза"
-
-#. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:168
 msgid "Field updated successfully"
 msgstr "Полето е обновено успешно"
@@ -173,6 +134,44 @@ msgstr "Избери сезон"
 #: src/shared/components/fields/create-field-form.tsx:466
 msgid "Create new season"
 msgstr "Създай нов сезон"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:183
+#: src/shared/components/activities/farm-activity-form.tsx:119
+#: src/shared/components/activities/fertilizer-form.tsx:173
+#: src/shared/components/activities/field-inspection-form.tsx:112
+msgid "Organization or user not found"
+msgstr "Организацията или потребителят не са намерени"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:138
+msgid "Farm activity updated successfully"
+msgstr "Дейността в стопанството е обновена успешно"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:154
+msgid "Farm activity created successfully"
+msgstr "Дейността в стопанството е създадена успешно"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:164
+msgid "Failed to save farm activity"
+msgstr "Неуспешно запазване на дейността в стопанството"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:306
+msgid "SOWING, HARVESTING, etc."
+msgstr "СЕИТБА, ЖЪТВА и т.н."
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:355
+msgid "Type of Fertilizers, Seeds, PPP"
+msgstr "Вид на Торове, Семена, ПРЗ"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:377
+msgid "10 pieces/dka or 10 kg/dka"
+msgstr "10 броя/дка или 10 кг/дка"
 
 #. js-lingui-explicit-id
 #: src/shared/components/activities/chemical-treatment-form.tsx:188
@@ -240,34 +239,45 @@ msgid "Type of fertilizer, seeds, PPP"
 msgstr "Вид на Торове, Семена, ПРЗ"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/farm-activity-form.tsx:138
-msgid "Farm activity updated successfully"
-msgstr "Дейността в стопанството е обновена успешно"
+#: src/shared/components/activities/field-inspection-form.tsx:132
+msgid "Field inspection updated successfully"
+msgstr "Инспекцията на полето е обновена успешно"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/farm-activity-form.tsx:154
-msgid "Farm activity created successfully"
-msgstr "Дейността в стопанството е създадена успешно"
+#: src/shared/components/activities/field-inspection-form.tsx:149
+msgid "Field inspection created successfully"
+msgstr "Инспекцията на полето е създадена успешно"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/farm-activity-form.tsx:164
-msgid "Failed to save farm activity"
-msgstr "Неуспешно запазване на дейността в стопанството"
+#: src/shared/components/activities/field-inspection-form.tsx:159
+msgid "Failed to save field inspection"
+msgstr "Неуспешно запазване на инспекцията на полето"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/farm-activity-form.tsx:306
-msgid "SOWING, HARVESTING, etc."
-msgstr "СЕИТБА, ЖЪТВА и т.н."
+#: src/shared/components/activities/field-inspection-form.tsx:316
+#: src/shared/components/activities/field-inspection-form.tsx:333
+msgid "Type of damage"
+msgstr "Вид на вреда"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/farm-activity-form.tsx:355
-msgid "Type of Fertilizers, Seeds, PPP"
-msgstr "Вид на Торове, Семена, ПРЗ"
+#: src/shared/components/activities/field-inspection-form.tsx:354
+msgid "Density or degree of attack"
+msgstr "Плътност или степен на нападение"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/farm-activity-form.tsx:377
-msgid "10 pieces/dka or 10 kg/dka"
-msgstr "10 броя/дка или 10 кг/дка"
+#: src/shared/components/activities/field-inspection-form.tsx:376
+msgid "Phenological phase"
+msgstr "Фенологична фаза"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:126
+msgid "Item deleted successfully"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:132
+msgid "Failed to delete item"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:157
@@ -285,16 +295,6 @@ msgstr "Неуспешно изтриване на полето"
 #: src/pages/fields/page.tsx:219
 msgid "Search fields..."
 msgstr "Търсене на полета..."
-
-#. js-lingui-explicit-id
-#: src/pages/warehouse/page.tsx:126
-msgid "Item deleted successfully"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/pages/warehouse/page.tsx:132
-msgid "Failed to delete item"
-msgstr ""
 
 #. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:142
@@ -432,12 +432,27 @@ msgstr "Неуспешно изтриване на дейността"
 #~ msgstr "Членове на Екипа"
 
 #. js-lingui-explicit-id
+#: src/shared/components/dashboard/organization-profile.tsx:146
+#~ msgid "* Generating a logbook costs 1 credit"
+#~ msgstr "* Генерирането на дневник се заплаща с 1 кредит"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/organization-profile.tsx:45
+#~ msgid "User Data"
+#~ msgstr "Потребителски данни"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/organization-profile.tsx:93
+msgid "(ОДБХ)"
+msgstr "(ОДБХ)"
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/seasons-widget.tsx:92
 msgid "{activeCount} active, {totalCount} total"
 msgstr "{activeCount} активни, {totalCount} общо"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:127
+#: src/pages/dashboard/page.tsx:128
 msgid "{area} hectares total"
 msgstr "{area} хектара общо"
 
@@ -457,7 +472,7 @@ msgid "{count} fields • {area} hectares total"
 msgstr "{count} полета • {area} хектара общо"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:108
+#: src/pages/dashboard/page.tsx:109
 msgid "{count} items in stock"
 msgstr "{count} артикула на склад"
 
@@ -548,7 +563,7 @@ msgid "Active"
 msgstr "Активен"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:121
+#: src/pages/dashboard/page.tsx:122
 msgid "Active Fields"
 msgstr "Активни Полета"
 
@@ -564,6 +579,7 @@ msgstr "Вид Мероприятие"
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:491
+#: src/shared/components/onboarding/invite-members-step.tsx:142
 #: src/shared/components/warehouse/add-chemical-form.tsx:221
 #: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:367
 #: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:367
@@ -607,6 +623,17 @@ msgstr "Добави Инспекция на Поле"
 #: src/shared/components/warehouse/add-item-type-modal.tsx:41
 msgid "Add Item"
 msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/onboarding/invite-members-step.tsx:112
+msgid "Add team members to your organization. You can skip this step and invite members later."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/organization-profile.tsx:69
+#: src/shared/components/onboarding/organization-details-form.tsx:250
+msgid "Address"
+msgstr "Адрес"
 
 #. js-lingui-explicit-id
 #: src/shared/components/site-header.tsx:17
@@ -752,12 +779,18 @@ msgid "Create New Season"
 msgstr "Създай Нов Сезон"
 
 #. js-lingui-explicit-id
+#: src/shared/components/onboarding/onboarding-wizard.tsx:270
+msgid "Create Organization"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/shared/components/fields/create-season-modal.tsx:159
 msgid "Create Season"
 msgstr "Създай Сезон"
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-season-modal.tsx:157
+#: src/shared/components/onboarding/onboarding-wizard.tsx:268
 msgid "Creating..."
 msgstr "Създаване..."
 
@@ -813,6 +846,12 @@ msgstr "Изтрий"
 #: src/pages/fields/page.tsx:432
 msgid "Delete Field"
 msgstr "Изтрий Поле"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/organization-profile.tsx:81
+#: src/shared/components/onboarding/organization-details-form.tsx:266
+msgid "Directorate 'Agriculture'"
+msgstr "Дирекция \"Земеделие\""
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/fields-chart.tsx:80
@@ -876,6 +915,22 @@ msgid "Edit Field Inspection"
 msgstr "Редактирай Инспекция на Поле"
 
 #. js-lingui-explicit-id
+#: src/shared/components/dashboard/organization-profile.tsx:144
+msgid "EDIT PROFILE"
+msgstr "РЕДАКТИРАЙ ПРОФИЛ"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/organization-profile.tsx:101
+#: src/shared/components/onboarding/organization-details-form.tsx:330
+msgid "EKATTE Registration"
+msgstr "ЕКАТЕ на регистрация"
+
+#. js-lingui-explicit-id
+#: src/shared/components/onboarding/invite-members-step.tsx:123
+msgid "Email Address"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/shared/components/activities/farm-activity-form.tsx:253
 msgid "End Date"
 msgstr "Крайна Дата"
@@ -899,6 +954,11 @@ msgstr "Дейност в Стопанството"
 #: src/pages/fields/[fieldId]/page.tsx:603
 msgid "Farm Logbook"
 msgstr "Дневник за стопанството"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/organization-profile.tsx:47
+msgid "Farm Name"
+msgstr "Име на стопанство"
 
 #. js-lingui-explicit-id
 #: src/shared/components/activities/fertilizer-form.tsx:437
@@ -1008,6 +1068,11 @@ msgid "Generate Farm Logbook"
 msgstr "Генерирай дневник на стопанството"
 
 #. js-lingui-explicit-id
+#: src/shared/components/dashboard/organization-profile.tsx:136
+msgid "Generate home page for BABH"
+msgstr "Генерирай начална страница за БАБХ"
+
+#. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:595
 msgid "Generating a logbook costs 1 credit (coming soon)"
 msgstr "* Генерирането на дневник се заплаща с 1 кредит"
@@ -1043,6 +1108,16 @@ msgid "Infestation Type"
 msgstr "Вид на вредител"
 
 #. js-lingui-explicit-id
+#: src/shared/components/onboarding/invite-members-step.tsx:109
+msgid "Invite Team Members"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/onboarding/onboarding-wizard.tsx:236
+msgid "Invite team members to your organization (optional)"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:268
 #: src/shared/components/fields/create-field-form.tsx:289
 msgid "Land Area"
@@ -1060,9 +1135,19 @@ msgid "Latest farming activities"
 msgstr "Последни земеделски дейности"
 
 #. js-lingui-explicit-id
+#: src/shared/components/onboarding/onboarding-wizard.tsx:224
+msgid "Let's get started by creating your organization"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:324
 msgid "List of Activities"
 msgstr "Списък с мероприятия"
+
+#. js-lingui-explicit-id
+#: src/shared/components/onboarding/onboarding-wizard.tsx:283
+msgid "Loading organization..."
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:274
@@ -1096,15 +1181,31 @@ msgid "Member Activity"
 msgstr "Активност на Членовете"
 
 #. js-lingui-explicit-id
+#: src/shared/components/dashboard/organization-profile.tsx:53
+#: src/shared/components/onboarding/organization-details-form.tsx:207
+msgid "Municipality"
+msgstr "Община"
+
+#. js-lingui-explicit-id
 #: src/pages/warehouse/page.tsx:242
 #: src/pages/warehouse/page.tsx:328
 msgid "Name"
 msgstr ""
 
 #. js-lingui-explicit-id
+#: src/shared/components/onboarding/organization-details-form.tsx:188
+msgid "Name of farm/organization"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:141
 msgid "Net Balance"
 msgstr "Нетен Баланс"
+
+#. js-lingui-explicit-id
+#: src/shared/components/onboarding/onboarding-wizard.tsx:53
+msgid "Next"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/pages/warehouse/page.tsx:340
@@ -1157,9 +1258,24 @@ msgid "No seasons configured"
 msgstr "Няма конфигурирани сезони"
 
 #. js-lingui-explicit-id
+#: src/shared/components/onboarding/onboarding-wizard.tsx:187
+msgid "Onboarding Complete!"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/onboarding/onboarding-wizard.tsx:248
+msgid "Organization Name"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/audit-status.tsx:65
 msgid "Pending Audits"
 msgstr "Чакащи Одити"
+
+#. js-lingui-explicit-id
+#: src/shared/components/onboarding/invite-members-step.tsx:151
+msgid "Pending Invitations"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/shared/components/activities/field-inspection-form.tsx:369
@@ -1177,7 +1293,12 @@ msgid "Pick a date"
 msgstr "Избери дата"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:85
+#: src/shared/components/onboarding/onboarding-wizard.tsx:230
+msgid "Please provide your organization details"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:86
 msgid "Please wait while we sync your organization data. This may take a few moments."
 msgstr "Моля изчакайте, докато синхронизираме данните на вашата организация. Това може да отнеме няколко момента."
 
@@ -1231,6 +1352,11 @@ msgid "Recent Activities"
 msgstr "Последни Дейности"
 
 #. js-lingui-explicit-id
+#: src/shared/components/onboarding/organization-details-form.tsx:298
+msgid "Regional Food Safety Directorate (ОДБХ)"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:550
 msgid "Report Generation"
 msgstr "Генериране на отчети"
@@ -1264,9 +1390,31 @@ msgid "Season"
 msgstr "Сезон"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:79
+#: src/shared/components/onboarding/invite-members-step.tsx:203
+msgid "Send Invitations"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/onboarding/invite-members-step.tsx:201
+msgid "Sending..."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:80
 msgid "Setting up organization..."
 msgstr "Настройване на организацията..."
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/organization-profile.tsx:61
+#: src/shared/components/onboarding/organization-details-form.tsx:234
+msgid "Settlement"
+msgstr "Населено място"
+
+#. js-lingui-explicit-id
+#: src/shared/components/onboarding/invite-members-step.tsx:191
+#: src/shared/components/onboarding/onboarding-wizard.tsx:43
+msgid "Skip"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:287
@@ -1298,13 +1446,18 @@ msgid "Surveyed Area (dka)"
 msgstr "Обследвана площ (дка)"
 
 #. js-lingui-explicit-id
+#: src/shared/components/onboarding/invite-members-step.tsx:154
+msgid "These members will be invited when you click 'Send Invitations'"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/shared/components/activities/chemical-treatment-form.tsx:313
 #: src/shared/components/activities/fertilizer-form.tsx:300
 msgid "To warehouse"
 msgstr "Към склада"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:102
+#: src/pages/dashboard/page.tsx:103
 msgid "Total Products"
 msgstr "Общо Продукти"
 
@@ -1371,6 +1524,11 @@ msgid "Update the field inspection information below."
 msgstr "Обновете информацията за инспекцията на полето по-долу."
 
 #. js-lingui-explicit-id
+#: src/shared/components/onboarding/onboarding-wizard.tsx:211
+msgid "Welcome to Agro Ops Platform"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:99
 #: src/shared/components/dashboard/fields-chart.tsx:35
 #: src/shared/components/fields/create-field-form.tsx:412
@@ -1396,6 +1554,11 @@ msgstr "Не разполагате с торове приложими върх�
 #: src/pages/fields/[fieldId]/page.tsx:566
 msgid "You have not entered any activities, which will lead to the generation of an empty logbook with rows 'No activities performed'."
 msgstr "Не сте въвели никакви дейности, което ще доведе до генериране на празен дневник с редове 'Не са извършени дейности'."
+
+#. js-lingui-explicit-id
+#: src/shared/components/onboarding/onboarding-wizard.tsx:190
+msgid "Your organization has been set up successfully. Redirecting to dashboard..."
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/inventory-alerts.tsx:87

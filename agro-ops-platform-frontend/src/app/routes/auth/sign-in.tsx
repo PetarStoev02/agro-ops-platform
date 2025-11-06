@@ -10,19 +10,12 @@ const SignInRoute = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // If already authenticated, redirect to company slug
+    // If already authenticated, redirect to onboarding (will check status there)
     if (isLoaded && orgLoaded && userId) {
-      if (organization?.slug) {
-        navigate({
-          to: "/$companySlug",
-          params: { companySlug: organization.slug },
-        });
-      } else {
-        // Redirect to authed index which will handle organization selection
-        navigate({ to: "/" });
-      }
+      // Always redirect to onboarding first - it will check if already onboarded
+      navigate({ to: "/onboarding" });
     }
-  }, [isLoaded, orgLoaded, userId, organization, navigate]);
+  }, [isLoaded, orgLoaded, userId, navigate]);
 
   // If already logged in, show nothing (will redirect)
   if (isLoaded && orgLoaded && userId) {
@@ -31,7 +24,11 @@ const SignInRoute = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <SignIn routing="hash" afterSignInUrl="/" redirectUrl="/" />
+      <SignIn
+        routing="hash"
+        afterSignInUrl="/onboarding"
+        redirectUrl="/onboarding"
+      />
     </div>
   );
 };

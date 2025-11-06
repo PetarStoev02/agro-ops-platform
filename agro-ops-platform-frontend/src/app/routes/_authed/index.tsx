@@ -3,6 +3,8 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useAuth, useOrganizationList, useOrganization } from "@clerk/nextjs";
 import { useEffect, useRef } from "react";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 const AuthedIndexRoute = () => {
   const { userId, isLoaded } = useAuth();
@@ -15,8 +17,26 @@ const AuthedIndexRoute = () => {
   const navigate = useNavigate();
   const hasRedirectedRef = useRef(false);
 
+  // Check onboarding status
+  const onboardingStatus = useQuery(
+    api.organizations.getOnboardingStatus,
+    organization?.id ? { clerkOrgId: organization.id } : "skip",
+  );
+
+  // Get Convex organization to get slug
+  const convexOrg = useQuery(
+    api.organizations.getByClerkOrgId,
+    organization?.id ? { clerkOrgId: organization.id } : "skip",
+  );
+
   useEffect(() => {
-    if (isLoaded && orgListLoaded && userId && !hasRedirectedRef.current) {
+    if (
+      isLoaded &&
+      orgListLoaded &&
+      orgLoaded &&
+      userId &&
+      !hasRedirectedRef.current
+    ) {
       // First try to use the active organization from useOrganization
       let activeOrg = organization;
 
@@ -30,18 +50,26 @@ const AuthedIndexRoute = () => {
       }
 
       if (!activeOrg) {
-        // No organization - redirect to organizations page (but we need an org first)
-        // Since we can't access organizations without an org, just show a message
-        // In practice, users should create/join an org first
+        // No organization - redirect to onboarding
+        hasRedirectedRef.current = true;
+        navigate({ to: "/onboarding", replace: true });
         return;
       }
 
-      // Redirect to company slug route (dashboard)
-      if (activeOrg.slug) {
+      // Check if organization is onboarded
+      if (!onboardingStatus?.isOnboarded) {
+        // Not onboarded - redirect to onboarding
+        hasRedirectedRef.current = true;
+        navigate({ to: "/onboarding", replace: true });
+        return;
+      }
+
+      // Redirect to company slug route (dashboard) using Convex slug
+      if (convexOrg?.slug) {
         hasRedirectedRef.current = true;
         navigate({
           to: "/$companySlug",
-          params: { companySlug: activeOrg.slug },
+          params: { companySlug: convexOrg.slug },
           replace: true,
         });
       }
@@ -49,9 +77,12 @@ const AuthedIndexRoute = () => {
   }, [
     isLoaded,
     orgListLoaded,
+    orgLoaded,
     userId,
     organization,
     userMemberships,
+    onboardingStatus,
+    convexOrg,
     navigate,
   ]);
 

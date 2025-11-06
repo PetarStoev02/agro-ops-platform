@@ -20,7 +20,7 @@ const languages = [
 export function LanguageSwitcher() {
   const { i18n } = useLingui();
   // Use i18n.locale directly instead of maintaining separate state
-  const currentLocale = i18n.locale || "en";
+  const currentLocale = i18n.locale || "bg";
 
   const handleLocaleChange = async (locale: string) => {
     if (locale === currentLocale) return;

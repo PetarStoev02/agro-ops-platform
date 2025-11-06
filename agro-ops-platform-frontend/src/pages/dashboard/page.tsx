@@ -8,6 +8,7 @@ import { FieldsChart } from "@/src/shared/components/dashboard/fields-chart";
 import { ActivityFeed } from "@/src/shared/components/dashboard/activity-feed";
 import { InventoryAlerts } from "@/src/shared/components/dashboard/inventory-alerts";
 import { SeasonsWidget } from "@/src/shared/components/dashboard/seasons-widget";
+import { OrganizationProfile } from "@/src/shared/components/dashboard/organization-profile";
 import { Package, MapPin } from "lucide-react";
 import { Trans } from "@lingui/react";
 
@@ -161,6 +162,8 @@ export default function DashboardPage() {
           isLoading={isInventoryLoading}
         />
       </div>
+      {/* Organization Profile Section */}
+      <OrganizationProfile />
     </div>
   );
 }
