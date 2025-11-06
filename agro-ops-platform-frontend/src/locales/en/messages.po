@@ -64,13 +64,147 @@ msgid "Create new season"
 msgstr "Create new season"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:152
+#: src/shared/components/activities/chemical-treatment-form.tsx:183
+#: src/shared/components/activities/farm-activity-form.tsx:119
+#: src/shared/components/activities/fertilizer-form.tsx:173
+#: src/shared/components/activities/field-inspection-form.tsx:112
+msgid "Organization or user not found"
+msgstr "Organization or user not found"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:132
+msgid "Field inspection updated successfully"
+msgstr "Field inspection updated successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:149
+msgid "Field inspection created successfully"
+msgstr "Field inspection created successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:159
+msgid "Failed to save field inspection"
+msgstr "Failed to save field inspection"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:316
+#: src/shared/components/activities/field-inspection-form.tsx:333
+msgid "Type of damage"
+msgstr "Type of damage"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:354
+msgid "Density or degree of attack"
+msgstr "Density or degree of attack"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:376
+msgid "Phenological phase"
+msgstr "Phenological phase"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:188
+msgid "Please select a chemical"
+msgstr "Please select a chemical"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:218
+msgid "Chemical treatment updated successfully"
+msgstr "Chemical treatment updated successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:235
+msgid "Chemical treatment created successfully"
+msgstr "Chemical treatment created successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:245
+msgid "Failed to save chemical treatment"
+msgstr "Failed to save chemical treatment"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:385
+msgid "Select chemical"
+msgstr "Select chemical"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:424
+msgid "Type of infestation"
+msgstr "Type of infestation"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:532
+msgid "Equipment used"
+msgstr "Equipment used"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:178
+msgid "Please select a fertilizer"
+msgstr "Please select a fertilizer"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:206
+msgid "Fertilizer application updated successfully"
+msgstr "Fertilizer application updated successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:221
+msgid "Fertilizer application created successfully"
+msgstr "Fertilizer application created successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:231
+msgid "Failed to save fertilizer application"
+msgstr "Failed to save fertilizer application"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:373
+msgid "Select fertilizer"
+msgstr "Select fertilizer"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:472
+msgid "Type of fertilizer, seeds, PPP"
+msgstr "Type of fertilizer, seeds, PPP"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:138
+msgid "Farm activity updated successfully"
+msgstr "Farm activity updated successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:154
+msgid "Farm activity created successfully"
+msgstr "Farm activity created successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:164
+msgid "Failed to save farm activity"
+msgstr "Failed to save farm activity"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:306
+msgid "SOWING, HARVESTING, etc."
+msgstr "SOWING, HARVESTING, etc."
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:355
+msgid "Type of Fertilizers, Seeds, PPP"
+msgstr "Type of Fertilizers, Seeds, PPP"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:377
+msgid "10 pieces/dka or 10 kg/dka"
+msgstr "10 pieces/dka or 10 kg/dka"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:157
 #: src/pages/fields/page.tsx:173
 msgid "Field deleted successfully"
 msgstr "Field deleted successfully"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:161
+#: src/pages/fields/[fieldId]/page.tsx:166
 #: src/pages/fields/page.tsx:179
 msgid "Failed to delete field"
 msgstr "Failed to delete field"
@@ -79,6 +213,16 @@ msgstr "Failed to delete field"
 #: src/pages/fields/page.tsx:219
 msgid "Search fields..."
 msgstr "Search fields..."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:142
+msgid "Activity deleted successfully"
+msgstr "Activity deleted successfully"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:147
+msgid "Failed to delete activity"
+msgstr "Failed to delete activity"
 
 #. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:125
@@ -297,14 +441,34 @@ msgid "Active Seasons"
 msgstr "Active Seasons"
 
 #. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:301
+msgid "Activity Type"
+msgstr "Activity Type"
+
+#. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:491
 msgid "Add"
 msgstr "Add"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:383
+#: src/pages/fields/[fieldId]/page.tsx:534
 msgid "Add Activity"
 msgstr "Add Activity"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:266
+msgid "Add Chemical Treatment"
+msgstr "Add Chemical Treatment"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:179
+msgid "Add Farm Activity"
+msgstr "Add Farm Activity"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:253
+msgid "Add Fertilizer Application"
+msgstr "Add Fertilizer Application"
 
 #. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:211
@@ -312,6 +476,11 @@ msgstr "Add Activity"
 #: src/shared/components/fields/create-field-form.tsx:212
 msgid "Add Field"
 msgstr "Add Field"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:177
+msgid "Add Field Inspection"
+msgstr "Add Field Inspection"
 
 #. js-lingui-explicit-id
 #: src/shared/components/site-header.tsx:17
@@ -337,7 +506,7 @@ msgid "All Seasons"
 msgstr "All Seasons"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:501
+#: src/pages/fields/[fieldId]/page.tsx:652
 msgid "Are you sure you want to delete {fieldName}? This action cannot be undone."
 msgstr "Are you sure you want to delete {fieldName}? This action cannot be undone."
 
@@ -347,7 +516,10 @@ msgid "Are you sure you want to delete this field? This action cannot be undone.
 msgstr "Are you sure you want to delete this field? This action cannot be undone."
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:248
+#: src/pages/fields/[fieldId]/page.tsx:253
+#: src/pages/fields/[fieldId]/page.tsx:393
+#: src/pages/fields/[fieldId]/page.tsx:434
+#: src/pages/fields/[fieldId]/page.tsx:448
 msgid "Area"
 msgstr "Area"
 
@@ -358,7 +530,17 @@ msgid "Area (decares)"
 msgstr "Area (decares)"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:405
+#: src/shared/components/activities/field-inspection-form.tsx:346
+msgid "Attack Density/Degree"
+msgstr "Attack Density/Degree"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:281
+msgid "Attacked Area (dka)"
+msgstr "Attacked Area (dka)"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:556
 msgid "BABH Certification Logbook"
 msgstr "BABH Certification Logbook"
 
@@ -368,7 +550,7 @@ msgid "Back"
 msgstr "Back"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:194
+#: src/pages/fields/[fieldId]/page.tsx:199
 msgid "Back to Fields"
 msgstr "Back to Fields"
 
@@ -383,23 +565,45 @@ msgstr "Barley"
 #~ msgstr "Bulgarian"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:275
+#: src/pages/fields/[fieldId]/page.tsx:280
 #: src/pages/fields/page.tsx:274
 #: src/shared/components/fields/create-field-form.tsx:255
 msgid "BZS Number"
 msgstr "BZS Number"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:510
+#: src/pages/fields/[fieldId]/page.tsx:661
 #: src/pages/fields/page.tsx:443
+#: src/shared/components/activities/chemical-treatment-form.tsx:545
+#: src/shared/components/activities/farm-activity-form.tsx:392
+#: src/shared/components/activities/fertilizer-form.tsx:487
+#: src/shared/components/activities/field-inspection-form.tsx:391
 #: src/shared/components/fields/create-season-modal.tsx:153
 msgid "Cancel"
 msgstr "Cancel"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:309
+#: src/shared/components/activities/chemical-treatment-form.tsx:374
+msgid "Chemical"
+msgstr "Chemical"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/activity-feed.tsx:213
+msgid "Chemical Treatment"
+msgstr "Chemical Treatment"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:314
 msgid "Clone Activities"
 msgstr "Clone Activities"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:548
+#: src/shared/components/activities/farm-activity-form.tsx:395
+#: src/shared/components/activities/fertilizer-form.tsx:490
+#: src/shared/components/activities/field-inspection-form.tsx:394
+msgid "Continue"
+msgstr "Continue"
 
 #. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:100
@@ -434,7 +638,7 @@ msgid "Creating..."
 msgstr "Creating..."
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:292
+#: src/pages/fields/[fieldId]/page.tsx:297
 #: src/pages/fields/page.tsx:283
 #: src/shared/components/fields/create-field-form.tsx:397
 msgid "Crop Type"
@@ -453,20 +657,37 @@ msgid "Current stock: {quantity} {unit}"
 msgstr "Current stock: {quantity} {unit}"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:249
+#: src/pages/fields/[fieldId]/page.tsx:410
+#: src/shared/components/activities/field-inspection-form.tsx:312
+msgid "Damage"
+msgstr "Damage"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:329
+msgid "Damage Type"
+msgstr "Damage Type"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:327
+#: src/shared/components/activities/fertilizer-form.tsx:314
+msgid "Date"
+msgstr "Date"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:254
 msgid "decares"
 msgstr "decares"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:235
-#: src/pages/fields/[fieldId]/page.tsx:516
+#: src/pages/fields/[fieldId]/page.tsx:240
+#: src/pages/fields/[fieldId]/page.tsx:667
 #: src/pages/fields/page.tsx:339
 #: src/pages/fields/page.tsx:449
 msgid "Delete"
 msgstr "Delete"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:498
+#: src/pages/fields/[fieldId]/page.tsx:649
 #: src/pages/fields/page.tsx:432
 msgid "Delete Field"
 msgstr "Delete Field"
@@ -477,23 +698,71 @@ msgid "Distribution of fields and area"
 msgstr "Distribution of fields and area"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:395
+#: src/pages/fields/[fieldId]/page.tsx:421
+#: src/pages/fields/[fieldId]/page.tsx:436
+#: src/pages/fields/[fieldId]/page.tsx:450
+msgid "dka"
+msgstr "dka"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:440
+msgid "Dose (l/dka)"
+msgstr "Dose (l/dka)"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:410
+msgid "Dose (per dka)"
+msgstr "Dose (per dka)"
+
+#. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:332
 msgid "Duplicate"
 msgstr "Duplicate"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:231
+#: src/pages/fields/[fieldId]/page.tsx:236
 #: src/pages/fields/page.tsx:326
 msgid "Edit"
 msgstr "Edit"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:261
+msgid "Edit Chemical Treatment"
+msgstr "Edit Chemical Treatment"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:177
+msgid "Edit Farm Activity"
+msgstr "Edit Farm Activity"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:248
+msgid "Edit Fertilizer Application"
+msgstr "Edit Fertilizer Application"
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:210
 msgid "Edit Field"
 msgstr "Edit Field"
 
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:172
+msgid "Edit Field Inspection"
+msgstr "Edit Field Inspection"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:253
+msgid "End Date"
+msgstr "End Date"
+
 #~ msgid "English"
 #~ msgstr "English"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:528
+msgid "Equipment"
+msgstr "Equipment"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:127
@@ -507,19 +776,46 @@ msgid "Expires {time}"
 msgstr "Expires {time}"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:452
+#: src/shared/components/dashboard/activity-feed.tsx:225
+msgid "Farm Activity"
+msgstr "Farm Activity"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:603
 msgid "Farm Logbook"
 msgstr "Farm Logbook"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:245
+#: src/shared/components/activities/fertilizer-form.tsx:437
+msgid "Fertilized Area (dka)"
+msgstr "Fertilized Area (dka)"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:361
+#: src/shared/components/dashboard/activity-feed.tsx:223
+msgid "Fertilizer"
+msgstr "Fertilizer"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:468
+msgid "Fertilizer Type"
+msgstr "Fertilizer Type"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:250
 msgid "Field"
 msgstr "Field"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:221
+#: src/pages/fields/[fieldId]/page.tsx:226
 msgid "Field Details"
 msgstr "Field Details"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:403
+#: src/shared/components/dashboard/activity-feed.tsx:218
+msgid "Field Inspection"
+msgstr "Field Inspection"
 
 #. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:271
@@ -528,7 +824,7 @@ msgid "Field Name"
 msgstr "Field Name"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:182
+#: src/pages/fields/[fieldId]/page.tsx:187
 msgid "Field not found"
 msgstr "Field not found"
 
@@ -549,33 +845,53 @@ msgid "Fill in the required information to create a new field."
 msgstr "Fill in the required information to create a new field."
 
 #. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:279
+msgid "Fill in the required information to record a chemical treatment."
+msgstr "Fill in the required information to record a chemical treatment."
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:189
+msgid "Fill in the required information to record a farm activity."
+msgstr "Fill in the required information to record a farm activity."
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:266
+msgid "Fill in the required information to record a fertilizer application."
+msgstr "Fill in the required information to record a fertilizer application."
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:187
+msgid "Fill in the required information to record a field inspection."
+msgstr "Fill in the required information to record a field inspection."
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:57
 #: src/shared/components/dashboard/financial-widget.tsx:95
 msgid "Financial Summary"
 msgstr "Financial Summary"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:420
+#: src/pages/fields/[fieldId]/page.tsx:571
 msgid "Generate a logbook for certification in BABH."
 msgstr "Generate a logbook for certification in BABH."
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:429
+#: src/pages/fields/[fieldId]/page.tsx:580
 msgid "Generate BABH Logbook"
 msgstr "Generate BABH Logbook"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:436
+#: src/pages/fields/[fieldId]/page.tsx:587
 msgid "Generate DEMO BABH Logbook"
 msgstr "Generate DEMO BABH Logbook"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:456
+#: src/pages/fields/[fieldId]/page.tsx:607
 msgid "Generate Farm Logbook"
 msgstr "Generate Farm Logbook"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:444
+#: src/pages/fields/[fieldId]/page.tsx:595
 msgid "Generating a logbook costs 1 credit (coming soon)"
 msgstr "Generating a logbook costs 1 credit (coming soon)"
 
@@ -600,13 +916,23 @@ msgid "Income and expenses"
 msgstr "Income and expenses"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:384
+msgid "Infestation"
+msgstr "Infestation"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:419
+msgid "Infestation Type"
+msgstr "Infestation Type"
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/inventory-alerts.tsx:60
 #: src/shared/components/dashboard/inventory-alerts.tsx:89
 msgid "Inventory Alerts"
 msgstr "Inventory Alerts"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:263
+#: src/pages/fields/[fieldId]/page.tsx:268
 #: src/shared/components/fields/create-field-form.tsx:289
 msgid "Land Area"
 msgstr "Land Area"
@@ -617,18 +943,18 @@ msgid "Language"
 msgstr "Language"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/activity-feed.tsx:66
-#: src/shared/components/dashboard/activity-feed.tsx:88
+#: src/shared/components/dashboard/activity-feed.tsx:136
+#: src/shared/components/dashboard/activity-feed.tsx:158
 msgid "Latest farming activities"
 msgstr "Latest farming activities"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:319
+#: src/pages/fields/[fieldId]/page.tsx:324
 msgid "List of Activities"
 msgstr "List of Activities"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:269
+#: src/pages/fields/[fieldId]/page.tsx:274
 #: src/shared/components/fields/create-field-form.tsx:306
 msgid "Locality"
 msgstr "Locality"
@@ -655,6 +981,11 @@ msgid "Manage your agricultural fields"
 msgstr "Manage your agricultural fields"
 
 #. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:351
+msgid "Material Type"
+msgstr "Material Type"
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/member-activity.tsx:73
 msgid "Medium Activity"
 msgstr "Medium Activity"
@@ -670,9 +1001,19 @@ msgid "Net Balance"
 msgstr "Net Balance"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:347
+#: src/pages/fields/[fieldId]/page.tsx:356
 msgid "No activities recorded yet"
 msgstr "No activities recorded yet"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:291
+msgid "No available chemicals"
+msgstr "No available chemicals"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:278
+msgid "No available fertilizers"
+msgstr "No available fertilizers"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/fields-chart.tsx:88
@@ -695,7 +1036,7 @@ msgid "No financial data available"
 msgstr "No financial data available"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/activity-feed.tsx:74
+#: src/shared/components/dashboard/activity-feed.tsx:144
 msgid "No recent activities"
 msgstr "No recent activities"
 
@@ -710,6 +1051,16 @@ msgid "Pending Audits"
 msgstr "Pending Audits"
 
 #. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:369
+msgid "Phenological Phase"
+msgstr "Phenological Phase"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:344
+#: src/shared/components/activities/farm-activity-form.tsx:223
+#: src/shared/components/activities/farm-activity-form.tsx:270
+#: src/shared/components/activities/fertilizer-form.tsx:331
+#: src/shared/components/activities/field-inspection-form.tsx:220
 #: src/shared/components/fields/create-field-form.tsx:364
 msgid "Pick a date"
 msgstr "Pick a date"
@@ -720,16 +1071,31 @@ msgid "Please wait while we sync your organization data. This may take a few mom
 msgstr "Please wait while we sync your organization data. This may take a few moments."
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:257
+#: src/pages/fields/[fieldId]/page.tsx:262
 #: src/pages/fields/page.tsx:280
 #: src/shared/components/fields/create-field-form.tsx:272
 msgid "Populated Place"
 msgstr "Populated Place"
 
 #. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:321
+msgid "Processed Area (dka)"
+msgstr "Processed Area (dka)"
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:151
 msgid "Profit Margin"
 msgstr "Profit Margin"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:370
+msgid "Quantity (kg./l./dka.)"
+msgstr "Quantity (kg./l./dka.)"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:467
+msgid "Quarantine Period (0 = none)"
+msgstr "Quarantine Period (0 = none)"
 
 #. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:103
@@ -739,20 +1105,26 @@ msgid "Rapeseed"
 msgstr "Rapeseed"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/activity-feed.tsx:63
-#: src/shared/components/dashboard/activity-feed.tsx:85
+#: src/shared/components/dashboard/activity-feed.tsx:133
+#: src/shared/components/dashboard/activity-feed.tsx:155
 msgid "Recent Activities"
 msgstr "Recent Activities"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:399
+#: src/pages/fields/[fieldId]/page.tsx:550
 msgid "Report Generation"
 msgstr "Report Generation"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:463
+#: src/pages/fields/[fieldId]/page.tsx:614
 msgid "Report generation functionality coming soon"
 msgstr "Report generation functionality coming soon"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:398
+#: src/shared/components/activities/fertilizer-form.tsx:388
+msgid "Required: {quantity} {unit}"
+msgstr "Required: {quantity} {unit}"
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:487
@@ -765,7 +1137,7 @@ msgid "Scheduled {time}"
 msgstr "Scheduled {time}"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:300
+#: src/pages/fields/[fieldId]/page.tsx:305
 #: src/pages/fields/page.tsx:286
 #: src/shared/components/fields/create-field-form.tsx:439
 msgid "Season"
@@ -777,10 +1149,16 @@ msgid "Setting up organization..."
 msgstr "Setting up organization..."
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:282
+#: src/pages/fields/[fieldId]/page.tsx:287
 #: src/shared/components/fields/create-field-form.tsx:348
 msgid "Sowing Date"
 msgstr "Sowing Date"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:206
+#: src/shared/components/activities/field-inspection-form.tsx:203
+msgid "Start Date"
+msgstr "Start Date"
 
 #. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:101
@@ -790,9 +1168,30 @@ msgid "Sunflower"
 msgstr "Sunflower"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:416
+msgid "Surveyed Area"
+msgstr "Surveyed Area"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:251
+msgid "Surveyed Area (dka)"
+msgstr "Surveyed Area (dka)"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:313
+#: src/shared/components/activities/fertilizer-form.tsx:300
+msgid "To warehouse"
+msgstr "To warehouse"
+
+#. js-lingui-explicit-id
 #: src/pages/dashboard/page.tsx:102
 msgid "Total Products"
 msgstr "Total Products"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:498
+msgid "Treated Area (dka)"
+msgstr "Treated Area (dka)"
 
 #. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:247
@@ -805,9 +1204,29 @@ msgid "Update"
 msgstr "Update"
 
 #. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:274
+msgid "Update the chemical treatment information below."
+msgstr "Update the chemical treatment information below."
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/farm-activity-form.tsx:184
+msgid "Update the farm activity information below."
+msgstr "Update the farm activity information below."
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:261
+msgid "Update the fertilizer application information below."
+msgstr "Update the fertilizer application information below."
+
+#. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:217
 msgid "Update the field information below."
 msgstr "Update the field information below."
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:182
+msgid "Update the field inspection information below."
+msgstr "Update the field inspection information below."
 
 #. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:99
@@ -822,6 +1241,16 @@ msgid "Year"
 msgstr "Year"
 
 #. js-lingui-explicit-id
-#: src/pages/fields/[fieldId]/page.tsx:415
+#: src/shared/components/activities/chemical-treatment-form.tsx:297
+msgid "You do not have any chemicals applicable to {cropType} in your warehouse. Please navigate to your warehouse and add the necessary chemicals."
+msgstr "You do not have any chemicals applicable to {cropType} in your warehouse. Please navigate to your warehouse and add the necessary chemicals."
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/fertilizer-form.tsx:284
+msgid "You do not have any fertilizers applicable to {cropType} in your warehouse. Please navigate to your warehouse and add the necessary fertilizers."
+msgstr "You do not have any fertilizers applicable to {cropType} in your warehouse. Please navigate to your warehouse and add the necessary fertilizers."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:566
 msgid "You have not entered any activities, which will lead to the generation of an empty logbook with rows 'No activities performed'."
 msgstr "You have not entered any activities, which will lead to the generation of an empty logbook with rows 'No activities performed'."

@@ -9,14 +9,41 @@ import { Badge } from "@/src/shared/components/ui/badge";
 import { Skeleton } from "@/src/shared/components/ui/skeleton";
 import { formatDistanceToNow } from "date-fns";
 import { Trans } from "@lingui/react";
+import { useNavigate, useParams } from "@tanstack/react-router";
+import { useOrganization } from "@clerk/nextjs";
+import {
+  DropletIcon,
+  SearchIcon,
+  PackageIcon,
+  TractorIcon,
+} from "lucide-react";
+import { Id } from "@/convex/_generated/dataModel";
 
 interface Activity {
   _id: string;
   type: string;
+  category?:
+    | "chemical_treatment"
+    | "field_inspection"
+    | "fertilizer"
+    | "farm_activity";
   description?: string;
   date: number;
   userId: string;
   fieldName?: string | null;
+  fieldId?: Id<"fields"> | null;
+  // Chemical Treatment fields
+  chemicalName?: string;
+  infestationType?: string;
+  treatedArea?: number;
+  // Field Inspection fields
+  damage?: string;
+  surveyedArea?: number;
+  // Fertilizer fields
+  fertilizerName?: string;
+  fertilizedArea?: number;
+  // Farm Activity fields
+  activityType?: string;
 }
 
 interface ActivityFeedProps {
@@ -25,6 +52,49 @@ interface ActivityFeedProps {
 }
 
 export function ActivityFeed({ activities, isLoading }: ActivityFeedProps) {
+  const navigate = useNavigate();
+  const { organization } = useOrganization();
+  let companySlug: string | undefined = undefined;
+  try {
+    const params = useParams({ from: "/_authed/$companySlug" });
+    if (params && "companySlug" in params) {
+      companySlug = params.companySlug as string | undefined;
+    }
+  } catch {
+    // If params not available, use organization slug
+  }
+  if (!companySlug && organization?.slug) {
+    companySlug = organization.slug;
+  }
+
+  const handleActivityClick = (activity: Activity) => {
+    if (!activity.fieldId || !companySlug) return;
+
+    navigate({
+      to: "/$companySlug/fields/$fieldId",
+      params: {
+        companySlug,
+        fieldId: activity.fieldId,
+      },
+    });
+  };
+
+  // Get icon for activity category
+  const getActivityIcon = (category?: string) => {
+    switch (category) {
+      case "chemical_treatment":
+        return DropletIcon;
+      case "field_inspection":
+        return SearchIcon;
+      case "fertilizer":
+        return PackageIcon;
+      case "farm_activity":
+        return TractorIcon;
+      default:
+        return null;
+    }
+  };
+
   if (isLoading) {
     return (
       <Card>
@@ -92,37 +162,85 @@ export function ActivityFeed({ activities, isLoading }: ActivityFeedProps) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
-          {safeActivities.map((activity) => (
-            <div
-              key={activity._id}
-              className="flex gap-3 pb-4 border-b last:border-0 last:pb-0"
-            >
-              <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <span className="text-sm font-medium text-primary">
-                  {activity.type.substring(0, 2).toUpperCase()}
-                </span>
-              </div>
-              <div className="flex-1 space-y-1">
-                <div className="flex items-center gap-2">
-                  <Badge variant="outline" className="text-xs">
-                    {activity.type}
-                  </Badge>
-                  {activity.fieldName && (
-                    <span className="text-xs text-muted-foreground">
-                      • {activity.fieldName}
+        <div className="flex flex-col gap-5">
+          {safeActivities.map((activity) => {
+            // Generate activity description based on category
+            let activityDescription = "";
+            if (activity.category === "chemical_treatment") {
+              activityDescription = activity.chemicalName
+                ? `${activity.chemicalName}${activity.infestationType ? ` - ${activity.infestationType}` : ""}${activity.treatedArea ? ` (${activity.treatedArea} dka)` : ""}`
+                : activity.type;
+            } else if (activity.category === "field_inspection") {
+              activityDescription = activity.damage
+                ? `${activity.damage}${activity.surveyedArea ? ` (${activity.surveyedArea} dka)` : ""}`
+                : activity.type;
+            } else if (activity.category === "fertilizer") {
+              activityDescription = activity.fertilizerName
+                ? `${activity.fertilizerName}${activity.fertilizedArea ? ` (${activity.fertilizedArea} dka)` : ""}`
+                : activity.type;
+            } else if (activity.category === "farm_activity") {
+              activityDescription = activity.activityType || activity.type;
+            } else {
+              activityDescription = activity.description || activity.type;
+            }
+
+            const IconComponent = getActivityIcon(activity.category);
+            const isClickable = !!activity.fieldId;
+
+            return (
+              <div
+                key={activity._id}
+                className={`flex gap-1 ${
+                  isClickable
+                    ? "cursor-pointer hover:bg-muted/50 transition-colors rounded-md p-2 -m-2"
+                    : ""
+                }`}
+                onClick={() => isClickable && handleActivityClick(activity)}
+              >
+                <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  {IconComponent ? (
+                    <IconComponent className="h-5 w-5 text-primary" />
+                  ) : (
+                    <span className="text-sm font-medium text-primary">
+                      {activity.type.substring(0, 2).toUpperCase()}
                     </span>
                   )}
                 </div>
-                {activity.description && (
-                  <p className="text-sm">{activity.description}</p>
-                )}
-                <p className="text-xs text-muted-foreground">
-                  {formatDistanceToNow(activity.date, { addSuffix: true })}
-                </p>
+                <div className="flex-1 space-y-1">
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="text-xs">
+                      {activity.category === "chemical_treatment" ? (
+                        <Trans
+                          id="Chemical Treatment"
+                          message="Chemical Treatment"
+                        />
+                      ) : activity.category === "field_inspection" ? (
+                        <Trans
+                          id="Field Inspection"
+                          message="Field Inspection"
+                        />
+                      ) : activity.category === "fertilizer" ? (
+                        <Trans id="Fertilizer" message="Fertilizer" />
+                      ) : activity.category === "farm_activity" ? (
+                        <Trans id="Farm Activity" message="Farm Activity" />
+                      ) : (
+                        activity.type
+                      )}
+                    </Badge>
+                    {activity.fieldName && (
+                      <span className="text-xs text-muted-foreground">
+                        • {activity.fieldName}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm">{activityDescription}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {formatDistanceToNow(activity.date, { addSuffix: true })}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </CardContent>
     </Card>

@@ -46,36 +46,36 @@ import {
 } from "@/src/shared/components/ui/alert-dialog";
 import { Skeleton } from "@/src/shared/components/ui/skeleton";
 import { CreateFieldForm } from "@/src/shared/components/fields/create-field-form";
+import { ChemicalTreatmentForm } from "@/src/shared/components/activities/chemical-treatment-form";
+import { FieldInspectionForm } from "@/src/shared/components/activities/field-inspection-form";
+import { FertilizerForm } from "@/src/shared/components/activities/fertilizer-form";
+import { FarmActivityForm } from "@/src/shared/components/activities/farm-activity-form";
 import { useSyncOrganization } from "@/src/shared/hooks/use-sync-organization";
 import { toast } from "sonner";
 
 // Activity category mappings - labels will be translated in the component
 const ACTIVITY_CATEGORIES = {
-  chemical: {
+  chemical_treatment: {
     labelKey: "Performed Chemical Treatments",
     icon: DropletIcon,
-    color: "bg-red-500/10 text-red-700 dark:text-red-400",
-    types: ["chemical_treatment", "spraying", "pesticide"],
+    color: "text-foreground",
   },
-  inspection: {
+  field_inspection: {
     labelKey:
       "Field Inspection for Appearance, Development, Density or Degree of Pest Infestation",
     icon: SearchIcon,
-    color: "bg-green-500/10 text-green-700 dark:text-green-400",
-    types: ["inspection", "field_inspection", "pest_inspection"],
+    color: "text-foreground",
   },
   fertilizer: {
     labelKey:
       "Used Mineral and Organic Fertilizers, Soil Conditioners and Biologically Active Substances",
     icon: PackageIcon,
-    color: "bg-blue-500/10 text-blue-700 dark:text-blue-400",
-    types: ["fertilizer", "fertilizing", "soil_conditioner"],
+    color: "text-foreground",
   },
   farm_activity: {
     labelKey: "Performed Activities/Measures in the Farm",
     icon: TractorIcon,
-    color: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400",
-    types: ["farm_activity", "tillage", "harvesting", "planting"],
+    color: "text-foreground",
   },
 } as const;
 
@@ -88,6 +88,14 @@ export default function FieldDetailsPage() {
   const { isSyncing } = useSyncOrganization();
   const [showEditForm, setShowEditForm] = React.useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = React.useState(false);
+  const [openActivityForm, setOpenActivityForm] = React.useState<
+    | { category: "chemical_treatment" }
+    | { category: "field_inspection" }
+    | { category: "fertilizer" }
+    | { category: "farm_activity" }
+    | { category: string; activityId: Id<"activities"> }
+    | null
+  >(null);
 
   // Reset form state when fieldId changes
   React.useEffect(() => {
@@ -106,9 +114,11 @@ export default function FieldDetailsPage() {
   );
 
   const activities = useQuery(
-    api.fields.getActivitiesByField,
+    api.activities.getByField,
     fieldId ? { fieldId: fieldId as Id<"fields"> } : "skip",
   );
+
+  const deleteActivity = useMutation(api.activities.remove);
 
   const season = useQuery(
     api.seasons.getById,
@@ -118,30 +128,25 @@ export default function FieldDetailsPage() {
   const deleteField = useMutation(api.fields.remove);
   const { i18n } = useLingui();
 
-  // Group activities by category
-  const activitiesByCategory = React.useMemo(() => {
-    if (!activities) return {};
-
-    const grouped: Record<string, (typeof activities)[string]> = {};
-
-    Object.entries(ACTIVITY_CATEGORIES).forEach(([categoryKey, category]) => {
-      const categoryActivities: (typeof activities)[string] = [];
-      Object.entries(activities).forEach(([type, typeActivities]) => {
-        if ((category.types as readonly string[]).includes(type)) {
-          categoryActivities.push(...typeActivities);
-        }
-      });
-      if (categoryActivities.length > 0) {
-        grouped[categoryKey] = categoryActivities;
-      }
-    });
-
-    return grouped;
-  }, [activities]);
+  // Activities are already grouped by category from the query
+  const activitiesByCategory = activities || {};
 
   // Get activity count for each category
   const getActivityCount = (categoryKey: string) => {
     return activitiesByCategory[categoryKey]?.length || 0;
+  };
+
+  const handleDeleteActivity = async (activityId: Id<"activities">) => {
+    try {
+      await deleteActivity({ activityId });
+      toast.success(i18n._("Activity deleted successfully"));
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : i18n._("Failed to delete activity");
+      toast.error(message);
+    }
   };
 
   const handleDelete = async () => {
@@ -327,7 +332,11 @@ export default function FieldDetailsPage() {
                 const Icon = category.icon;
 
                 return (
-                  <AccordionItem key={categoryKey} value={categoryKey}>
+                  <AccordionItem
+                    key={categoryKey}
+                    value={categoryKey}
+                    className="mb-2 last:mb-0 border-b-0"
+                  >
                     <AccordionTrigger className={category.color}>
                       <div className="flex items-center gap-3">
                         <Icon className="h-5 w-5" />
@@ -353,15 +362,107 @@ export default function FieldDetailsPage() {
                           activitiesByCategory[categoryKey]?.map((activity) => (
                             <div
                               key={activity._id}
-                              className="p-3 border rounded-md text-sm"
+                              className="p-3 border rounded-md text-sm cursor-pointer hover:bg-muted/50 transition-colors"
+                              onClick={() =>
+                                setOpenActivityForm({
+                                  category:
+                                    activity.category || "chemical_treatment",
+                                  activityId: activity._id,
+                                })
+                              }
                             >
                               <div className="flex items-center justify-between">
-                                <div>
-                                  <p className="font-medium">{activity.type}</p>
-                                  {activity.description && (
-                                    <p className="text-muted-foreground">
-                                      {activity.description}
-                                    </p>
+                                <div className="flex-1">
+                                  {activity.category ===
+                                    "chemical_treatment" && (
+                                    <>
+                                      <p className="font-medium">
+                                        {activity.chemicalName || activity.type}
+                                      </p>
+                                      {activity.infestationType && (
+                                        <p className="text-muted-foreground">
+                                          <Trans
+                                            id="Infestation"
+                                            message="Infestation"
+                                          />
+                                          : {activity.infestationType}
+                                        </p>
+                                      )}
+                                      {activity.treatedArea && (
+                                        <p className="text-muted-foreground">
+                                          <Trans id="Area" message="Area" />:{" "}
+                                          {activity.treatedArea}{" "}
+                                          <Trans id="dka" message="dka" />
+                                        </p>
+                                      )}
+                                    </>
+                                  )}
+                                  {activity.category === "field_inspection" && (
+                                    <>
+                                      <p className="font-medium">
+                                        <Trans
+                                          id="Field Inspection"
+                                          message="Field Inspection"
+                                        />
+                                      </p>
+                                      {activity.damage && (
+                                        <p className="text-muted-foreground">
+                                          <Trans id="Damage" message="Damage" />
+                                          : {activity.damage}
+                                        </p>
+                                      )}
+                                      {activity.surveyedArea && (
+                                        <p className="text-muted-foreground">
+                                          <Trans
+                                            id="Surveyed Area"
+                                            message="Surveyed Area"
+                                          />
+                                          : {activity.surveyedArea}{" "}
+                                          <Trans id="dka" message="dka" />
+                                        </p>
+                                      )}
+                                    </>
+                                  )}
+                                  {activity.category === "fertilizer" && (
+                                    <>
+                                      <p className="font-medium">
+                                        {activity.fertilizerName ||
+                                          activity.type}
+                                      </p>
+                                      {activity.fertilizedArea && (
+                                        <p className="text-muted-foreground">
+                                          <Trans id="Area" message="Area" />:{" "}
+                                          {activity.fertilizedArea}{" "}
+                                          <Trans id="dka" message="dka" />
+                                        </p>
+                                      )}
+                                    </>
+                                  )}
+                                  {activity.category === "farm_activity" && (
+                                    <>
+                                      <p className="font-medium">
+                                        {activity.activityType || activity.type}
+                                      </p>
+                                      {activity.treatedArea && (
+                                        <p className="text-muted-foreground">
+                                          <Trans id="Area" message="Area" />:{" "}
+                                          {activity.treatedArea}{" "}
+                                          <Trans id="dka" message="dka" />
+                                        </p>
+                                      )}
+                                    </>
+                                  )}
+                                  {!activity.category && (
+                                    <>
+                                      <p className="font-medium">
+                                        {activity.type}
+                                      </p>
+                                      {activity.description && (
+                                        <p className="text-muted-foreground">
+                                          {activity.description}
+                                        </p>
+                                      )}
+                                    </>
                                   )}
                                   <p className="text-xs text-muted-foreground mt-1">
                                     {format(
@@ -369,6 +470,34 @@ export default function FieldDetailsPage() {
                                       "dd.MM.yyyy",
                                     )}
                                   </p>
+                                </div>
+                                <div
+                                  className="flex gap-2 ml-4"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() =>
+                                      setOpenActivityForm({
+                                        category:
+                                          activity.category ||
+                                          "chemical_treatment",
+                                        activityId: activity._id,
+                                      })
+                                    }
+                                  >
+                                    <EditIcon className="h-4 w-4" />
+                                  </Button>
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() =>
+                                      handleDeleteActivity(activity._id)
+                                    }
+                                  >
+                                    <TrashIcon className="h-4 w-4" />
+                                  </Button>
                                 </div>
                               </div>
                             </div>
@@ -378,6 +507,28 @@ export default function FieldDetailsPage() {
                           variant="outline"
                           size="sm"
                           className="w-full mt-2"
+                          onClick={() => {
+                            const category = categoryKey as
+                              | "chemical_treatment"
+                              | "field_inspection"
+                              | "fertilizer"
+                              | "farm_activity";
+                            if (category === "chemical_treatment") {
+                              setOpenActivityForm({
+                                category: "chemical_treatment",
+                              });
+                            } else if (category === "field_inspection") {
+                              setOpenActivityForm({
+                                category: "field_inspection",
+                              });
+                            } else if (category === "fertilizer") {
+                              setOpenActivityForm({ category: "fertilizer" });
+                            } else if (category === "farm_activity") {
+                              setOpenActivityForm({
+                                category: "farm_activity",
+                              });
+                            }
+                          }}
                         >
                           <PlusIcon className="mr-2 h-4 w-4" />
                           <Trans id="Add Activity" message="Add Activity" />
@@ -518,6 +669,194 @@ export default function FieldDetailsPage() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      {/* Activity Forms */}
+      {openActivityForm?.category === "chemical_treatment" && (
+        <ChemicalTreatmentForm
+          open={!!openActivityForm}
+          onOpenChange={(open) => !open && setOpenActivityForm(null)}
+          onSuccess={() => setOpenActivityForm(null)}
+          fieldId={fieldId as Id<"fields">}
+          cropType={field?.cropType}
+          initialData={
+            "activityId" in openActivityForm
+              ? activitiesByCategory["chemical_treatment"]?.find(
+                  (a) => a._id === openActivityForm.activityId,
+                )
+                ? {
+                    date: new Date(
+                      activitiesByCategory["chemical_treatment"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.date,
+                    ),
+                    chemicalId:
+                      activitiesByCategory["chemical_treatment"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.chemicalId || "",
+                    infestationType:
+                      activitiesByCategory["chemical_treatment"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.infestationType || "",
+                    dose:
+                      activitiesByCategory["chemical_treatment"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.dose || 0,
+                    quarantinePeriod:
+                      activitiesByCategory["chemical_treatment"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.quarantinePeriod || 0,
+                    treatedArea:
+                      activitiesByCategory["chemical_treatment"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.treatedArea || 0,
+                    equipment:
+                      activitiesByCategory["chemical_treatment"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.equipment || "",
+                    activityId: openActivityForm.activityId,
+                  }
+                : undefined
+              : undefined
+          }
+        />
+      )}
+
+      {openActivityForm?.category === "field_inspection" && (
+        <FieldInspectionForm
+          open={!!openActivityForm}
+          onOpenChange={(open) => !open && setOpenActivityForm(null)}
+          onSuccess={() => setOpenActivityForm(null)}
+          fieldId={fieldId as Id<"fields">}
+          initialData={
+            "activityId" in openActivityForm
+              ? activitiesByCategory["field_inspection"]?.find(
+                  (a) => a._id === openActivityForm.activityId,
+                )
+                ? {
+                    startDate: new Date(
+                      activitiesByCategory["field_inspection"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.startDate || 0,
+                    ),
+                    surveyedArea:
+                      activitiesByCategory["field_inspection"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.surveyedArea || 0,
+                    attackedArea:
+                      activitiesByCategory["field_inspection"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.attackedArea || 0,
+                    damage:
+                      activitiesByCategory["field_inspection"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.damage || "",
+                    damageType:
+                      activitiesByCategory["field_inspection"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.damageType || "",
+                    attackDensity:
+                      activitiesByCategory["field_inspection"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.attackDensity || "",
+                    phenologicalPhase:
+                      activitiesByCategory["field_inspection"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.phenologicalPhase || "",
+                    activityId: openActivityForm.activityId,
+                  }
+                : undefined
+              : undefined
+          }
+        />
+      )}
+
+      {openActivityForm?.category === "fertilizer" && (
+        <FertilizerForm
+          open={!!openActivityForm}
+          onOpenChange={(open) => !open && setOpenActivityForm(null)}
+          onSuccess={() => setOpenActivityForm(null)}
+          fieldId={fieldId as Id<"fields">}
+          cropType={field?.cropType}
+          initialData={
+            "activityId" in openActivityForm
+              ? activitiesByCategory["fertilizer"]?.find(
+                  (a) => a._id === openActivityForm.activityId,
+                )
+                ? {
+                    date: new Date(
+                      activitiesByCategory["fertilizer"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.date,
+                    ),
+                    fertilizerId:
+                      activitiesByCategory["fertilizer"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.fertilizerId || "",
+                    dose:
+                      activitiesByCategory["fertilizer"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.dose || 0,
+                    fertilizedArea:
+                      activitiesByCategory["fertilizer"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.fertilizedArea || 0,
+                    fertilizerType:
+                      activitiesByCategory["fertilizer"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.fertilizerType || "",
+                    activityId: openActivityForm.activityId,
+                  }
+                : undefined
+              : undefined
+          }
+        />
+      )}
+
+      {openActivityForm?.category === "farm_activity" && (
+        <FarmActivityForm
+          open={!!openActivityForm}
+          onOpenChange={(open) => !open && setOpenActivityForm(null)}
+          onSuccess={() => setOpenActivityForm(null)}
+          fieldId={fieldId as Id<"fields">}
+          initialData={
+            "activityId" in openActivityForm
+              ? activitiesByCategory["farm_activity"]?.find(
+                  (a) => a._id === openActivityForm.activityId,
+                )
+                ? {
+                    startDate: new Date(
+                      activitiesByCategory["farm_activity"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.startDate || 0,
+                    ),
+                    endDate: new Date(
+                      activitiesByCategory["farm_activity"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.endDate || 0,
+                    ),
+                    activityType:
+                      activitiesByCategory["farm_activity"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.activityType || "",
+                    treatedArea:
+                      activitiesByCategory["farm_activity"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.treatedArea || 0,
+                    materialType:
+                      activitiesByCategory["farm_activity"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.materialType || "",
+                    quantity:
+                      activitiesByCategory["farm_activity"]?.find(
+                        (a) => a._id === openActivityForm.activityId,
+                      )!.quantity || "",
+                    activityId: openActivityForm.activityId,
+                  }
+                : undefined
+              : undefined
+          }
+        />
+      )}
     </div>
   );
 }
