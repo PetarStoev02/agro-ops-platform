@@ -1,0 +1,328 @@
+# Agro Ops Platform - AI Development Guidelines
+
+## Project Overview
+
+This is an **Agricultural Operations Platform** - a comprehensive farm management system built with modern web technologies. The platform helps manage agricultural operations including fields, activities, diaries, inventory, reports, audits, credits, and more.
+
+## Tech Stack
+
+### Core Framework
+- **Next.js 16.0.1** - React framework with App Router
+- **React 19.2.0** - UI library
+- **TypeScript 5** - Type safety
+- **TanStack Router 1.133.36** - File-based routing (NOT Next.js routing)
+  - Routes are defined in `src/app/routes/`
+  - Route generation: `pnpm run generate:routes`
+  - Uses `createFileRoute` for route definitions
+
+### Authentication & Authorization
+- **Clerk** - Authentication and user management
+  - Organization-based multi-tenancy
+  - Routes are protected via `_authed.tsx` layout
+  - User context available via `useAuth()`, `useOrganization()`, `useOrganizationList()`
+  - Clerk organization IDs are synced with Convex `organizations` table
+
+### Backend & Database
+- **Convex** - Backend-as-a-Service
+  - Schema defined in `convex/schema.ts`
+  - Functions in `convex/*.ts` files
+  - Use `query`, `mutation`, and `action` from `convex/_generated/server`
+  - Client hooks: `useQuery`, `useMutation`, `useAction` from `convex/react`
+  - Always sync Clerk organizations with Convex using `organizations.upsertFromClerk`
+
+### UI & Styling
+- **shadcn/ui** (New York style) - Component library
+  - Components in `src/shared/components/ui/`
+  - Uses Radix UI primitives
+  - Tailwind CSS 4 for styling
+  - Lucide React for icons
+- **Tailwind CSS 4** - Utility-first CSS
+  - Custom theme with CSS variables
+  - Dark mode support via `next-themes`
+  - Color system uses OKLCH color space
+- **Class Variance Authority (CVA)** - Component variants
+
+### Internationalization
+- **Lingui** - i18n framework
+  - Supported locales: `en` (English), `bg` (Bulgarian)
+  - Messages in `src/locales/{locale}/messages.po`
+  - Use `t` macro for translations: `import { t } from "@lingui/macro"`
+  - Extract: `pnpm run lingui:extract`
+  - Compile: `pnpm run lingui:compile`
+  - Clerk localization synced with Lingui locale
+
+### State Management
+- **TanStack Query (React Query) 5.90.5** - Server state management
+- **Convex React hooks** - Real-time data subscriptions
+
+### Forms
+- **React Hook Form 7.65.0** - Form handling
+- **Zod 4.1.12** - Schema validation
+- **@hookform/resolvers** - Zod integration
+
+### Other Libraries
+- **date-fns 4.1.0** - Date utilities
+- **recharts 2.15.4** - Charts and data visualization
+- **sonner** - Toast notifications
+- **next-themes** - Theme switching
+
+## Project Structure
+
+```
+agro-ops-platform-frontend/
+├── convex/                    # Convex backend
+│   ├── schema.ts             # Database schema
+│   ├── *.ts                  # Convex functions (queries, mutations, actions)
+│   └── _generated/           # Auto-generated types (DO NOT EDIT)
+├── src/
+│   ├── app/
+│   │   └── routes/           # TanStack Router routes (file-based)
+│   │       ├── _authed/      # Protected routes (require auth)
+│   │       │   └── $companySlug/  # Organization-scoped routes
+│   │       └── auth/         # Authentication routes
+│   ├── pages/                # Next.js pages (legacy, for static export)
+│   ├── shared/
+│   │   ├── components/       # Reusable components
+│   │   │   ├── ui/          # shadcn/ui components
+│   │   │   └── *.tsx        # Custom components
+│   │   ├── hooks/           # Custom React hooks
+│   │   ├── lib/             # Utilities and configs
+│   │   └── assets/          # Static assets (CSS, images)
+│   └── locales/             # i18n translations
+│       ├── en/
+│       └── bg/
+└── public/                   # Static public files
+```
+
+## Key Architecture Patterns
+
+### Routing
+- **TanStack Router** is the primary routing system (NOT Next.js routing)
+- Routes use file-based routing in `src/app/routes/`
+- Route files export `Route` using `createFileRoute()`
+- Dynamic segments: `$companySlug` for organization-scoped routes
+- Layout routes: `_authed.tsx` wraps all authenticated routes
+- Always run `pnpm run generate:routes` after adding/modifying routes
+
+### Authentication Flow
+1. User signs in via Clerk (`/auth/sign-in`)
+2. `_authed.tsx` checks authentication, redirects if not authenticated
+3. `_authed/index.tsx` redirects to `/$companySlug` based on active organization
+4. All authenticated routes are under `/$companySlug/*`
+5. Organization context available via `useOrganization()` hook
+
+### Data Flow
+1. **Convex Schema** defines data structure in `convex/schema.ts`
+2. **Convex Functions** (queries/mutations) in `convex/*.ts`
+3. **React Components** use `useQuery`, `useMutation` hooks
+4. **Real-time updates** - Convex automatically syncs data changes
+
+### Multi-tenancy
+- Every data table includes `organizationId` field
+- All queries filter by `organizationId`
+- Organization ID comes from Clerk: `organization?.id`
+- Sync Clerk orgs to Convex: `organizations.upsertFromClerk`
+
+## Code Style Guidelines
+
+### TypeScript
+- **Strict mode enabled** - Always type everything
+- Use `interface` for component props
+- Use `type` for unions, intersections, and utility types
+- Prefer explicit return types for functions
+- Use `v.optional()` in Convex schemas for nullable fields
+
+### React Components
+- Use **functional components** with hooks
+- Prefer **"use client"** directive for interactive components
+- Use **TypeScript interfaces** for props
+- Extract reusable logic into **custom hooks**
+- Keep components small and focused (single responsibility)
+
+### File Naming
+- Components: `kebab-case.tsx` (e.g., `app-sidebar.tsx`)
+- Hooks: `use-kebab-case.ts` (e.g., `use-mobile.ts`)
+- Utilities: `kebab-case.ts` (e.g., `utils.ts`)
+- Routes: `kebab-case.tsx` (e.g., `sign-in.tsx`)
+
+### Imports
+- Use **absolute imports** with `@/` alias
+- Group imports: external → internal → relative
+- Sort imports alphabetically within groups
+
+### Styling
+- Use **Tailwind CSS classes** for styling
+- Use `cn()` utility for conditional classes
+- Prefer **CSS variables** for theme values
+- Use **Lucide icons** from `lucide-react`
+- Follow **shadcn/ui** component patterns
+
+### Convex Functions
+- **Queries** - Read-only, use `query()` from `_generated/server`
+- **Mutations** - Write operations, use `mutation()`
+- **Actions** - External API calls, use `action()`
+- Always validate inputs with `v.*` validators
+- Use indexes for efficient queries
+- Include `organizationId` in all queries for multi-tenancy
+
+### Internationalization
+- Wrap all user-facing strings with `t` macro
+- Extract translations: `pnpm run lingui:extract`
+- Compile translations: `pnpm run lingui:compile`
+- Keep translation keys descriptive and hierarchical
+
+## Common Patterns
+
+### Creating a New Page
+1. Create route file in `src/app/routes/_authed/$companySlug/your-page.tsx`
+2. Export `Route` using `createFileRoute("/_authed/$companySlug/your-page")`
+3. Run `pnpm run generate:routes`
+4. Add translations if needed
+5. Create Convex functions if data fetching required
+
+### Creating a Convex Function
+```typescript
+import { query } from "./_generated/server";
+import { v } from "convex/values";
+
+export const getItems = query({
+  args: { organizationId: v.id("organizations") },
+  handler: async (ctx, args) => {
+    return await ctx.db
+      .query("items")
+      .withIndex("by_organization", (q) => 
+        q.eq("organizationId", args.organizationId)
+      )
+      .collect();
+  },
+});
+```
+
+### Using Convex in Components
+```typescript
+"use client";
+
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+
+export function MyComponent() {
+  const { organization } = useOrganization();
+  const items = useQuery(
+    api.items.getByOrganization,
+    organization?.id 
+      ? { organizationId: organization.id }
+      : "skip"
+  );
+  
+  // ... rest of component
+}
+```
+
+### Form Handling
+```typescript
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+const schema = z.object({
+  name: z.string().min(1),
+});
+
+export function MyForm() {
+  const form = useForm({
+    resolver: zodResolver(schema),
+  });
+  
+  // ... form implementation
+}
+```
+
+## Development Workflow
+
+### Setup
+1. Install dependencies: `pnpm install`
+2. Set up Convex: `npx convex login` then `npx convex dev`
+3. Add `.env.local` with `NEXT_PUBLIC_CONVEX_URL`
+4. Run dev server: `pnpm dev`
+
+### Before Committing
+1. Run linter: `pnpm lint`
+2. Run tests: `pnpm test`
+3. Generate routes: `pnpm run generate:routes`
+4. Extract translations: `pnpm run lingui:extract`
+5. Compile translations: `pnpm run lingui:compile`
+
+### Scripts
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm lint` - Run ESLint
+- `pnpm test` - Run tests
+- `pnpm fix` - Auto-fix linting and formatting
+- `pnpm generate:routes` - Generate TanStack Router types
+- `pnpm lingui:extract` - Extract translation strings
+- `pnpm lingui:compile` - Compile translations
+
+## Domain-Specific Knowledge
+
+### Agricultural Operations
+The platform manages:
+- **Fields** - Agricultural land parcels with area, location, crop type
+- **Seasons** - Time periods for farming cycles
+- **Activities** - Farming operations (planting, harvesting, fertilizing, etc.)
+- **Diaries** - Daily logs and notes
+- **Inventory** - Warehouse items (seeds, fertilizer, equipment)
+- **Reports** - Various report types (field, financial, etc.)
+- **Audits** - Compliance and quality audits
+- **Credits** - Financial records (income/expenses)
+- **Notifications** - User notifications
+
+### Data Relationships
+- Organizations → Fields (one-to-many)
+- Organizations → Seasons (one-to-many)
+- Fields → Activities (one-to-many)
+- Fields → Diaries (one-to-many)
+- Organizations → Inventory (one-to-many)
+- Organizations → Reports (one-to-many)
+- Organizations → Notifications (one-to-many)
+- Organizations → Credits (one-to-many)
+- Organizations → Audits (one-to-many)
+
+## Best Practices
+
+1. **Always filter by organizationId** in Convex queries for multi-tenancy
+2. **Sync Clerk organizations** to Convex when needed
+3. **Use TypeScript strictly** - no `any` unless absolutely necessary
+4. **Extract translations** for all user-facing strings
+5. **Generate routes** after route changes
+6. **Use Convex indexes** for efficient queries
+7. **Validate all inputs** in Convex functions
+8. **Handle loading states** in React components
+9. **Use error boundaries** for error handling
+10. **Follow shadcn/ui patterns** for consistent UI
+
+## Important Notes
+
+- **TanStack Router** is used, NOT Next.js App Router for routing
+- **Clerk** handles authentication, but data is stored in **Convex**
+- **Organization context** is critical - always use it for data filtering
+- **Convex functions** are automatically deployed when saved (in dev mode)
+- **Route generation** must run after route file changes
+- **Translation extraction** must run before committing new strings
+- **Static export** is disabled by default (Clerk requires SSR)
+
+## Environment Variables
+
+Required:
+- `NEXT_PUBLIC_CONVEX_URL` - Convex deployment URL (from `npx convex dev`)
+
+Optional:
+- `ENABLE_STATIC_EXPORT` - Set to "true" for static export (disables Clerk middleware)
+
+## Troubleshooting
+
+- **Routes not working?** Run `pnpm run generate:routes`
+- **Translations missing?** Run `pnpm run lingui:extract && pnpm run lingui:compile`
+- **Convex errors?** Check `npx convex dev` is running
+- **Type errors?** Run `pnpm test:types`
+- **Build fails?** Check all environment variables are set
+

@@ -6,6 +6,7 @@ import { bgBG, enUS } from "@clerk/localizations";
 import { I18nProvider } from "@lingui/react";
 import { useEffect, useState } from "react";
 import { TanStackRouterProvider } from "@/src/shared/components/tanstack-router-provider";
+import { ConvexProviderWrapper } from "@/src/shared/components/convex-provider";
 import { initializeI18n, i18n } from "@/src/shared/lib/i18n";
 import "@/src/shared/assets/globals.css";
 
@@ -45,7 +46,9 @@ export default function App(props: AppProps) {
   return (
     <I18nProvider i18n={i18n}>
       <ClerkProvider key={locale} localization={clerkLocale}>
-        {i18nReady && <TanStackRouterProvider />}
+        <ConvexProviderWrapper>
+          {i18nReady && <TanStackRouterProvider />}
+        </ConvexProviderWrapper>
       </ClerkProvider>
     </I18nProvider>
   );
