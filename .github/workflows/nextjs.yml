@@ -101,6 +101,8 @@ jobs:
           NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
           # Optional: Add Clerk secret key if needed for server-side operations
           CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+          # Convex deployment URL - required for Convex functionality
+          NEXT_PUBLIC_CONVEX_URL: ${{ secrets.NEXT_PUBLIC_CONVEX_URL }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
