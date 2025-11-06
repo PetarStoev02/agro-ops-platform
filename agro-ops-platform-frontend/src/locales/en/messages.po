@@ -151,14 +151,34 @@ msgstr "Search fields..."
 #~ msgstr "Crop type"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:200
-msgid "{area} hectares total"
-msgstr "{area} hectares total"
+#: src/pages/dashboard/page.tsx:234
+#~ msgid "{count} activities this week"
+#~ msgstr "{count} activities this week"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:234
-msgid "{count} activities this week"
-msgstr "{count} activities this week"
+#: src/pages/dashboard/page.tsx:228
+#~ msgid "Notifications"
+#~ msgstr "Notifications"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:219
+#~ msgid "Organization members"
+#~ msgstr "Organization members"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:213
+#~ msgid "Team Members"
+#~ msgstr "Team Members"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:92
+msgid "{activeCount} active, {totalCount} total"
+msgstr "{activeCount} active, {totalCount} total"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:127
+msgid "{area} hectares total"
+msgstr "{area} hectares total"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/audit-status.tsx:79
@@ -176,7 +196,7 @@ msgid "{count} fields • {area} hectares total"
 msgstr "{count} fields • {area} hectares total"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:181
+#: src/pages/dashboard/page.tsx:108
 msgid "{count} items in stock"
 msgstr "{count} items in stock"
 
@@ -209,6 +229,12 @@ msgstr "{seasonName} • {count} transactions"
 #: src/shared/components/dashboard/audit-status.tsx:134
 msgid "+{count} more pending audit"
 msgstr "+{count} more pending audit"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:156
+#: src/shared/components/dashboard/seasons-widget.tsx:186
+msgid "+{count} more seasons"
+msgstr "+{count} more seasons"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/audit-status.tsx:69
@@ -256,9 +282,19 @@ msgid "3-9 activities this season"
 msgstr "3-9 activities this season"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:194
+#: src/shared/components/dashboard/seasons-widget.tsx:126
+msgid "Active"
+msgstr "Active"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:121
 msgid "Active Fields"
 msgstr "Active Fields"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:108
+msgid "Active Seasons"
+msgstr "Active Seasons"
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:491
@@ -294,6 +330,11 @@ msgstr "All audits are up to date"
 #: src/shared/components/dashboard/inventory-alerts.tsx:73
 msgid "All inventory items are well stocked and not near expiry"
 msgstr "All inventory items are well stocked and not near expiry"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:136
+msgid "All Seasons"
+msgstr "All Seasons"
 
 #. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:501
@@ -373,6 +414,11 @@ msgid "Create a new season by entering the year. The season will be named {year}
 msgstr "Create a new season by entering the year. The season will be named {year} / {nextYear}."
 
 #. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:71
+msgid "Create a season to start tracking your campaigns"
+msgstr "Create a season to start tracking your campaigns"
+
+#. js-lingui-explicit-id
 #: src/shared/components/fields/create-season-modal.tsx:107
 msgid "Create New Season"
 msgstr "Create New Season"
@@ -393,6 +439,13 @@ msgstr "Creating..."
 #: src/shared/components/fields/create-field-form.tsx:397
 msgid "Crop Type"
 msgstr "Crop Type"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:35
+#: src/shared/components/dashboard/seasons-widget.tsx:60
+#: src/shared/components/dashboard/seasons-widget.tsx:86
+msgid "Current Seasons & Campaigns"
+msgstr "Current Seasons & Campaigns"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/inventory-alerts.tsx:129
@@ -647,14 +700,9 @@ msgid "No recent activities"
 msgstr "No recent activities"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:228
-msgid "Notifications"
-msgstr "Notifications"
-
-#. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:219
-msgid "Organization members"
-msgstr "Organization members"
+#: src/shared/components/dashboard/seasons-widget.tsx:66
+msgid "No seasons configured"
+msgstr "No seasons configured"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/audit-status.tsx:65
@@ -667,7 +715,7 @@ msgid "Pick a date"
 msgstr "Pick a date"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:158
+#: src/pages/dashboard/page.tsx:85
 msgid "Please wait while we sync your organization data. This may take a few moments."
 msgstr "Please wait while we sync your organization data. This may take a few moments."
 
@@ -724,7 +772,7 @@ msgid "Season"
 msgstr "Season"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:152
+#: src/pages/dashboard/page.tsx:79
 msgid "Setting up organization..."
 msgstr "Setting up organization..."
 
@@ -742,12 +790,7 @@ msgid "Sunflower"
 msgstr "Sunflower"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:213
-msgid "Team Members"
-msgstr "Team Members"
-
-#. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:175
+#: src/pages/dashboard/page.tsx:102
 msgid "Total Products"
 msgstr "Total Products"
 

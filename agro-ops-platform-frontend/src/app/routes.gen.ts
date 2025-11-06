@@ -19,16 +19,7 @@ import { Route as AuthedCompanySlugRouteImport } from './routes/_authed/$company
 import { Route as AuthedCompanySlugIndexRouteImport } from './routes/_authed/$companySlug/index'
 import { Route as AuthedCompanySlugWarehouseRouteImport } from './routes/_authed/$companySlug/warehouse'
 import { Route as AuthedCompanySlugSeasonsRouteImport } from './routes/_authed/$companySlug/seasons'
-import { Route as AuthedCompanySlugReportsRouteImport } from './routes/_authed/$companySlug/reports'
-import { Route as AuthedCompanySlugOrganizationsRouteImport } from './routes/_authed/$companySlug/organizations'
-import { Route as AuthedCompanySlugNotificationsRouteImport } from './routes/_authed/$companySlug/notifications'
-import { Route as AuthedCompanySlugImportsExportsRouteImport } from './routes/_authed/$companySlug/imports-exports'
 import { Route as AuthedCompanySlugFieldsRouteImport } from './routes/_authed/$companySlug/fields'
-import { Route as AuthedCompanySlugFarmProfileRouteImport } from './routes/_authed/$companySlug/farm-profile'
-import { Route as AuthedCompanySlugDiariesRouteImport } from './routes/_authed/$companySlug/diaries'
-import { Route as AuthedCompanySlugCreditsRouteImport } from './routes/_authed/$companySlug/credits'
-import { Route as AuthedCompanySlugAuditsRouteImport } from './routes/_authed/$companySlug/audits'
-import { Route as AuthedCompanySlugActivitiesRouteImport } from './routes/_authed/$companySlug/activities'
 import { Route as AuthedCompanySlugFieldsFieldIdRouteImport } from './routes/_authed/$companySlug/fields/$fieldId'
 
 const AuthRoute = AuthRouteImport.update({
@@ -82,64 +73,11 @@ const AuthedCompanySlugSeasonsRoute =
     path: '/seasons',
     getParentRoute: () => AuthedCompanySlugRoute,
   } as any)
-const AuthedCompanySlugReportsRoute =
-  AuthedCompanySlugReportsRouteImport.update({
-    id: '/reports',
-    path: '/reports',
-    getParentRoute: () => AuthedCompanySlugRoute,
-  } as any)
-const AuthedCompanySlugOrganizationsRoute =
-  AuthedCompanySlugOrganizationsRouteImport.update({
-    id: '/organizations',
-    path: '/organizations',
-    getParentRoute: () => AuthedCompanySlugRoute,
-  } as any)
-const AuthedCompanySlugNotificationsRoute =
-  AuthedCompanySlugNotificationsRouteImport.update({
-    id: '/notifications',
-    path: '/notifications',
-    getParentRoute: () => AuthedCompanySlugRoute,
-  } as any)
-const AuthedCompanySlugImportsExportsRoute =
-  AuthedCompanySlugImportsExportsRouteImport.update({
-    id: '/imports-exports',
-    path: '/imports-exports',
-    getParentRoute: () => AuthedCompanySlugRoute,
-  } as any)
 const AuthedCompanySlugFieldsRoute = AuthedCompanySlugFieldsRouteImport.update({
   id: '/fields',
   path: '/fields',
   getParentRoute: () => AuthedCompanySlugRoute,
 } as any)
-const AuthedCompanySlugFarmProfileRoute =
-  AuthedCompanySlugFarmProfileRouteImport.update({
-    id: '/farm-profile',
-    path: '/farm-profile',
-    getParentRoute: () => AuthedCompanySlugRoute,
-  } as any)
-const AuthedCompanySlugDiariesRoute =
-  AuthedCompanySlugDiariesRouteImport.update({
-    id: '/diaries',
-    path: '/diaries',
-    getParentRoute: () => AuthedCompanySlugRoute,
-  } as any)
-const AuthedCompanySlugCreditsRoute =
-  AuthedCompanySlugCreditsRouteImport.update({
-    id: '/credits',
-    path: '/credits',
-    getParentRoute: () => AuthedCompanySlugRoute,
-  } as any)
-const AuthedCompanySlugAuditsRoute = AuthedCompanySlugAuditsRouteImport.update({
-  id: '/audits',
-  path: '/audits',
-  getParentRoute: () => AuthedCompanySlugRoute,
-} as any)
-const AuthedCompanySlugActivitiesRoute =
-  AuthedCompanySlugActivitiesRouteImport.update({
-    id: '/activities',
-    path: '/activities',
-    getParentRoute: () => AuthedCompanySlugRoute,
-  } as any)
 const AuthedCompanySlugFieldsFieldIdRoute =
   AuthedCompanySlugFieldsFieldIdRouteImport.update({
     id: '/$fieldId',
@@ -154,16 +92,7 @@ export interface FileRoutesByFullPath {
   '/auth/sign-up': typeof AuthSignUpRoute
   '/': typeof AuthedIndexRoute
   '/auth/': typeof AuthIndexRoute
-  '/$companySlug/activities': typeof AuthedCompanySlugActivitiesRoute
-  '/$companySlug/audits': typeof AuthedCompanySlugAuditsRoute
-  '/$companySlug/credits': typeof AuthedCompanySlugCreditsRoute
-  '/$companySlug/diaries': typeof AuthedCompanySlugDiariesRoute
-  '/$companySlug/farm-profile': typeof AuthedCompanySlugFarmProfileRoute
   '/$companySlug/fields': typeof AuthedCompanySlugFieldsRouteWithChildren
-  '/$companySlug/imports-exports': typeof AuthedCompanySlugImportsExportsRoute
-  '/$companySlug/notifications': typeof AuthedCompanySlugNotificationsRoute
-  '/$companySlug/organizations': typeof AuthedCompanySlugOrganizationsRoute
-  '/$companySlug/reports': typeof AuthedCompanySlugReportsRoute
   '/$companySlug/seasons': typeof AuthedCompanySlugSeasonsRoute
   '/$companySlug/warehouse': typeof AuthedCompanySlugWarehouseRoute
   '/$companySlug/': typeof AuthedCompanySlugIndexRoute
@@ -174,16 +103,7 @@ export interface FileRoutesByTo {
   '/auth/sign-up': typeof AuthSignUpRoute
   '/': typeof AuthedIndexRoute
   '/auth': typeof AuthIndexRoute
-  '/$companySlug/activities': typeof AuthedCompanySlugActivitiesRoute
-  '/$companySlug/audits': typeof AuthedCompanySlugAuditsRoute
-  '/$companySlug/credits': typeof AuthedCompanySlugCreditsRoute
-  '/$companySlug/diaries': typeof AuthedCompanySlugDiariesRoute
-  '/$companySlug/farm-profile': typeof AuthedCompanySlugFarmProfileRoute
   '/$companySlug/fields': typeof AuthedCompanySlugFieldsRouteWithChildren
-  '/$companySlug/imports-exports': typeof AuthedCompanySlugImportsExportsRoute
-  '/$companySlug/notifications': typeof AuthedCompanySlugNotificationsRoute
-  '/$companySlug/organizations': typeof AuthedCompanySlugOrganizationsRoute
-  '/$companySlug/reports': typeof AuthedCompanySlugReportsRoute
   '/$companySlug/seasons': typeof AuthedCompanySlugSeasonsRoute
   '/$companySlug/warehouse': typeof AuthedCompanySlugWarehouseRoute
   '/$companySlug': typeof AuthedCompanySlugIndexRoute
@@ -198,16 +118,7 @@ export interface FileRoutesById {
   '/auth/sign-up': typeof AuthSignUpRoute
   '/_authed/': typeof AuthedIndexRoute
   '/auth/': typeof AuthIndexRoute
-  '/_authed/$companySlug/activities': typeof AuthedCompanySlugActivitiesRoute
-  '/_authed/$companySlug/audits': typeof AuthedCompanySlugAuditsRoute
-  '/_authed/$companySlug/credits': typeof AuthedCompanySlugCreditsRoute
-  '/_authed/$companySlug/diaries': typeof AuthedCompanySlugDiariesRoute
-  '/_authed/$companySlug/farm-profile': typeof AuthedCompanySlugFarmProfileRoute
   '/_authed/$companySlug/fields': typeof AuthedCompanySlugFieldsRouteWithChildren
-  '/_authed/$companySlug/imports-exports': typeof AuthedCompanySlugImportsExportsRoute
-  '/_authed/$companySlug/notifications': typeof AuthedCompanySlugNotificationsRoute
-  '/_authed/$companySlug/organizations': typeof AuthedCompanySlugOrganizationsRoute
-  '/_authed/$companySlug/reports': typeof AuthedCompanySlugReportsRoute
   '/_authed/$companySlug/seasons': typeof AuthedCompanySlugSeasonsRoute
   '/_authed/$companySlug/warehouse': typeof AuthedCompanySlugWarehouseRoute
   '/_authed/$companySlug/': typeof AuthedCompanySlugIndexRoute
@@ -222,16 +133,7 @@ export interface FileRouteTypes {
     | '/auth/sign-up'
     | '/'
     | '/auth/'
-    | '/$companySlug/activities'
-    | '/$companySlug/audits'
-    | '/$companySlug/credits'
-    | '/$companySlug/diaries'
-    | '/$companySlug/farm-profile'
     | '/$companySlug/fields'
-    | '/$companySlug/imports-exports'
-    | '/$companySlug/notifications'
-    | '/$companySlug/organizations'
-    | '/$companySlug/reports'
     | '/$companySlug/seasons'
     | '/$companySlug/warehouse'
     | '/$companySlug/'
@@ -242,16 +144,7 @@ export interface FileRouteTypes {
     | '/auth/sign-up'
     | '/'
     | '/auth'
-    | '/$companySlug/activities'
-    | '/$companySlug/audits'
-    | '/$companySlug/credits'
-    | '/$companySlug/diaries'
-    | '/$companySlug/farm-profile'
     | '/$companySlug/fields'
-    | '/$companySlug/imports-exports'
-    | '/$companySlug/notifications'
-    | '/$companySlug/organizations'
-    | '/$companySlug/reports'
     | '/$companySlug/seasons'
     | '/$companySlug/warehouse'
     | '/$companySlug'
@@ -265,16 +158,7 @@ export interface FileRouteTypes {
     | '/auth/sign-up'
     | '/_authed/'
     | '/auth/'
-    | '/_authed/$companySlug/activities'
-    | '/_authed/$companySlug/audits'
-    | '/_authed/$companySlug/credits'
-    | '/_authed/$companySlug/diaries'
-    | '/_authed/$companySlug/farm-profile'
     | '/_authed/$companySlug/fields'
-    | '/_authed/$companySlug/imports-exports'
-    | '/_authed/$companySlug/notifications'
-    | '/_authed/$companySlug/organizations'
-    | '/_authed/$companySlug/reports'
     | '/_authed/$companySlug/seasons'
     | '/_authed/$companySlug/warehouse'
     | '/_authed/$companySlug/'
@@ -358,74 +242,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthedCompanySlugSeasonsRouteImport
       parentRoute: typeof AuthedCompanySlugRoute
     }
-    '/_authed/$companySlug/reports': {
-      id: '/_authed/$companySlug/reports'
-      path: '/reports'
-      fullPath: '/$companySlug/reports'
-      preLoaderRoute: typeof AuthedCompanySlugReportsRouteImport
-      parentRoute: typeof AuthedCompanySlugRoute
-    }
-    '/_authed/$companySlug/organizations': {
-      id: '/_authed/$companySlug/organizations'
-      path: '/organizations'
-      fullPath: '/$companySlug/organizations'
-      preLoaderRoute: typeof AuthedCompanySlugOrganizationsRouteImport
-      parentRoute: typeof AuthedCompanySlugRoute
-    }
-    '/_authed/$companySlug/notifications': {
-      id: '/_authed/$companySlug/notifications'
-      path: '/notifications'
-      fullPath: '/$companySlug/notifications'
-      preLoaderRoute: typeof AuthedCompanySlugNotificationsRouteImport
-      parentRoute: typeof AuthedCompanySlugRoute
-    }
-    '/_authed/$companySlug/imports-exports': {
-      id: '/_authed/$companySlug/imports-exports'
-      path: '/imports-exports'
-      fullPath: '/$companySlug/imports-exports'
-      preLoaderRoute: typeof AuthedCompanySlugImportsExportsRouteImport
-      parentRoute: typeof AuthedCompanySlugRoute
-    }
     '/_authed/$companySlug/fields': {
       id: '/_authed/$companySlug/fields'
       path: '/fields'
       fullPath: '/$companySlug/fields'
       preLoaderRoute: typeof AuthedCompanySlugFieldsRouteImport
-      parentRoute: typeof AuthedCompanySlugRoute
-    }
-    '/_authed/$companySlug/farm-profile': {
-      id: '/_authed/$companySlug/farm-profile'
-      path: '/farm-profile'
-      fullPath: '/$companySlug/farm-profile'
-      preLoaderRoute: typeof AuthedCompanySlugFarmProfileRouteImport
-      parentRoute: typeof AuthedCompanySlugRoute
-    }
-    '/_authed/$companySlug/diaries': {
-      id: '/_authed/$companySlug/diaries'
-      path: '/diaries'
-      fullPath: '/$companySlug/diaries'
-      preLoaderRoute: typeof AuthedCompanySlugDiariesRouteImport
-      parentRoute: typeof AuthedCompanySlugRoute
-    }
-    '/_authed/$companySlug/credits': {
-      id: '/_authed/$companySlug/credits'
-      path: '/credits'
-      fullPath: '/$companySlug/credits'
-      preLoaderRoute: typeof AuthedCompanySlugCreditsRouteImport
-      parentRoute: typeof AuthedCompanySlugRoute
-    }
-    '/_authed/$companySlug/audits': {
-      id: '/_authed/$companySlug/audits'
-      path: '/audits'
-      fullPath: '/$companySlug/audits'
-      preLoaderRoute: typeof AuthedCompanySlugAuditsRouteImport
-      parentRoute: typeof AuthedCompanySlugRoute
-    }
-    '/_authed/$companySlug/activities': {
-      id: '/_authed/$companySlug/activities'
-      path: '/activities'
-      fullPath: '/$companySlug/activities'
-      preLoaderRoute: typeof AuthedCompanySlugActivitiesRouteImport
       parentRoute: typeof AuthedCompanySlugRoute
     }
     '/_authed/$companySlug/fields/$fieldId': {
@@ -453,32 +274,14 @@ const AuthedCompanySlugFieldsRouteWithChildren =
   )
 
 interface AuthedCompanySlugRouteChildren {
-  AuthedCompanySlugActivitiesRoute: typeof AuthedCompanySlugActivitiesRoute
-  AuthedCompanySlugAuditsRoute: typeof AuthedCompanySlugAuditsRoute
-  AuthedCompanySlugCreditsRoute: typeof AuthedCompanySlugCreditsRoute
-  AuthedCompanySlugDiariesRoute: typeof AuthedCompanySlugDiariesRoute
-  AuthedCompanySlugFarmProfileRoute: typeof AuthedCompanySlugFarmProfileRoute
   AuthedCompanySlugFieldsRoute: typeof AuthedCompanySlugFieldsRouteWithChildren
-  AuthedCompanySlugImportsExportsRoute: typeof AuthedCompanySlugImportsExportsRoute
-  AuthedCompanySlugNotificationsRoute: typeof AuthedCompanySlugNotificationsRoute
-  AuthedCompanySlugOrganizationsRoute: typeof AuthedCompanySlugOrganizationsRoute
-  AuthedCompanySlugReportsRoute: typeof AuthedCompanySlugReportsRoute
   AuthedCompanySlugSeasonsRoute: typeof AuthedCompanySlugSeasonsRoute
   AuthedCompanySlugWarehouseRoute: typeof AuthedCompanySlugWarehouseRoute
   AuthedCompanySlugIndexRoute: typeof AuthedCompanySlugIndexRoute
 }
 
 const AuthedCompanySlugRouteChildren: AuthedCompanySlugRouteChildren = {
-  AuthedCompanySlugActivitiesRoute: AuthedCompanySlugActivitiesRoute,
-  AuthedCompanySlugAuditsRoute: AuthedCompanySlugAuditsRoute,
-  AuthedCompanySlugCreditsRoute: AuthedCompanySlugCreditsRoute,
-  AuthedCompanySlugDiariesRoute: AuthedCompanySlugDiariesRoute,
-  AuthedCompanySlugFarmProfileRoute: AuthedCompanySlugFarmProfileRoute,
   AuthedCompanySlugFieldsRoute: AuthedCompanySlugFieldsRouteWithChildren,
-  AuthedCompanySlugImportsExportsRoute: AuthedCompanySlugImportsExportsRoute,
-  AuthedCompanySlugNotificationsRoute: AuthedCompanySlugNotificationsRoute,
-  AuthedCompanySlugOrganizationsRoute: AuthedCompanySlugOrganizationsRoute,
-  AuthedCompanySlugReportsRoute: AuthedCompanySlugReportsRoute,
   AuthedCompanySlugSeasonsRoute: AuthedCompanySlugSeasonsRoute,
   AuthedCompanySlugWarehouseRoute: AuthedCompanySlugWarehouseRoute,
   AuthedCompanySlugIndexRoute: AuthedCompanySlugIndexRoute,
