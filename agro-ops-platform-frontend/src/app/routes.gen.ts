@@ -15,6 +15,7 @@ import { Route as AuthIndexRouteImport } from './routes/auth/index'
 import { Route as AuthedIndexRouteImport } from './routes/_authed/index'
 import { Route as AuthSignUpRouteImport } from './routes/auth/sign-up'
 import { Route as AuthSignInRouteImport } from './routes/auth/sign-in'
+import { Route as AuthedOnboardingRouteImport } from './routes/_authed/onboarding'
 import { Route as AuthedCompanySlugRouteImport } from './routes/_authed/$companySlug'
 import { Route as AuthedCompanySlugIndexRouteImport } from './routes/_authed/$companySlug/index'
 import { Route as AuthedCompanySlugWarehouseRouteImport } from './routes/_authed/$companySlug/warehouse'
@@ -50,6 +51,11 @@ const AuthSignInRoute = AuthSignInRouteImport.update({
   id: '/sign-in',
   path: '/sign-in',
   getParentRoute: () => AuthRoute,
+} as any)
+const AuthedOnboardingRoute = AuthedOnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => AuthedRoute,
 } as any)
 const AuthedCompanySlugRoute = AuthedCompanySlugRouteImport.update({
   id: '/$companySlug',
@@ -88,6 +94,7 @@ const AuthedCompanySlugFieldsFieldIdRoute =
 export interface FileRoutesByFullPath {
   '/auth': typeof AuthRouteWithChildren
   '/$companySlug': typeof AuthedCompanySlugRouteWithChildren
+  '/onboarding': typeof AuthedOnboardingRoute
   '/auth/sign-in': typeof AuthSignInRoute
   '/auth/sign-up': typeof AuthSignUpRoute
   '/': typeof AuthedIndexRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/$companySlug/fields/$fieldId': typeof AuthedCompanySlugFieldsFieldIdRoute
 }
 export interface FileRoutesByTo {
+  '/onboarding': typeof AuthedOnboardingRoute
   '/auth/sign-in': typeof AuthSignInRoute
   '/auth/sign-up': typeof AuthSignUpRoute
   '/': typeof AuthedIndexRoute
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   '/_authed': typeof AuthedRouteWithChildren
   '/auth': typeof AuthRouteWithChildren
   '/_authed/$companySlug': typeof AuthedCompanySlugRouteWithChildren
+  '/_authed/onboarding': typeof AuthedOnboardingRoute
   '/auth/sign-in': typeof AuthSignInRoute
   '/auth/sign-up': typeof AuthSignUpRoute
   '/_authed/': typeof AuthedIndexRoute
@@ -129,6 +138,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/auth'
     | '/$companySlug'
+    | '/onboarding'
     | '/auth/sign-in'
     | '/auth/sign-up'
     | '/'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/$companySlug/fields/$fieldId'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/onboarding'
     | '/auth/sign-in'
     | '/auth/sign-up'
     | '/'
@@ -154,6 +165,7 @@ export interface FileRouteTypes {
     | '/_authed'
     | '/auth'
     | '/_authed/$companySlug'
+    | '/_authed/onboarding'
     | '/auth/sign-in'
     | '/auth/sign-up'
     | '/_authed/'
@@ -213,6 +225,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/auth/sign-in'
       preLoaderRoute: typeof AuthSignInRouteImport
       parentRoute: typeof AuthRoute
+    }
+    '/_authed/onboarding': {
+      id: '/_authed/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof AuthedOnboardingRouteImport
+      parentRoute: typeof AuthedRoute
     }
     '/_authed/$companySlug': {
       id: '/_authed/$companySlug'
@@ -292,11 +311,13 @@ const AuthedCompanySlugRouteWithChildren =
 
 interface AuthedRouteChildren {
   AuthedCompanySlugRoute: typeof AuthedCompanySlugRouteWithChildren
+  AuthedOnboardingRoute: typeof AuthedOnboardingRoute
   AuthedIndexRoute: typeof AuthedIndexRoute
 }
 
 const AuthedRouteChildren: AuthedRouteChildren = {
   AuthedCompanySlugRoute: AuthedCompanySlugRouteWithChildren,
+  AuthedOnboardingRoute: AuthedOnboardingRoute,
   AuthedIndexRoute: AuthedIndexRoute,
 }
 

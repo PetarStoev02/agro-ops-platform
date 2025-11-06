@@ -13,6 +13,14 @@ export default defineSchema({
     clerkOrgId: v.string(), // Clerk organization ID
     name: v.string(),
     slug: v.string(),
+    // Onboarding fields
+    municipality: v.optional(v.string()), // Община
+    settlement: v.optional(v.string()), // Населено място
+    address: v.optional(v.string()), // Адрес
+    agricultureDirectorate: v.optional(v.string()), // Дирекция "Земеделие"
+    regionalFoodSafetyDirectorate: v.optional(v.string()), // ОДБХ
+    ekatteRegistration: v.optional(v.string()), // ЕКАТЕ на регистрация (5 digits)
+    isOnboarded: v.optional(v.boolean()), // Track onboarding completion status
     createdAt: v.number(),
     updatedAt: v.number(),
   })

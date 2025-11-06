@@ -14,12 +14,12 @@ export default function App(props: AppProps) {
   // Props are required by Next.js but not used since we're using TanStack Router
   void props;
   const [i18nReady, setI18nReady] = useState(false);
-  // Initialize locale from localStorage or default to 'en'
+  // Initialize locale from localStorage or default to 'bg'
   const [locale, setLocale] = useState<string>(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("locale") || "en";
+      return localStorage.getItem("locale") || "bg";
     }
-    return "en";
+    return "bg";
   });
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function App(props: AppProps) {
   // Update locale when i18n locale changes (for Clerk localization)
   useEffect(() => {
     if (i18nReady && typeof window !== "undefined") {
-      const currentLocale = i18n.locale || "en";
+      const currentLocale = i18n.locale || "bg";
       if (currentLocale !== locale) {
         // Use setTimeout to avoid synchronous setState in effect
         setTimeout(() => {
