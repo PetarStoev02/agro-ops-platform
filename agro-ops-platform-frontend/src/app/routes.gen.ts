@@ -29,6 +29,7 @@ import { Route as AuthedCompanySlugDiariesRouteImport } from './routes/_authed/$
 import { Route as AuthedCompanySlugCreditsRouteImport } from './routes/_authed/$companySlug/credits'
 import { Route as AuthedCompanySlugAuditsRouteImport } from './routes/_authed/$companySlug/audits'
 import { Route as AuthedCompanySlugActivitiesRouteImport } from './routes/_authed/$companySlug/activities'
+import { Route as AuthedCompanySlugFieldsFieldIdRouteImport } from './routes/_authed/$companySlug/fields/$fieldId'
 
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
@@ -139,6 +140,12 @@ const AuthedCompanySlugActivitiesRoute =
     path: '/activities',
     getParentRoute: () => AuthedCompanySlugRoute,
   } as any)
+const AuthedCompanySlugFieldsFieldIdRoute =
+  AuthedCompanySlugFieldsFieldIdRouteImport.update({
+    id: '/$fieldId',
+    path: '/$fieldId',
+    getParentRoute: () => AuthedCompanySlugFieldsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/auth': typeof AuthRouteWithChildren
@@ -152,7 +159,7 @@ export interface FileRoutesByFullPath {
   '/$companySlug/credits': typeof AuthedCompanySlugCreditsRoute
   '/$companySlug/diaries': typeof AuthedCompanySlugDiariesRoute
   '/$companySlug/farm-profile': typeof AuthedCompanySlugFarmProfileRoute
-  '/$companySlug/fields': typeof AuthedCompanySlugFieldsRoute
+  '/$companySlug/fields': typeof AuthedCompanySlugFieldsRouteWithChildren
   '/$companySlug/imports-exports': typeof AuthedCompanySlugImportsExportsRoute
   '/$companySlug/notifications': typeof AuthedCompanySlugNotificationsRoute
   '/$companySlug/organizations': typeof AuthedCompanySlugOrganizationsRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/$companySlug/seasons': typeof AuthedCompanySlugSeasonsRoute
   '/$companySlug/warehouse': typeof AuthedCompanySlugWarehouseRoute
   '/$companySlug/': typeof AuthedCompanySlugIndexRoute
+  '/$companySlug/fields/$fieldId': typeof AuthedCompanySlugFieldsFieldIdRoute
 }
 export interface FileRoutesByTo {
   '/auth/sign-in': typeof AuthSignInRoute
@@ -171,7 +179,7 @@ export interface FileRoutesByTo {
   '/$companySlug/credits': typeof AuthedCompanySlugCreditsRoute
   '/$companySlug/diaries': typeof AuthedCompanySlugDiariesRoute
   '/$companySlug/farm-profile': typeof AuthedCompanySlugFarmProfileRoute
-  '/$companySlug/fields': typeof AuthedCompanySlugFieldsRoute
+  '/$companySlug/fields': typeof AuthedCompanySlugFieldsRouteWithChildren
   '/$companySlug/imports-exports': typeof AuthedCompanySlugImportsExportsRoute
   '/$companySlug/notifications': typeof AuthedCompanySlugNotificationsRoute
   '/$companySlug/organizations': typeof AuthedCompanySlugOrganizationsRoute
@@ -179,6 +187,7 @@ export interface FileRoutesByTo {
   '/$companySlug/seasons': typeof AuthedCompanySlugSeasonsRoute
   '/$companySlug/warehouse': typeof AuthedCompanySlugWarehouseRoute
   '/$companySlug': typeof AuthedCompanySlugIndexRoute
+  '/$companySlug/fields/$fieldId': typeof AuthedCompanySlugFieldsFieldIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -194,7 +203,7 @@ export interface FileRoutesById {
   '/_authed/$companySlug/credits': typeof AuthedCompanySlugCreditsRoute
   '/_authed/$companySlug/diaries': typeof AuthedCompanySlugDiariesRoute
   '/_authed/$companySlug/farm-profile': typeof AuthedCompanySlugFarmProfileRoute
-  '/_authed/$companySlug/fields': typeof AuthedCompanySlugFieldsRoute
+  '/_authed/$companySlug/fields': typeof AuthedCompanySlugFieldsRouteWithChildren
   '/_authed/$companySlug/imports-exports': typeof AuthedCompanySlugImportsExportsRoute
   '/_authed/$companySlug/notifications': typeof AuthedCompanySlugNotificationsRoute
   '/_authed/$companySlug/organizations': typeof AuthedCompanySlugOrganizationsRoute
@@ -202,6 +211,7 @@ export interface FileRoutesById {
   '/_authed/$companySlug/seasons': typeof AuthedCompanySlugSeasonsRoute
   '/_authed/$companySlug/warehouse': typeof AuthedCompanySlugWarehouseRoute
   '/_authed/$companySlug/': typeof AuthedCompanySlugIndexRoute
+  '/_authed/$companySlug/fields/$fieldId': typeof AuthedCompanySlugFieldsFieldIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -225,6 +235,7 @@ export interface FileRouteTypes {
     | '/$companySlug/seasons'
     | '/$companySlug/warehouse'
     | '/$companySlug/'
+    | '/$companySlug/fields/$fieldId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/auth/sign-in'
@@ -244,6 +255,7 @@ export interface FileRouteTypes {
     | '/$companySlug/seasons'
     | '/$companySlug/warehouse'
     | '/$companySlug'
+    | '/$companySlug/fields/$fieldId'
   id:
     | '__root__'
     | '/_authed'
@@ -266,6 +278,7 @@ export interface FileRouteTypes {
     | '/_authed/$companySlug/seasons'
     | '/_authed/$companySlug/warehouse'
     | '/_authed/$companySlug/'
+    | '/_authed/$companySlug/fields/$fieldId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -415,8 +428,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthedCompanySlugActivitiesRouteImport
       parentRoute: typeof AuthedCompanySlugRoute
     }
+    '/_authed/$companySlug/fields/$fieldId': {
+      id: '/_authed/$companySlug/fields/$fieldId'
+      path: '/$fieldId'
+      fullPath: '/$companySlug/fields/$fieldId'
+      preLoaderRoute: typeof AuthedCompanySlugFieldsFieldIdRouteImport
+      parentRoute: typeof AuthedCompanySlugFieldsRoute
+    }
   }
 }
+
+interface AuthedCompanySlugFieldsRouteChildren {
+  AuthedCompanySlugFieldsFieldIdRoute: typeof AuthedCompanySlugFieldsFieldIdRoute
+}
+
+const AuthedCompanySlugFieldsRouteChildren: AuthedCompanySlugFieldsRouteChildren =
+  {
+    AuthedCompanySlugFieldsFieldIdRoute: AuthedCompanySlugFieldsFieldIdRoute,
+  }
+
+const AuthedCompanySlugFieldsRouteWithChildren =
+  AuthedCompanySlugFieldsRoute._addFileChildren(
+    AuthedCompanySlugFieldsRouteChildren,
+  )
 
 interface AuthedCompanySlugRouteChildren {
   AuthedCompanySlugActivitiesRoute: typeof AuthedCompanySlugActivitiesRoute
@@ -424,7 +458,7 @@ interface AuthedCompanySlugRouteChildren {
   AuthedCompanySlugCreditsRoute: typeof AuthedCompanySlugCreditsRoute
   AuthedCompanySlugDiariesRoute: typeof AuthedCompanySlugDiariesRoute
   AuthedCompanySlugFarmProfileRoute: typeof AuthedCompanySlugFarmProfileRoute
-  AuthedCompanySlugFieldsRoute: typeof AuthedCompanySlugFieldsRoute
+  AuthedCompanySlugFieldsRoute: typeof AuthedCompanySlugFieldsRouteWithChildren
   AuthedCompanySlugImportsExportsRoute: typeof AuthedCompanySlugImportsExportsRoute
   AuthedCompanySlugNotificationsRoute: typeof AuthedCompanySlugNotificationsRoute
   AuthedCompanySlugOrganizationsRoute: typeof AuthedCompanySlugOrganizationsRoute
@@ -440,7 +474,7 @@ const AuthedCompanySlugRouteChildren: AuthedCompanySlugRouteChildren = {
   AuthedCompanySlugCreditsRoute: AuthedCompanySlugCreditsRoute,
   AuthedCompanySlugDiariesRoute: AuthedCompanySlugDiariesRoute,
   AuthedCompanySlugFarmProfileRoute: AuthedCompanySlugFarmProfileRoute,
-  AuthedCompanySlugFieldsRoute: AuthedCompanySlugFieldsRoute,
+  AuthedCompanySlugFieldsRoute: AuthedCompanySlugFieldsRouteWithChildren,
   AuthedCompanySlugImportsExportsRoute: AuthedCompanySlugImportsExportsRoute,
   AuthedCompanySlugNotificationsRoute: AuthedCompanySlugNotificationsRoute,
   AuthedCompanySlugOrganizationsRoute: AuthedCompanySlugOrganizationsRoute,

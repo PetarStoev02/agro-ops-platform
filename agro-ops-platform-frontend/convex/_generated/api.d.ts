@@ -11,6 +11,7 @@
 import type * as dashboard from "../dashboard.js";
 import type * as fields from "../fields.js";
 import type * as organizations from "../organizations.js";
+import type * as seasons from "../seasons.js";
 
 import type {
   ApiFromModules,
@@ -30,6 +31,7 @@ declare const fullApi: ApiFromModules<{
   dashboard: typeof dashboard;
   fields: typeof fields;
   organizations: typeof organizations;
+  seasons: typeof seasons;
 }>;
 declare const fullApiWithMounts: typeof fullApi;
 

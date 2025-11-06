@@ -12,6 +12,80 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:148
+#: src/shared/components/fields/create-season-modal.tsx:75
+msgid "Organization not found. Please try again."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:95
+msgid "Failed to create season"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:168
+msgid "Field updated successfully"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:184
+msgid "Field created successfully"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:191
+msgid "Failed to save field"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:242
+msgid "Field name"
+msgstr "Име на полето"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:276
+#: src/shared/components/fields/create-field-form.tsx:293
+msgid "Select city"
+msgstr "Избери град"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:406
+msgid "Select crop type"
+msgstr "Избери тип култура"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:449
+msgid "Select season"
+msgstr "Избери сезон"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:466
+msgid "Create new season"
+msgstr "Създай нов сезон"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:152
+#: src/pages/fields/page.tsx:173
+msgid "Field deleted successfully"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:161
+#: src/pages/fields/page.tsx:179
+msgid "Failed to delete field"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:219
+msgid "Search fields..."
+msgstr "Търсене на полета..."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:125
+#~ msgid "Are you sure you want to delete this field?"
+#~ msgstr "Сигурни ли сте, че искате да изтриете това поле?"
+
+#. js-lingui-explicit-id
 #: src/shared/components/app-sidebar.tsx:
 #~ msgid "Dashboard"
 #~ msgstr "Табло"
@@ -34,7 +108,7 @@ msgstr ""
 #. js-lingui-explicit-id
 #: src/shared/components/app-sidebar.tsx:
 #~ msgid "Fields & Plots"
-#~ msgstr "Полета и Парцели"
+#~ msgstr "Полета"
 
 #. js-lingui-explicit-id
 #: src/shared/components/app-sidebar.tsx:
@@ -72,6 +146,31 @@ msgstr ""
 #~ msgstr "Вносове и Износове"
 
 #. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:412
+#~ msgid "Crop type"
+#~ msgstr "Тип култура"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:54
+#~ msgid "Performed Chemical Treatments"
+#~ msgstr "Извършени химически обработки"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:60
+#~ msgid "Field Inspection for Appearance, Development, Density or Degree of Pest Infestation"
+#~ msgstr "Инспекция на полето за външен вид, развитие, плътност или степен на вредители"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:66
+#~ msgid "Used Mineral and Organic Fertilizers, Soil Conditioners and Biologically Active Substances"
+#~ msgstr "Използвани минерални и органични торове, подобрители на почвата и биологически активни вещества"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:72
+#~ msgid "Performed Activities/Measures in the Farm"
+#~ msgstr "Извършени дейности/мерки в стопанството"
+
+#. js-lingui-explicit-id
 #: src/pages/dashboard/page.tsx:200
 msgid "{area} hectares total"
 msgstr "{area} хектара общо"
@@ -87,12 +186,12 @@ msgid "{count} audits awaiting completion"
 msgstr "{count} одита чакат завършване"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:114
+#: src/shared/components/dashboard/fields-chart.tsx:132
 msgid "{count} fields • {area} ha"
 msgstr "{count} полета • {area} ха"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:100
+#: src/shared/components/dashboard/fields-chart.tsx:116
 msgid "{count} fields • {area} hectares total"
 msgstr "{count} полета • {area} хектара общо"
 
@@ -112,12 +211,12 @@ msgid "{count} team members segmented by activity level"
 msgstr "{count} членове на екипа сегментирани по ниво на активност"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:147
+#: src/shared/components/dashboard/fields-chart.tsx:165
 msgid "{percentage}% of area"
 msgstr "{percentage}% от площта"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:130
+#: src/shared/components/dashboard/fields-chart.tsx:148
 msgid "{percentage}% of fields"
 msgstr "{percentage}% от полетата"
 
@@ -182,6 +281,23 @@ msgid "Active Fields"
 msgstr "Активни Полета"
 
 #. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:491
+msgid "Add"
+msgstr "Добави"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:383
+msgid "Add Activity"
+msgstr "Добави Дейност"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:211
+#: src/pages/fields/page.tsx:261
+#: src/shared/components/fields/create-field-form.tsx:212
+msgid "Add Field"
+msgstr "Добави Поле"
+
+#. js-lingui-explicit-id
 #: src/shared/components/site-header.tsx:17
 msgid "Agro Ops Platform"
 msgstr "Агро Опс Платформа"
@@ -197,14 +313,145 @@ msgid "All inventory items are well stocked and not near expiry"
 msgstr "Всички артикули в инвентара са добре на склад и не са близо до изтичане на срока"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:501
+msgid "Are you sure you want to delete {fieldName}? This action cannot be undone."
+msgstr "Сигурни ли сте, че искате да изтриете {fieldName}? Това действие не може да бъде отменено."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:435
+msgid "Are you sure you want to delete this field? This action cannot be undone."
+msgstr "Сигурни ли сте, че искате да изтриете това поле? Това действие не може да бъде отменено."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:248
+msgid "Area"
+msgstr "Площ"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:277
+#: src/shared/components/fields/create-field-form.tsx:323
+msgid "Area (decares)"
+msgstr "Площ (дка.)"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:405
+msgid "BABH Certification Logbook"
+msgstr "Дневник за заверка в БАБХ"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:483
+msgid "Back"
+msgstr "Назад"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:194
+msgid "Back to Fields"
+msgstr "Назад към Полетата"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:102
+#: src/shared/components/dashboard/fields-chart.tsx:38
+#: src/shared/components/fields/create-field-form.tsx:421
+msgid "Barley"
+msgstr "Ечемик"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:275
+#: src/pages/fields/page.tsx:274
+#: src/shared/components/fields/create-field-form.tsx:255
+msgid "BZS Number"
+msgstr "НОМЕР по БЗС"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:510
+#: src/pages/fields/page.tsx:443
+#: src/shared/components/fields/create-season-modal.tsx:153
+msgid "Cancel"
+msgstr "Отказ"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:309
+msgid "Clone Activities"
+msgstr "Клонирай мероприятия"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:100
+#: src/shared/components/dashboard/fields-chart.tsx:36
+#: src/shared/components/fields/create-field-form.tsx:415
+msgid "Corn"
+msgstr "Царевица"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:110
+msgid "Create a new season by entering the year. The season will be named {year} / {nextYear}."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:107
+msgid "Create New Season"
+msgstr "Създай Нов Сезон"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:159
+msgid "Create Season"
+msgstr "Създай Сезон"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:157
+msgid "Creating..."
+msgstr "Създаване..."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:292
+#: src/pages/fields/page.tsx:283
+#: src/shared/components/fields/create-field-form.tsx:397
+msgid "Crop Type"
+msgstr "Култура"
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/inventory-alerts.tsx:129
 msgid "Current stock: {quantity} {unit}"
 msgstr "Текущ наличен запас: {quantity} {unit}"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:64
+#: src/pages/fields/[fieldId]/page.tsx:249
+msgid "decares"
+msgstr "дка."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:235
+#: src/pages/fields/[fieldId]/page.tsx:516
+#: src/pages/fields/page.tsx:339
+#: src/pages/fields/page.tsx:449
+msgid "Delete"
+msgstr "Изтрий"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:498
+#: src/pages/fields/page.tsx:432
+msgid "Delete Field"
+msgstr "Изтрий Поле"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:80
 msgid "Distribution of fields and area"
 msgstr "Разпределение на полетата и площта"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:332
+msgid "Duplicate"
+msgstr "Дублирай"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:231
+#: src/pages/fields/page.tsx:326
+msgid "Edit"
+msgstr "Редактирай"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:210
+msgid "Edit Field"
+msgstr "Редактирай Поле"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:127
@@ -218,16 +465,82 @@ msgid "Expires {time}"
 msgstr "Изтича на {time}"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:61
-#: src/shared/components/dashboard/fields-chart.tsx:97
+#: src/pages/fields/[fieldId]/page.tsx:452
+msgid "Farm Logbook"
+msgstr "Дневник за стопанството"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:245
+msgid "Field"
+msgstr "Поле"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:221
+msgid "Field Details"
+msgstr "Детайли на Полето"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:271
+#: src/shared/components/fields/create-field-form.tsx:238
+msgid "Field Name"
+msgstr "Име на Полето"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:182
+msgid "Field not found"
+msgstr "Полето не е намерено"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:200
+msgid "Fields"
+msgstr "Полета"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:77
+#: src/shared/components/dashboard/fields-chart.tsx:113
 msgid "Fields by Crop Type"
 msgstr "Полета по Тип Култура"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:222
+msgid "Fill in the required information to create a new field."
+msgstr "Попълнете необходимата информация за създаване на ново поле."
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:57
 #: src/shared/components/dashboard/financial-widget.tsx:95
 msgid "Financial Summary"
 msgstr "Финансово Резюме"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:420
+msgid "Generate a logbook for certification in BABH."
+msgstr "Генерирай дневник за заверка в БАБХ."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:429
+msgid "Generate BABH Logbook"
+msgstr "Генерирай дневник за заверка в БАБХ"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:436
+msgid "Generate DEMO BABH Logbook"
+msgstr "Генерирай ДЕМО дневник за заверка в БАБХ"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:456
+msgid "Generate Farm Logbook"
+msgstr "Генерирай дневник на стопанството"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:444
+msgid "Generating a logbook costs 1 credit (coming soon)"
+msgstr "* Генерирането на дневник се заплаща с 1 кредит"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:252
+msgid "Get started by creating your first field"
+msgstr "Започнете като създадете първото си поле"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/member-activity.tsx:71
@@ -251,6 +564,12 @@ msgid "Inventory Alerts"
 msgstr "Сигнали за Инвентар"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:263
+#: src/shared/components/fields/create-field-form.tsx:289
+msgid "Land Area"
+msgstr "Землище"
+
+#. js-lingui-explicit-id
 #: src/shared/components/language-switcher.tsx:41
 msgid "Language"
 msgstr "Език"
@@ -260,6 +579,17 @@ msgstr "Език"
 #: src/shared/components/dashboard/activity-feed.tsx:88
 msgid "Latest farming activities"
 msgstr "Последни земеделски дейности"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:319
+msgid "List of Activities"
+msgstr "Списък с мероприятия"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:269
+#: src/shared/components/fields/create-field-form.tsx:306
+msgid "Locality"
+msgstr "Местност"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/inventory-alerts.tsx:138
@@ -278,6 +608,11 @@ msgid "Low/Inactive"
 msgstr "Ниска/Неактивна"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:203
+msgid "Manage your agricultural fields"
+msgstr "Управлявайте вашите земеделски полета"
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/member-activity.tsx:73
 msgid "Medium Activity"
 msgstr "Средна Активност"
@@ -293,9 +628,24 @@ msgid "Net Balance"
 msgstr "Нетен Баланс"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:72
+#: src/pages/fields/[fieldId]/page.tsx:347
+msgid "No activities recorded yet"
+msgstr "Все още няма записани дейности"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:88
 msgid "No fields data available"
 msgstr "Няма налични данни за полета"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:240
+msgid "No fields found"
+msgstr "Няма намерени полета"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:242
+msgid "No fields yet"
+msgstr "Все още няма полета"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:65
@@ -323,14 +673,33 @@ msgid "Pending Audits"
 msgstr "Чакащи Одити"
 
 #. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:364
+msgid "Pick a date"
+msgstr "Избери дата"
+
+#. js-lingui-explicit-id
 #: src/pages/dashboard/page.tsx:158
 msgid "Please wait while we sync your organization data. This may take a few moments."
 msgstr "Моля изчакайте, докато синхронизираме данните на вашата организация. Това може да отнеме няколко момента."
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:257
+#: src/pages/fields/page.tsx:280
+#: src/shared/components/fields/create-field-form.tsx:272
+msgid "Populated Place"
+msgstr "Населено място"
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:151
 msgid "Profit Margin"
 msgstr "Марж на Печалбата"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:103
+#: src/shared/components/dashboard/fields-chart.tsx:39
+#: src/shared/components/fields/create-field-form.tsx:424
+msgid "Rapeseed"
+msgstr "Рапица"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/activity-feed.tsx:63
@@ -339,14 +708,49 @@ msgid "Recent Activities"
 msgstr "Последни Дейности"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:399
+msgid "Report Generation"
+msgstr "Генериране на отчети"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:463
+msgid "Report generation functionality coming soon"
+msgstr "* Функционалността за генериране на отчети скоро"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:487
+msgid "Saving..."
+msgstr "Запазване..."
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/audit-status.tsx:119
 msgid "Scheduled {time}"
 msgstr "Насрочен {time}"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:300
+#: src/pages/fields/page.tsx:286
+#: src/shared/components/fields/create-field-form.tsx:439
+msgid "Season"
+msgstr "Сезон"
+
+#. js-lingui-explicit-id
 #: src/pages/dashboard/page.tsx:152
 msgid "Setting up organization..."
 msgstr "Настройване на организацията..."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:282
+#: src/shared/components/fields/create-field-form.tsx:348
+msgid "Sowing Date"
+msgstr "Дата на засяване"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:101
+#: src/shared/components/dashboard/fields-chart.tsx:37
+#: src/shared/components/fields/create-field-form.tsx:418
+msgid "Sunflower"
+msgstr "Слънчоглед"
 
 #. js-lingui-explicit-id
 #: src/pages/dashboard/page.tsx:213
@@ -357,3 +761,35 @@ msgstr "Членове на Екипа"
 #: src/pages/dashboard/page.tsx:175
 msgid "Total Products"
 msgstr "Общо Продукти"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:247
+msgid "Try adjusting your search query"
+msgstr "Опитайте да коригирате заявката за търсене"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:489
+msgid "Update"
+msgstr "Обнови"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:217
+msgid "Update the field information below."
+msgstr "Обновете информацията за полето по-долу."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:99
+#: src/shared/components/dashboard/fields-chart.tsx:35
+#: src/shared/components/fields/create-field-form.tsx:412
+msgid "Wheat"
+msgstr "Жито"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:130
+msgid "Year"
+msgstr "Година"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:415
+msgid "You have not entered any activities, which will lead to the generation of an empty logbook with rows 'No activities performed'."
+msgstr ""

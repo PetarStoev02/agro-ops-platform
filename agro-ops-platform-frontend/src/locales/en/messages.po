@@ -12,6 +12,80 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:148
+#: src/shared/components/fields/create-season-modal.tsx:75
+msgid "Organization not found. Please try again."
+msgstr "Organization not found. Please try again."
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:95
+msgid "Failed to create season"
+msgstr "Failed to create season"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:168
+msgid "Field updated successfully"
+msgstr "Field updated successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:184
+msgid "Field created successfully"
+msgstr "Field created successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:191
+msgid "Failed to save field"
+msgstr "Failed to save field"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:242
+msgid "Field name"
+msgstr "Field name"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:276
+#: src/shared/components/fields/create-field-form.tsx:293
+msgid "Select city"
+msgstr "Select city"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:406
+msgid "Select crop type"
+msgstr "Select crop type"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:449
+msgid "Select season"
+msgstr "Select season"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:466
+msgid "Create new season"
+msgstr "Create new season"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:152
+#: src/pages/fields/page.tsx:173
+msgid "Field deleted successfully"
+msgstr "Field deleted successfully"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:161
+#: src/pages/fields/page.tsx:179
+msgid "Failed to delete field"
+msgstr "Failed to delete field"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:219
+msgid "Search fields..."
+msgstr "Search fields..."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:125
+#~ msgid "Are you sure you want to delete this field?"
+#~ msgstr "Are you sure you want to delete this field?"
+
+#. js-lingui-explicit-id
 #: src/shared/components/app-sidebar.tsx:
 #~ msgid "Dashboard"
 #~ msgstr "Dashboard"
@@ -72,6 +146,11 @@ msgstr ""
 #~ msgstr "Imports & Exports"
 
 #. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:412
+#~ msgid "Crop type"
+#~ msgstr "Crop type"
+
+#. js-lingui-explicit-id
 #: src/pages/dashboard/page.tsx:200
 msgid "{area} hectares total"
 msgstr "{area} hectares total"
@@ -87,12 +166,12 @@ msgid "{count} audits awaiting completion"
 msgstr "{count} audits awaiting completion"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:114
+#: src/shared/components/dashboard/fields-chart.tsx:132
 msgid "{count} fields • {area} ha"
 msgstr "{count} fields • {area} ha"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:100
+#: src/shared/components/dashboard/fields-chart.tsx:116
 msgid "{count} fields • {area} hectares total"
 msgstr "{count} fields • {area} hectares total"
 
@@ -112,12 +191,12 @@ msgid "{count} team members segmented by activity level"
 msgstr "{count} team members segmented by activity level"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:147
+#: src/shared/components/dashboard/fields-chart.tsx:165
 msgid "{percentage}% of area"
 msgstr "{percentage}% of area"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:130
+#: src/shared/components/dashboard/fields-chart.tsx:148
 msgid "{percentage}% of fields"
 msgstr "{percentage}% of fields"
 
@@ -182,6 +261,23 @@ msgid "Active Fields"
 msgstr "Active Fields"
 
 #. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:491
+msgid "Add"
+msgstr "Add"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:383
+msgid "Add Activity"
+msgstr "Add Activity"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:211
+#: src/pages/fields/page.tsx:261
+#: src/shared/components/fields/create-field-form.tsx:212
+msgid "Add Field"
+msgstr "Add Field"
+
+#. js-lingui-explicit-id
 #: src/shared/components/site-header.tsx:17
 msgid "Agro Ops Platform"
 msgstr "Agro Ops Platform"
@@ -199,8 +295,104 @@ msgstr "All audits are up to date"
 msgid "All inventory items are well stocked and not near expiry"
 msgstr "All inventory items are well stocked and not near expiry"
 
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:501
+msgid "Are you sure you want to delete {fieldName}? This action cannot be undone."
+msgstr "Are you sure you want to delete {fieldName}? This action cannot be undone."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:435
+msgid "Are you sure you want to delete this field? This action cannot be undone."
+msgstr "Are you sure you want to delete this field? This action cannot be undone."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:248
+msgid "Area"
+msgstr "Area"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:277
+#: src/shared/components/fields/create-field-form.tsx:323
+msgid "Area (decares)"
+msgstr "Area (decares)"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:405
+msgid "BABH Certification Logbook"
+msgstr "BABH Certification Logbook"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:483
+msgid "Back"
+msgstr "Back"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:194
+msgid "Back to Fields"
+msgstr "Back to Fields"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:102
+#: src/shared/components/dashboard/fields-chart.tsx:38
+#: src/shared/components/fields/create-field-form.tsx:421
+msgid "Barley"
+msgstr "Barley"
+
 #~ msgid "Bulgarian"
 #~ msgstr "Bulgarian"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:275
+#: src/pages/fields/page.tsx:274
+#: src/shared/components/fields/create-field-form.tsx:255
+msgid "BZS Number"
+msgstr "BZS Number"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:510
+#: src/pages/fields/page.tsx:443
+#: src/shared/components/fields/create-season-modal.tsx:153
+msgid "Cancel"
+msgstr "Cancel"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:309
+msgid "Clone Activities"
+msgstr "Clone Activities"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:100
+#: src/shared/components/dashboard/fields-chart.tsx:36
+#: src/shared/components/fields/create-field-form.tsx:415
+msgid "Corn"
+msgstr "Corn"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:110
+msgid "Create a new season by entering the year. The season will be named {year} / {nextYear}."
+msgstr "Create a new season by entering the year. The season will be named {year} / {nextYear}."
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:107
+msgid "Create New Season"
+msgstr "Create New Season"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:159
+msgid "Create Season"
+msgstr "Create Season"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:157
+msgid "Creating..."
+msgstr "Creating..."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:292
+#: src/pages/fields/page.tsx:283
+#: src/shared/components/fields/create-field-form.tsx:397
+msgid "Crop Type"
+msgstr "Crop Type"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/inventory-alerts.tsx:129
@@ -208,9 +400,44 @@ msgid "Current stock: {quantity} {unit}"
 msgstr "Current stock: {quantity} {unit}"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:64
+#: src/pages/fields/[fieldId]/page.tsx:249
+msgid "decares"
+msgstr "decares"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:235
+#: src/pages/fields/[fieldId]/page.tsx:516
+#: src/pages/fields/page.tsx:339
+#: src/pages/fields/page.tsx:449
+msgid "Delete"
+msgstr "Delete"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:498
+#: src/pages/fields/page.tsx:432
+msgid "Delete Field"
+msgstr "Delete Field"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:80
 msgid "Distribution of fields and area"
 msgstr "Distribution of fields and area"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:332
+msgid "Duplicate"
+msgstr "Duplicate"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:231
+#: src/pages/fields/page.tsx:326
+msgid "Edit"
+msgstr "Edit"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:210
+msgid "Edit Field"
+msgstr "Edit Field"
 
 #~ msgid "English"
 #~ msgstr "English"
@@ -227,16 +454,82 @@ msgid "Expires {time}"
 msgstr "Expires {time}"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:61
-#: src/shared/components/dashboard/fields-chart.tsx:97
+#: src/pages/fields/[fieldId]/page.tsx:452
+msgid "Farm Logbook"
+msgstr "Farm Logbook"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:245
+msgid "Field"
+msgstr "Field"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:221
+msgid "Field Details"
+msgstr "Field Details"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:271
+#: src/shared/components/fields/create-field-form.tsx:238
+msgid "Field Name"
+msgstr "Field Name"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:182
+msgid "Field not found"
+msgstr "Field not found"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:200
+msgid "Fields"
+msgstr "Fields"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:77
+#: src/shared/components/dashboard/fields-chart.tsx:113
 msgid "Fields by Crop Type"
 msgstr "Fields by Crop Type"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:222
+msgid "Fill in the required information to create a new field."
+msgstr "Fill in the required information to create a new field."
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:57
 #: src/shared/components/dashboard/financial-widget.tsx:95
 msgid "Financial Summary"
 msgstr "Financial Summary"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:420
+msgid "Generate a logbook for certification in BABH."
+msgstr "Generate a logbook for certification in BABH."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:429
+msgid "Generate BABH Logbook"
+msgstr "Generate BABH Logbook"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:436
+msgid "Generate DEMO BABH Logbook"
+msgstr "Generate DEMO BABH Logbook"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:456
+msgid "Generate Farm Logbook"
+msgstr "Generate Farm Logbook"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:444
+msgid "Generating a logbook costs 1 credit (coming soon)"
+msgstr "Generating a logbook costs 1 credit (coming soon)"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:252
+msgid "Get started by creating your first field"
+msgstr "Get started by creating your first field"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/member-activity.tsx:71
@@ -260,6 +553,12 @@ msgid "Inventory Alerts"
 msgstr "Inventory Alerts"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:263
+#: src/shared/components/fields/create-field-form.tsx:289
+msgid "Land Area"
+msgstr "Land Area"
+
+#. js-lingui-explicit-id
 #: src/shared/components/language-switcher.tsx:41
 msgid "Language"
 msgstr "Language"
@@ -269,6 +568,17 @@ msgstr "Language"
 #: src/shared/components/dashboard/activity-feed.tsx:88
 msgid "Latest farming activities"
 msgstr "Latest farming activities"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:319
+msgid "List of Activities"
+msgstr "List of Activities"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:269
+#: src/shared/components/fields/create-field-form.tsx:306
+msgid "Locality"
+msgstr "Locality"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/inventory-alerts.tsx:138
@@ -287,6 +597,11 @@ msgid "Low/Inactive"
 msgstr "Low/Inactive"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:203
+msgid "Manage your agricultural fields"
+msgstr "Manage your agricultural fields"
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/member-activity.tsx:73
 msgid "Medium Activity"
 msgstr "Medium Activity"
@@ -302,9 +617,24 @@ msgid "Net Balance"
 msgstr "Net Balance"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/fields-chart.tsx:72
+#: src/pages/fields/[fieldId]/page.tsx:347
+msgid "No activities recorded yet"
+msgstr "No activities recorded yet"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:88
 msgid "No fields data available"
 msgstr "No fields data available"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:240
+msgid "No fields found"
+msgstr "No fields found"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:242
+msgid "No fields yet"
+msgstr "No fields yet"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:65
@@ -332,14 +662,33 @@ msgid "Pending Audits"
 msgstr "Pending Audits"
 
 #. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:364
+msgid "Pick a date"
+msgstr "Pick a date"
+
+#. js-lingui-explicit-id
 #: src/pages/dashboard/page.tsx:158
 msgid "Please wait while we sync your organization data. This may take a few moments."
 msgstr "Please wait while we sync your organization data. This may take a few moments."
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:257
+#: src/pages/fields/page.tsx:280
+#: src/shared/components/fields/create-field-form.tsx:272
+msgid "Populated Place"
+msgstr "Populated Place"
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:151
 msgid "Profit Margin"
 msgstr "Profit Margin"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:103
+#: src/shared/components/dashboard/fields-chart.tsx:39
+#: src/shared/components/fields/create-field-form.tsx:424
+msgid "Rapeseed"
+msgstr "Rapeseed"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/activity-feed.tsx:63
@@ -348,14 +697,49 @@ msgid "Recent Activities"
 msgstr "Recent Activities"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:399
+msgid "Report Generation"
+msgstr "Report Generation"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:463
+msgid "Report generation functionality coming soon"
+msgstr "Report generation functionality coming soon"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:487
+msgid "Saving..."
+msgstr "Saving..."
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/audit-status.tsx:119
 msgid "Scheduled {time}"
 msgstr "Scheduled {time}"
 
 #. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:300
+#: src/pages/fields/page.tsx:286
+#: src/shared/components/fields/create-field-form.tsx:439
+msgid "Season"
+msgstr "Season"
+
+#. js-lingui-explicit-id
 #: src/pages/dashboard/page.tsx:152
 msgid "Setting up organization..."
 msgstr "Setting up organization..."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:282
+#: src/shared/components/fields/create-field-form.tsx:348
+msgid "Sowing Date"
+msgstr "Sowing Date"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:101
+#: src/shared/components/dashboard/fields-chart.tsx:37
+#: src/shared/components/fields/create-field-form.tsx:418
+msgid "Sunflower"
+msgstr "Sunflower"
 
 #. js-lingui-explicit-id
 #: src/pages/dashboard/page.tsx:213
@@ -366,3 +750,35 @@ msgstr "Team Members"
 #: src/pages/dashboard/page.tsx:175
 msgid "Total Products"
 msgstr "Total Products"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:247
+msgid "Try adjusting your search query"
+msgstr "Try adjusting your search query"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:489
+msgid "Update"
+msgstr "Update"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-field-form.tsx:217
+msgid "Update the field information below."
+msgstr "Update the field information below."
+
+#. js-lingui-explicit-id
+#: src/pages/fields/page.tsx:99
+#: src/shared/components/dashboard/fields-chart.tsx:35
+#: src/shared/components/fields/create-field-form.tsx:412
+msgid "Wheat"
+msgstr "Wheat"
+
+#. js-lingui-explicit-id
+#: src/shared/components/fields/create-season-modal.tsx:130
+msgid "Year"
+msgstr "Year"
+
+#. js-lingui-explicit-id
+#: src/pages/fields/[fieldId]/page.tsx:415
+msgid "You have not entered any activities, which will lead to the generation of an empty logbook with rows 'No activities performed'."
+msgstr "You have not entered any activities, which will lead to the generation of an empty logbook with rows 'No activities performed'."
