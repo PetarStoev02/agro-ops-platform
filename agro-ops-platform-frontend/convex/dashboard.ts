@@ -208,8 +208,44 @@ export const getRecentActivities = query({
 });
 
 /**
+ * Helper function to check if quantity is under 100 kg/liters
+ */
+function isLowStock(item: {
+  quantity: number;
+  unit: string;
+  category: string;
+  fertilizerType?: string;
+}): boolean {
+  // For granular fertilizers, convert to kg
+  if (item.category === "fertilizer" && item.fertilizerType === "гранулиран") {
+    if (item.unit === "Тон") {
+      return item.quantity * 1000 < 100;
+    }
+    if (item.unit === "Килограм (кг.)") {
+      return item.quantity < 100;
+    }
+  }
+  // For foliar fertilizers, check liters
+  if (item.category === "fertilizer" && item.fertilizerType === "листен") {
+    if (item.unit === "Литър (л.)") {
+      return item.quantity < 100;
+    }
+    if (item.unit === "Килограм (кг.)") {
+      return item.quantity < 100;
+    }
+  }
+  // For chemicals, check liters
+  if (item.category === "chemical") {
+    if (item.unit === "Литър (л.)") {
+      return item.quantity < 100;
+    }
+  }
+  return false;
+}
+
+/**
  * Get low stock inventory items
- * Returns items with quantity below threshold or near expiry
+ * Returns items with quantity below 100 kg/liters or near expiry
  */
 export const getLowStockInventory = query({
   args: { 
@@ -217,7 +253,6 @@ export const getLowStockInventory = query({
     quantityThreshold: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
-    const threshold = args.quantityThreshold || 10;
     const thirtyDaysFromNow = Date.now() + 30 * 24 * 60 * 60 * 1000;
 
     const inventory = await ctx.db
@@ -227,8 +262,8 @@ export const getLowStockInventory = query({
       )
       .collect();
 
-    // Filter low stock and near expiry items
-    const lowStockItems = inventory.filter(item => item.quantity < threshold);
+    // Filter low stock items (under 100 kg/liters) and near expiry items
+    const lowStockItems = inventory.filter(item => isLowStock(item));
     const nearExpiryItems = inventory.filter(
       item => item.expiryDate && item.expiryDate < thirtyDaysFromNow
     );

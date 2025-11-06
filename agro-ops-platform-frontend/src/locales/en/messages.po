@@ -14,13 +14,124 @@ msgstr ""
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:148
 #: src/shared/components/fields/create-season-modal.tsx:75
+#: src/shared/components/warehouse/add-chemical-form.tsx:97
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:123
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:123
 msgid "Organization not found. Please try again."
 msgstr "Organization not found. Please try again."
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:109
+msgid "Chemical updated successfully"
+msgstr "Chemical updated successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:118
+msgid "Chemical added successfully"
+msgstr "Chemical added successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:128
+msgid "Failed to update chemical"
+msgstr "Failed to update chemical"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:129
+msgid "Failed to add chemical"
+msgstr "Failed to add chemical"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:174
+msgid "Name of preparation/product"
+msgstr "Name of preparation/product"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:137
+msgid "Granular fertilizer updated successfully"
+msgstr "Granular fertilizer updated successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:149
+msgid "Granular fertilizer added successfully"
+msgstr "Granular fertilizer added successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:165
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:165
+msgid "Failed to update fertilizer"
+msgstr "Failed to update fertilizer"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:166
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:166
+msgid "Failed to add fertilizer"
+msgstr "Failed to add fertilizer"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:234
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:234
+msgid "Enter fertilizer content in free text"
+msgstr "Enter fertilizer content in free text"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:328
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:328
+msgid "Select unit"
+msgstr "Select unit"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:137
+msgid "Foliar fertilizer updated successfully"
+msgstr "Foliar fertilizer updated successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:149
+msgid "Foliar fertilizer added successfully"
+msgstr "Foliar fertilizer added successfully"
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-season-modal.tsx:95
 msgid "Failed to create season"
 msgstr "Failed to create season"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:183
+#: src/shared/components/activities/farm-activity-form.tsx:119
+#: src/shared/components/activities/fertilizer-form.tsx:173
+#: src/shared/components/activities/field-inspection-form.tsx:112
+msgid "Organization or user not found"
+msgstr "Organization or user not found"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:132
+msgid "Field inspection updated successfully"
+msgstr "Field inspection updated successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:149
+msgid "Field inspection created successfully"
+msgstr "Field inspection created successfully"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:159
+msgid "Failed to save field inspection"
+msgstr "Failed to save field inspection"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:316
+#: src/shared/components/activities/field-inspection-form.tsx:333
+msgid "Type of damage"
+msgstr "Type of damage"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:354
+msgid "Density or degree of attack"
+msgstr "Density or degree of attack"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:376
+msgid "Phenological phase"
+msgstr "Phenological phase"
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:168
@@ -62,45 +173,6 @@ msgstr "Select season"
 #: src/shared/components/fields/create-field-form.tsx:466
 msgid "Create new season"
 msgstr "Create new season"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:183
-#: src/shared/components/activities/farm-activity-form.tsx:119
-#: src/shared/components/activities/fertilizer-form.tsx:173
-#: src/shared/components/activities/field-inspection-form.tsx:112
-msgid "Organization or user not found"
-msgstr "Organization or user not found"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:132
-msgid "Field inspection updated successfully"
-msgstr "Field inspection updated successfully"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:149
-msgid "Field inspection created successfully"
-msgstr "Field inspection created successfully"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:159
-msgid "Failed to save field inspection"
-msgstr "Failed to save field inspection"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:316
-#: src/shared/components/activities/field-inspection-form.tsx:333
-msgid "Type of damage"
-msgstr "Type of damage"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:354
-msgid "Density or degree of attack"
-msgstr "Density or degree of attack"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:376
-msgid "Phenological phase"
-msgstr "Phenological phase"
 
 #. js-lingui-explicit-id
 #: src/shared/components/activities/chemical-treatment-form.tsx:188
@@ -215,6 +287,16 @@ msgid "Search fields..."
 msgstr "Search fields..."
 
 #. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:126
+msgid "Item deleted successfully"
+msgstr "Item deleted successfully"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:132
+msgid "Failed to delete item"
+msgstr "Failed to delete item"
+
+#. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:142
 msgid "Activity deleted successfully"
 msgstr "Activity deleted successfully"
@@ -223,6 +305,26 @@ msgstr "Activity deleted successfully"
 #: src/pages/fields/[fieldId]/page.tsx:147
 msgid "Failed to delete activity"
 msgstr "Failed to delete activity"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:126
+#~ msgid "Артикулът е изтрит успешно"
+#~ msgstr "Артикулът е изтрит успешно"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:132
+#~ msgid "Неуспешно изтриване на артикул"
+#~ msgstr "Неуспешно изтриване на артикул"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:155
+#~ msgid "Гранулиран"
+#~ msgstr "Гранулиран"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:156
+#~ msgid "Листен"
+#~ msgstr "Листен"
 
 #. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:125
@@ -258,11 +360,6 @@ msgstr "Failed to delete activity"
 #: src/shared/components/app-sidebar.tsx:
 #~ msgid "Activities"
 #~ msgstr "Activities"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx:
-#~ msgid "Warehouse & Inventory"
-#~ msgstr "Warehouse & Inventory"
 
 #. js-lingui-explicit-id
 #: src/shared/components/app-sidebar.tsx:
@@ -345,14 +442,14 @@ msgid "{count} items in stock"
 msgstr "{count} items in stock"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/inventory-alerts.tsx:103
-msgid "{count} items requiring attention"
-msgstr "{count} items requiring attention"
-
-#. js-lingui-explicit-id
 #: src/shared/components/dashboard/member-activity.tsx:128
 msgid "{count} team members segmented by activity level"
 msgstr "{count} team members segmented by activity level"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:117
+msgid "{count} items requiring attention"
+msgstr "{count} items requiring attention"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/fields-chart.tsx:165
@@ -386,14 +483,14 @@ msgid "0 audits awaiting completion"
 msgstr "0 audits awaiting completion"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/inventory-alerts.tsx:93
-msgid "0 items requiring attention"
-msgstr "0 items requiring attention"
-
-#. js-lingui-explicit-id
 #: src/shared/components/dashboard/member-activity.tsx:118
 msgid "0 team members segmented by activity level"
 msgstr "0 team members segmented by activity level"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:107
+msgid "0 items requiring attention"
+msgstr "0 items requiring attention"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/member-activity.tsx:99
@@ -406,14 +503,14 @@ msgid "1 audit awaiting completion"
 msgstr "1 audit awaiting completion"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/inventory-alerts.tsx:98
-msgid "1 item requiring attention"
-msgstr "1 item requiring attention"
-
-#. js-lingui-explicit-id
 #: src/shared/components/dashboard/member-activity.tsx:123
 msgid "1 team member segmented by activity level"
 msgstr "1 team member segmented by activity level"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:112
+msgid "1 item requiring attention"
+msgstr "1 item requiring attention"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/member-activity.tsx:85
@@ -447,6 +544,9 @@ msgstr "Activity Type"
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:491
+#: src/shared/components/warehouse/add-chemical-form.tsx:221
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:367
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:367
 msgid "Add"
 msgstr "Add"
 
@@ -483,6 +583,12 @@ msgid "Add Field Inspection"
 msgstr "Add Field Inspection"
 
 #. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:214
+#: src/shared/components/warehouse/add-item-type-modal.tsx:41
+msgid "Add Item"
+msgstr "Add Item"
+
+#. js-lingui-explicit-id
 #: src/shared/components/site-header.tsx:17
 msgid "Agro Ops Platform"
 msgstr "Agro Ops Platform"
@@ -494,11 +600,6 @@ msgstr "Agro Ops Platform"
 #: src/shared/components/dashboard/audit-status.tsx:92
 msgid "All audits are up to date"
 msgstr "All audits are up to date"
-
-#. js-lingui-explicit-id
-#: src/shared/components/dashboard/inventory-alerts.tsx:73
-msgid "All inventory items are well stocked and not near expiry"
-msgstr "All inventory items are well stocked and not near expiry"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/seasons-widget.tsx:136
@@ -546,6 +647,11 @@ msgstr "BABH Certification Logbook"
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:483
+#: src/shared/components/warehouse/add-chemical-form.tsx:215
+#: src/shared/components/warehouse/add-fertilizer-type-modal.tsx:64
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:361
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:361
+#: src/shared/components/warehouse/add-item-type-modal.tsx:64
 msgid "Back"
 msgstr "Back"
 
@@ -574,6 +680,7 @@ msgstr "BZS Number"
 #. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:661
 #: src/pages/fields/page.tsx:443
+#: src/pages/warehouse/page.tsx:493
 #: src/shared/components/activities/chemical-treatment-form.tsx:545
 #: src/shared/components/activities/farm-activity-form.tsx:392
 #: src/shared/components/activities/fertilizer-form.tsx:487
@@ -584,6 +691,9 @@ msgstr "Cancel"
 
 #. js-lingui-explicit-id
 #: src/shared/components/activities/chemical-treatment-form.tsx:374
+#: src/shared/components/dashboard/inventory-alerts.tsx:141
+#: src/shared/components/warehouse/add-chemical-form.tsx:169
+#: src/shared/components/warehouse/add-item-type-modal.tsx:50
 msgid "Chemical"
 msgstr "Chemical"
 
@@ -652,11 +762,6 @@ msgid "Current Seasons & Campaigns"
 msgstr "Current Seasons & Campaigns"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/inventory-alerts.tsx:129
-msgid "Current stock: {quantity} {unit}"
-msgstr "Current stock: {quantity} {unit}"
-
-#. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:410
 #: src/shared/components/activities/field-inspection-form.tsx:312
 msgid "Damage"
@@ -683,6 +788,9 @@ msgstr "decares"
 #: src/pages/fields/[fieldId]/page.tsx:667
 #: src/pages/fields/page.tsx:339
 #: src/pages/fields/page.tsx:449
+#: src/pages/warehouse/page.tsx:297
+#: src/pages/warehouse/page.tsx:404
+#: src/pages/warehouse/page.tsx:496
 msgid "Delete"
 msgstr "Delete"
 
@@ -723,6 +831,8 @@ msgstr "Duplicate"
 #. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:236
 #: src/pages/fields/page.tsx:326
+#: src/pages/warehouse/page.tsx:290
+#: src/pages/warehouse/page.tsx:397
 msgid "Edit"
 msgstr "Edit"
 
@@ -770,12 +880,6 @@ msgid "Expenses"
 msgstr "Expenses"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/inventory-alerts.tsx:144
-#: src/shared/components/dashboard/inventory-alerts.tsx:166
-msgid "Expires {time}"
-msgstr "Expires {time}"
-
-#. js-lingui-explicit-id
 #: src/shared/components/dashboard/activity-feed.tsx:225
 msgid "Farm Activity"
 msgstr "Farm Activity"
@@ -793,6 +897,8 @@ msgstr "Fertilized Area (dka)"
 #. js-lingui-explicit-id
 #: src/shared/components/activities/fertilizer-form.tsx:361
 #: src/shared/components/dashboard/activity-feed.tsx:223
+#: src/shared/components/dashboard/inventory-alerts.tsx:143
+#: src/shared/components/warehouse/add-item-type-modal.tsx:57
 msgid "Fertilizer"
 msgstr "Fertilizer"
 
@@ -926,12 +1032,6 @@ msgid "Infestation Type"
 msgstr "Infestation Type"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/inventory-alerts.tsx:60
-#: src/shared/components/dashboard/inventory-alerts.tsx:89
-msgid "Inventory Alerts"
-msgstr "Inventory Alerts"
-
-#. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:268
 #: src/shared/components/fields/create-field-form.tsx:289
 msgid "Land Area"
@@ -960,17 +1060,6 @@ msgid "Locality"
 msgstr "Locality"
 
 #. js-lingui-explicit-id
-#: src/shared/components/dashboard/inventory-alerts.tsx:138
-#: src/shared/components/dashboard/inventory-alerts.tsx:159
-msgid "Low stock alert"
-msgstr "Low stock alert"
-
-#. js-lingui-explicit-id
-#: src/shared/components/dashboard/inventory-alerts.tsx:63
-msgid "Low stock and expiry warnings"
-msgstr "Low stock and expiry warnings"
-
-#. js-lingui-explicit-id
 #: src/shared/components/dashboard/member-activity.tsx:75
 msgid "Low/Inactive"
 msgstr "Low/Inactive"
@@ -996,9 +1085,20 @@ msgid "Member Activity"
 msgstr "Member Activity"
 
 #. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:242
+#: src/pages/warehouse/page.tsx:328
+msgid "Name"
+msgstr "Име"
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/financial-widget.tsx:141
 msgid "Net Balance"
 msgstr "Net Balance"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:340
+msgid "Nitrogen Content"
+msgstr "Съдържание на азот"
 
 #. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:356
@@ -1086,6 +1186,15 @@ msgstr "Processed Area (dka)"
 #: src/shared/components/dashboard/financial-widget.tsx:151
 msgid "Profit Margin"
 msgstr "Profit Margin"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:245
+#: src/pages/warehouse/page.tsx:334
+#: src/shared/components/warehouse/add-chemical-form.tsx:189
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:288
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:288
+msgid "Quantity"
+msgstr "Количество"
 
 #. js-lingui-explicit-id
 #: src/shared/components/activities/farm-activity-form.tsx:370
@@ -1199,7 +1308,29 @@ msgid "Try adjusting your search query"
 msgstr "Try adjusting your search query"
 
 #. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:331
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:347
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:347
+msgid "Type"
+msgstr "Тип"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:248
+#: src/pages/warehouse/page.tsx:337
+msgid "Unit"
+msgstr "Мерна единица"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:315
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:315
+msgid "Unit of measurement"
+msgstr "Мерна единица"
+
+#. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:489
+#: src/shared/components/warehouse/add-chemical-form.tsx:219
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:365
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:365
 msgid "Update"
 msgstr "Update"
 
@@ -1254,3 +1385,200 @@ msgstr "You do not have any fertilizers applicable to {cropType} in your warehou
 #: src/pages/fields/[fieldId]/page.tsx:566
 msgid "You have not entered any activities, which will lead to the generation of an empty logbook with rows 'No activities performed'."
 msgstr "You have not entered any activities, which will lead to the generation of an empty logbook with rows 'No activities performed'."
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:87
+msgid "All inventory items are well stocked and not near expiry"
+msgstr "All inventory items are well stocked and not near expiry"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:242
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:242
+msgid "Enter the content of the fertilizer in free text. The data from this field will be used when filling out the logbook for certification by BABH."
+msgstr "Въведете съдържанието на торта в свободен текст. Данните от това поле ще се използват при попълване на дневника за заверка от БАБХ"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:155
+#: src/shared/components/warehouse/add-fertilizer-type-modal.tsx:50
+msgid "Granular"
+msgstr "ГРАНУЛИРАН"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:184
+msgid "Granulated Fertilizer"
+msgstr "Гранулиран тор"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:144
+msgid "Add Chemical"
+msgstr "Добавяне на препарат"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-fertilizer-type-modal.tsx:41
+msgid "Add Fertilizer"
+msgstr "Добавяне на тор"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:220
+msgid "Loading..."
+msgstr "Зареждане..."
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:172
+#: src/shared/components/dashboard/inventory-alerts.tsx:198
+msgid "Expires {time}"
+msgstr "Expires {time}"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:482
+msgid "Delete Item"
+msgstr "Изтриване на артикул"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:209
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:213
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:209
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:213
+msgid "Product name"
+msgstr "Име на продукт"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:333
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:333
+msgid "Kilogram (kg)"
+msgstr "Килограм (кг.)"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:156
+#: src/shared/components/warehouse/add-fertilizer-type-modal.tsx:57
+msgid "Foliar"
+msgstr "ЛИСТЕН"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:184
+msgid "Foliar Fertilizer"
+msgstr "Листен тор"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:336
+msgid "Liter (l)"
+msgstr "Литър (л.)"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:231
+msgid "No chemicals found. Click 'Add Item' to add a chemical."
+msgstr "Няма намерени препарати. Кликнете 'Добави' за да добавите препарат."
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:317
+msgid "No fertilizers found. Click 'Add Item' to add a fertilizer."
+msgstr "Няма намерени торове. Кликнете 'Добави' за да добавите тор."
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:189
+msgid "Update the granulated fertilizer information below."
+msgstr "Обновете информацията за гранулирания тор по-долу."
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:189
+msgid "Update the foliar fertilizer information below."
+msgstr "Обновете информацията за листния тор по-долу."
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:149
+msgid "Update the chemical information below."
+msgstr "Обновете информацията за препарата по-долу."
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:194
+msgid "Fill in the required information to add a granulated fertilizer."
+msgstr "Попълнете необходимата информация за добавяне на гранулиран тор."
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:194
+msgid "Fill in the required information to add a foliar fertilizer."
+msgstr "Попълнете необходимата информация за добавяне на листен тор."
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:154
+msgid "Fill in the required information to add a chemical."
+msgstr "Попълнете необходимата информация за добавяне на препарат."
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:161
+#: src/shared/components/dashboard/inventory-alerts.tsx:189
+msgid "Low stock alert"
+msgstr "Low stock alert"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:77
+msgid "Low stock and expiry warnings"
+msgstr "Low stock and expiry warnings"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:227
+msgid "Chemicals"
+msgstr "Препарати"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:179
+msgid "Edit Granulated Fertilizer"
+msgstr "Редактиране на гранулиран тор"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:179
+msgid "Edit Foliar Fertilizer"
+msgstr "Редактиране на листен тор"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:142
+msgid "Edit Chemical"
+msgstr "Редактиране на препарат"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:74
+#: src/shared/components/dashboard/inventory-alerts.tsx:103
+msgid "Inventory Alerts"
+msgstr "Inventory Alerts"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:485
+msgid "Are you sure you want to delete this item? This action cannot be undone."
+msgstr "Сигурни ли сте, че искате да изтриете този артикул? Това действие не може да бъде отменено."
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:203
+msgid "Warehouse & Inventory"
+msgstr "Warehouse & Inventory"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:258
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:258
+msgid "Nitrogen (N) content in (%)"
+msgstr "Съдържание на азот (N) в (%)"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:226
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:226
+msgid "Content of fertilizer"
+msgstr "Съдържание на торта"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:151
+msgid "Current stock: {quantity} {unit}"
+msgstr "Current stock: {quantity} {unit}"
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:336
+msgid "Ton"
+msgstr "Тон"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:313
+msgid "Fertilizers"
+msgstr "Торове"
+
+#. js-lingui-explicit-id
+#: src/pages/warehouse/page.tsx:206
+msgid "Manage your inventory items"
+msgstr "Управление на инвентарни артикули"

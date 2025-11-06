@@ -11,6 +11,7 @@
 import type * as activities from "../activities.js";
 import type * as dashboard from "../dashboard.js";
 import type * as fields from "../fields.js";
+import type * as inventory from "../inventory.js";
 import type * as organizations from "../organizations.js";
 import type * as seasons from "../seasons.js";
 
@@ -32,6 +33,7 @@ declare const fullApi: ApiFromModules<{
   activities: typeof activities;
   dashboard: typeof dashboard;
   fields: typeof fields;
+  inventory: typeof inventory;
   organizations: typeof organizations;
   seasons: typeof seasons;
 }>;
