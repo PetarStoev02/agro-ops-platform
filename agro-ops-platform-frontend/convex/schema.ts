@@ -60,17 +60,53 @@ export default defineSchema({
   activities: defineTable({
     organizationId: v.id("organizations"),
     fieldId: v.optional(v.id("fields")),
-    type: v.string(), // e.g., "planting", "harvesting", "fertilizing"
+    type: v.string(), // e.g., "planting", "harvesting", "fertilizing" (kept for backward compatibility)
+    category: v.union(
+      v.literal("chemical_treatment"),
+      v.literal("field_inspection"),
+      v.literal("fertilizer"),
+      v.literal("farm_activity")
+    ),
     description: v.optional(v.string()),
     date: v.number(),
     userId: v.string(), // Clerk user ID
-    metadata: v.optional(v.any()),
+    // Category-specific fields
+    // Chemical Treatment fields
+    chemicalId: v.optional(v.id("inventory")), // Reference to inventory item
+    chemicalName: v.optional(v.string()),
+    infestationType: v.optional(v.string()),
+    dose: v.optional(v.number()), // Dose per decare (л/дка)
+    quarantinePeriod: v.optional(v.number()), // Карантитнен срок (0 = none)
+    treatedArea: v.optional(v.number()), // Treated area in decares
+    equipment: v.optional(v.string()),
+    // Field Inspection fields
+    startDate: v.optional(v.number()),
+    surveyedArea: v.optional(v.number()), // Surveyed area in decares
+    attackedArea: v.optional(v.number()), // Attacked area in decares
+    damage: v.optional(v.string()),
+    damageType: v.optional(v.string()),
+    attackDensity: v.optional(v.string()), // Density/degree of attack
+    phenologicalPhase: v.optional(v.string()),
+    // Fertilizer fields
+    fertilizerId: v.optional(v.id("inventory")), // Reference to inventory item
+    fertilizerName: v.optional(v.string()),
+    fertilizedArea: v.optional(v.number()), // Fertilized area in decares
+    fertilizerType: v.optional(v.string()),
+    // Farm Activity fields
+    endDate: v.optional(v.number()),
+    activityType: v.optional(v.string()), // Type of farm activity
+    materialType: v.optional(v.string()), // Type of material used (seeds, fertilizers, PPP)
+    quantity: v.optional(v.string()), // Quantity used (e.g., "10 kg/dka")
+    // Common inventory reference
+    inventoryItemId: v.optional(v.id("inventory")), // Generic inventory reference
+    metadata: v.optional(v.any()), // Kept for backward compatibility
     createdAt: v.number(),
     updatedAt: v.number(),
   })
     .index("by_organization", ["organizationId"])
     .index("by_field", ["fieldId"])
-    .index("by_date", ["date"]),
+    .index("by_date", ["date"])
+    .index("by_category", ["category"]),
 
   // Diaries (farming diaries/logs)
   diaries: defineTable({
@@ -92,11 +128,13 @@ export default defineSchema({
   inventory: defineTable({
     organizationId: v.id("organizations"),
     name: v.string(),
-    category: v.string(), // e.g., "seeds", "fertilizer", "equipment"
+    category: v.string(), // e.g., "seeds", "fertilizer", "equipment", "chemical"
     quantity: v.number(),
     unit: v.string(), // e.g., "kg", "liters", "pieces"
     location: v.optional(v.string()),
     expiryDate: v.optional(v.number()),
+    cropTypes: v.optional(v.array(v.string())), // Applicable crop types for chemicals/fertilizers
+    applicableFor: v.optional(v.array(v.string())), // Activity types this item can be used for
     createdAt: v.number(),
     updatedAt: v.number(),
   })

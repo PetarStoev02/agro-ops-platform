@@ -185,17 +185,20 @@ export const getRecentActivities = query({
       .order("desc")
       .take(limit);
 
-    // Fetch field names for activities that have fieldId
+    // Fetch field names and IDs for activities that have fieldId
     const enrichedActivities = await Promise.all(
       activities.map(async (activity) => {
         let fieldName = null;
+        let fieldId = null;
         if (activity.fieldId) {
           const field = await ctx.db.get(activity.fieldId);
           fieldName = field?.name || null;
+          fieldId = activity.fieldId;
         }
         return {
           ...activity,
           fieldName,
+          fieldId,
         };
       })
     );
