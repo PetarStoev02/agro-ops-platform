@@ -36,9 +36,10 @@ export const getDashboardStats = query({
     // Get unread notifications count (if userId provided)
     let unreadNotifications = 0;
     if (args.userId) {
+      const userId = args.userId;
       const notifications = await ctx.db
         .query("notifications")
-        .withIndex("by_user", (q) => q.eq("userId", args.userId))
+        .withIndex("by_user", (q) => q.eq("userId", userId))
         .filter((q) => q.eq(q.field("read"), false))
         .collect();
       unreadNotifications = notifications.length;
