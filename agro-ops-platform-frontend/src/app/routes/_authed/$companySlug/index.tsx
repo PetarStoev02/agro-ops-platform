@@ -5,11 +5,15 @@ import { useParams, useNavigate } from "@tanstack/react-router";
 import { useOrganization } from "@clerk/nextjs";
 import { useEffect } from "react";
 import DashboardPage from "@/src/pages/dashboard/page";
+import { useSyncOrganization } from "@/src/shared/hooks/use-sync-organization";
 
 const CompanyDashboardRoute = () => {
   const { companySlug } = useParams({ from: "/_authed/$companySlug/" });
   const { organization, isLoaded } = useOrganization();
   const navigate = useNavigate();
+
+  // Automatically sync organization to Convex
+  useSyncOrganization();
 
   useEffect(() => {
     if (isLoaded && organization) {

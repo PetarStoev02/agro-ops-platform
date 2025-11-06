@@ -68,13 +68,118 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/shared/components/app-sidebar.tsx:
-#~ msgid "Notifications"
-#~ msgstr "Notifications"
-
-#. js-lingui-explicit-id
-#: src/shared/components/app-sidebar.tsx:
 #~ msgid "Imports & Exports"
 #~ msgstr "Imports & Exports"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:184
+msgid "{area} hectares total"
+msgstr "{area} hectares total"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:204
+msgid "{count} activities this week"
+msgstr "{count} activities this week"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/audit-status.tsx:63
+msgid "{count} audits awaiting completion"
+msgstr "{count} audits awaiting completion"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:96
+msgid "{count} fields • {area} ha"
+msgstr "{count} fields • {area} ha"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:82
+msgid "{count} fields • {area} hectares total"
+msgstr "{count} fields • {area} hectares total"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:171
+msgid "{count} items in stock"
+msgstr "{count} items in stock"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:88
+msgid "{count} items requiring attention"
+msgstr "{count} items requiring attention"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/member-activity.tsx:97
+msgid "{count} team members segmented by activity level"
+msgstr "{count} team members segmented by activity level"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:127
+msgid "{percentage}% of area"
+msgstr "{percentage}% of area"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:112
+msgid "{percentage}% of fields"
+msgstr "{percentage}% of fields"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/financial-widget.tsx:88
+msgid "{seasonName} • {count} transactions"
+msgstr "{seasonName} • {count} transactions"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/audit-status.tsx:109
+msgid "+{count} more pending audit"
+msgstr "+{count} more pending audit"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/audit-status.tsx:59
+msgid "0 audits awaiting completion"
+msgstr "0 audits awaiting completion"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:84
+msgid "0 items requiring attention"
+msgstr "0 items requiring attention"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/member-activity.tsx:93
+msgid "0 team members segmented by activity level"
+msgstr "0 team members segmented by activity level"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/member-activity.tsx:78
+msgid "0-2 activities this season"
+msgstr "0-2 activities this season"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/audit-status.tsx:61
+msgid "1 audit awaiting completion"
+msgstr "1 audit awaiting completion"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:86
+msgid "1 item requiring attention"
+msgstr "1 item requiring attention"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/member-activity.tsx:95
+msgid "1 team member segmented by activity level"
+msgstr "1 team member segmented by activity level"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/member-activity.tsx:74
+msgid "10+ activities this season"
+msgstr "10+ activities this season"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/member-activity.tsx:76
+msgid "3-9 activities this season"
+msgstr "3-9 activities this season"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:181
+msgid "Active Fields"
+msgstr "Active Fields"
 
 #. js-lingui-explicit-id
 #: src/shared/components/site-header.tsx:17
@@ -84,13 +189,180 @@ msgstr "Agro Ops Platform"
 #~ msgid "Agro Ops Platform"
 #~ msgstr "Agro Ops Platform"
 
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/audit-status.tsx:76
+msgid "All audits are up to date"
+msgstr "All audits are up to date"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:64
+msgid "All inventory items are well stocked and not near expiry"
+msgstr "All inventory items are well stocked and not near expiry"
+
 #~ msgid "Bulgarian"
 #~ msgstr "Bulgarian"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:110
+msgid "Current stock: {quantity} {unit}"
+msgstr "Current stock: {quantity} {unit}"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:53
+msgid "Distribution of fields and area"
+msgstr "Distribution of fields and area"
 
 #~ msgid "English"
 #~ msgstr "English"
 
 #. js-lingui-explicit-id
+#: src/shared/components/dashboard/financial-widget.tsx:117
+msgid "Expenses"
+msgstr "Expenses"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:123
+#: src/shared/components/dashboard/inventory-alerts.tsx:133
+msgid "Expires {time}"
+msgstr "Expires {time}"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:50
+#: src/shared/components/dashboard/fields-chart.tsx:79
+msgid "Fields by Crop Type"
+msgstr "Fields by Crop Type"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/financial-widget.tsx:51
+#: src/shared/components/dashboard/financial-widget.tsx:85
+msgid "Financial Summary"
+msgstr "Financial Summary"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/member-activity.tsx:61
+msgid "High Activity"
+msgstr "High Activity"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/financial-widget.tsx:104
+msgid "Income"
+msgstr "Income"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/financial-widget.tsx:54
+msgid "Income and expenses"
+msgstr "Income and expenses"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:54
+#: src/shared/components/dashboard/inventory-alerts.tsx:80
+msgid "Inventory Alerts"
+msgstr "Inventory Alerts"
+
+#. js-lingui-explicit-id
 #: src/shared/components/language-switcher.tsx:41
 msgid "Language"
 msgstr "Language"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/activity-feed.tsx:60
+#: src/shared/components/dashboard/activity-feed.tsx:79
+msgid "Latest farming activities"
+msgstr "Latest farming activities"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:118
+#: src/shared/components/dashboard/inventory-alerts.tsx:132
+msgid "Low stock alert"
+msgstr "Low stock alert"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/inventory-alerts.tsx:57
+msgid "Low stock and expiry warnings"
+msgstr "Low stock and expiry warnings"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/member-activity.tsx:65
+msgid "Low/Inactive"
+msgstr "Low/Inactive"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/member-activity.tsx:63
+msgid "Medium Activity"
+msgstr "Medium Activity"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/member-activity.tsx:89
+msgid "Member Activity"
+msgstr "Member Activity"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/financial-widget.tsx:131
+msgid "Net Balance"
+msgstr "Net Balance"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/fields-chart.tsx:58
+msgid "No fields data available"
+msgstr "No fields data available"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/financial-widget.tsx:59
+msgid "No financial data available"
+msgstr "No financial data available"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/activity-feed.tsx:65
+msgid "No recent activities"
+msgstr "No recent activities"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:201
+msgid "Notifications"
+msgstr "Notifications"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:196
+msgid "Organization members"
+msgstr "Organization members"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/audit-status.tsx:55
+msgid "Pending Audits"
+msgstr "Pending Audits"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:153
+msgid "Please wait while we sync your organization data. This may take a few moments."
+msgstr "Please wait while we sync your organization data. This may take a few moments."
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/financial-widget.tsx:139
+msgid "Profit Margin"
+msgstr "Profit Margin"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/activity-feed.tsx:57
+#: src/shared/components/dashboard/activity-feed.tsx:76
+msgid "Recent Activities"
+msgstr "Recent Activities"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/audit-status.tsx:98
+msgid "Scheduled {time}"
+msgstr "Scheduled {time}"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:150
+msgid "Setting up organization..."
+msgstr "Setting up organization..."
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:194
+msgid "Team Members"
+msgstr "Team Members"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:168
+msgid "Total Products"
+msgstr "Total Products"
