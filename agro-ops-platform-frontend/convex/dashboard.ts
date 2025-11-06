@@ -93,58 +93,70 @@ export const getFieldsBySeasonWithBreakdown = query({
     const seasonMap = new Map(seasons.map(s => [s._id, s]));
 
     // Group fields by season
-    const fieldsBySeason: Record<string, {
+    // Use Map to avoid non-ASCII characters in object keys
+    const fieldsBySeason = new Map<string, {
       seasonName: string;
       year: number;
       count: number;
       totalArea: number;
-      cropTypes: Record<string, { count: number; area: number }>;
-    }> = {};
+      cropTypes: Map<string, { count: number; area: number }>;
+    }>();
 
-    // Group by crop type (overall)
-    const cropTypeBreakdown: Record<string, { count: number; area: number }> = {};
+    // Group by crop type (overall) - use Map to avoid non-ASCII keys
+    const cropTypeBreakdown = new Map<string, { count: number; area: number }>();
 
     fields.forEach(field => {
       const seasonKey = field.seasonId || "no-season";
       const cropType = field.cropType || "Unknown";
       
       // Initialize season group if needed
-      if (!fieldsBySeason[seasonKey]) {
+      if (!fieldsBySeason.has(seasonKey)) {
         const season = field.seasonId ? seasonMap.get(field.seasonId) : null;
-        fieldsBySeason[seasonKey] = {
+        fieldsBySeason.set(seasonKey, {
           seasonName: season?.name || "No Season",
           year: season ? new Date(season.startDate).getFullYear() : new Date().getFullYear(),
           count: 0,
           totalArea: 0,
-          cropTypes: {},
-        };
+          cropTypes: new Map(),
+        });
       }
+
+      const seasonData = fieldsBySeason.get(seasonKey)!;
 
       // Update season statistics
-      fieldsBySeason[seasonKey].count++;
-      fieldsBySeason[seasonKey].totalArea += field.area;
+      seasonData.count++;
+      seasonData.totalArea += field.area;
 
       // Update crop type for this season
-      if (!fieldsBySeason[seasonKey].cropTypes[cropType]) {
-        fieldsBySeason[seasonKey].cropTypes[cropType] = { count: 0, area: 0 };
+      if (!seasonData.cropTypes.has(cropType)) {
+        seasonData.cropTypes.set(cropType, { count: 0, area: 0 });
       }
-      fieldsBySeason[seasonKey].cropTypes[cropType].count++;
-      fieldsBySeason[seasonKey].cropTypes[cropType].area += field.area;
+      const cropTypeData = seasonData.cropTypes.get(cropType)!;
+      cropTypeData.count++;
+      cropTypeData.area += field.area;
 
       // Update overall crop type breakdown
-      if (!cropTypeBreakdown[cropType]) {
-        cropTypeBreakdown[cropType] = { count: 0, area: 0 };
+      if (!cropTypeBreakdown.has(cropType)) {
+        cropTypeBreakdown.set(cropType, { count: 0, area: 0 });
       }
-      cropTypeBreakdown[cropType].count++;
-      cropTypeBreakdown[cropType].area += field.area;
+      const overallCropTypeData = cropTypeBreakdown.get(cropType)!;
+      overallCropTypeData.count++;
+      overallCropTypeData.area += field.area;
     });
 
     return {
-      bySeason: Object.entries(fieldsBySeason).map(([seasonId, data]) => ({
+      bySeason: Array.from(fieldsBySeason.entries()).map(([seasonId, data]) => ({
         seasonId,
-        ...data,
+        seasonName: data.seasonName,
+        year: data.year,
+        count: data.count,
+        totalArea: data.totalArea,
+        cropTypes: Array.from(data.cropTypes.entries()).map(([cropType, stats]) => ({
+          cropType,
+          ...stats,
+        })),
       })),
-      byCropType: Object.entries(cropTypeBreakdown).map(([cropType, data]) => ({
+      byCropType: Array.from(cropTypeBreakdown.entries()).map(([cropType, data]) => ({
         cropType,
         ...data,
       })),

@@ -22,13 +22,18 @@ export default defineSchema({
   // Fields (agricultural fields)
   fields: defineTable({
     organizationId: v.id("organizations"),
-    name: v.string(),
-    area: v.number(), // in hectares or square meters
+    name: v.string(), // Field name (Име на полето)
+    bzsNumber: v.string(), // BZS Number (НОМЕР по БЗС) - format "00000-000"
+    populatedPlace: v.string(), // Populated place (Населено място)
+    landArea: v.string(), // Land/Cadastral area (Землище)
+    locality: v.string(), // Locality (Местност)
+    area: v.number(), // Area in decares (Площ (дка.))
+    sowingDate: v.optional(v.number()), // Optional sowing date (Дата на засяване)
+    cropType: v.optional(v.string()), // Crop type (Култура)
     location: v.optional(v.object({
       latitude: v.number(),
       longitude: v.number(),
     })),
-    cropType: v.optional(v.string()),
     seasonId: v.optional(v.id("seasons")),
     createdAt: v.number(),
     updatedAt: v.number(),
@@ -40,6 +45,7 @@ export default defineSchema({
   seasons: defineTable({
     organizationId: v.id("organizations"),
     name: v.string(),
+    year: v.string(), // Year identifier (e.g., "2024 / 2025")
     startDate: v.number(),
     endDate: v.number(),
     isActive: v.boolean(),
@@ -47,7 +53,8 @@ export default defineSchema({
     updatedAt: v.number(),
   })
     .index("by_organization", ["organizationId"])
-    .index("by_active", ["isActive"]),
+    .index("by_active", ["isActive"])
+    .index("by_year", ["year"]),
 
   // Activities (farming activities)
   activities: defineTable({

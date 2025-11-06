@@ -7,6 +7,7 @@ import {
 } from "@/src/shared/components/ui/card";
 import { Skeleton } from "@/src/shared/components/ui/skeleton";
 import { Trans } from "@lingui/react";
+import { useLingui } from "@lingui/react";
 
 interface CropTypeData {
   cropType: string;
@@ -27,6 +28,21 @@ export function FieldsChart({
   totalArea,
   isLoading,
 }: FieldsChartProps) {
+  const { i18n } = useLingui();
+
+  // Map crop type values to translated labels
+  const cropTypeMap = new Map([
+    ["wheat", i18n._("Wheat")],
+    ["corn", i18n._("Corn")],
+    ["sunflower", i18n._("Sunflower")],
+    ["barley", i18n._("Barley")],
+    ["rapeseed", i18n._("Rapeseed")],
+  ]);
+
+  const getCropTypeLabel = (cropType: string) => {
+    return cropTypeMap.get(cropType) || cropType;
+  };
+
   if (isLoading) {
     return (
       <Card>
@@ -109,7 +125,9 @@ export function FieldsChart({
           {sortedData.map((item) => (
             <div key={item.cropType} className="space-y-2">
               <div className="flex items-center justify-between text-sm">
-                <span className="font-medium">{item.cropType}</span>
+                <span className="font-medium">
+                  {getCropTypeLabel(item.cropType)}
+                </span>
                 <span className="text-muted-foreground">
                   <Trans
                     id="{count} fields • {area} ha"
