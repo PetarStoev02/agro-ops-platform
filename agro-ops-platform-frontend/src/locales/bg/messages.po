@@ -171,14 +171,34 @@ msgstr "Търсене на полета..."
 #~ msgstr "Извършени дейности/мерки в стопанството"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:200
-msgid "{area} hectares total"
-msgstr "{area} хектара общо"
+#: src/pages/dashboard/page.tsx:234
+#~ msgid "{count} activities this week"
+#~ msgstr "{count} дейности тази седмица"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:234
-msgid "{count} activities this week"
-msgstr "{count} дейности тази седмица"
+#: src/pages/dashboard/page.tsx:228
+#~ msgid "Notifications"
+#~ msgstr "Известия"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:219
+#~ msgid "Organization members"
+#~ msgstr "Членове на организацията"
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:213
+#~ msgid "Team Members"
+#~ msgstr "Членове на Екипа"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:92
+msgid "{activeCount} active, {totalCount} total"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:127
+msgid "{area} hectares total"
+msgstr "{area} хектара общо"
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/audit-status.tsx:79
@@ -196,7 +216,7 @@ msgid "{count} fields • {area} hectares total"
 msgstr "{count} полета • {area} хектара общо"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:181
+#: src/pages/dashboard/page.tsx:108
 msgid "{count} items in stock"
 msgstr "{count} артикула на склад"
 
@@ -229,6 +249,12 @@ msgstr "{seasonName} • {count} транзакции"
 #: src/shared/components/dashboard/audit-status.tsx:134
 msgid "+{count} more pending audit"
 msgstr "+{count} още чакащи одити"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:156
+#: src/shared/components/dashboard/seasons-widget.tsx:186
+msgid "+{count} more seasons"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/audit-status.tsx:69
@@ -276,9 +302,19 @@ msgid "3-9 activities this season"
 msgstr "3-9 дейности този сезон"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:194
+#: src/shared/components/dashboard/seasons-widget.tsx:126
+msgid "Active"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/dashboard/page.tsx:121
 msgid "Active Fields"
 msgstr "Активни Полета"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:108
+msgid "Active Seasons"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:491
@@ -311,6 +347,11 @@ msgstr "Всички одити са актуални"
 #: src/shared/components/dashboard/inventory-alerts.tsx:73
 msgid "All inventory items are well stocked and not near expiry"
 msgstr "Всички артикули в инвентара са добре на склад и не са близо до изтичане на срока"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:136
+msgid "All Seasons"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/pages/fields/[fieldId]/page.tsx:501
@@ -387,6 +428,11 @@ msgid "Create a new season by entering the year. The season will be named {year}
 msgstr ""
 
 #. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:71
+msgid "Create a season to start tracking your campaigns"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/shared/components/fields/create-season-modal.tsx:107
 msgid "Create New Season"
 msgstr "Създай Нов Сезон"
@@ -407,6 +453,13 @@ msgstr "Създаване..."
 #: src/shared/components/fields/create-field-form.tsx:397
 msgid "Crop Type"
 msgstr "Култура"
+
+#. js-lingui-explicit-id
+#: src/shared/components/dashboard/seasons-widget.tsx:35
+#: src/shared/components/dashboard/seasons-widget.tsx:60
+#: src/shared/components/dashboard/seasons-widget.tsx:86
+msgid "Current Seasons & Campaigns"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/inventory-alerts.tsx:129
@@ -658,14 +711,9 @@ msgid "No recent activities"
 msgstr "Няма последни дейности"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:228
-msgid "Notifications"
-msgstr "Известия"
-
-#. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:219
-msgid "Organization members"
-msgstr "Членове на организацията"
+#: src/shared/components/dashboard/seasons-widget.tsx:66
+msgid "No seasons configured"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/shared/components/dashboard/audit-status.tsx:65
@@ -678,7 +726,7 @@ msgid "Pick a date"
 msgstr "Избери дата"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:158
+#: src/pages/dashboard/page.tsx:85
 msgid "Please wait while we sync your organization data. This may take a few moments."
 msgstr "Моля изчакайте, докато синхронизираме данните на вашата организация. Това може да отнеме няколко момента."
 
@@ -735,7 +783,7 @@ msgid "Season"
 msgstr "Сезон"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:152
+#: src/pages/dashboard/page.tsx:79
 msgid "Setting up organization..."
 msgstr "Настройване на организацията..."
 
@@ -753,12 +801,7 @@ msgid "Sunflower"
 msgstr "Слънчоглед"
 
 #. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:213
-msgid "Team Members"
-msgstr "Членове на Екипа"
-
-#. js-lingui-explicit-id
-#: src/pages/dashboard/page.tsx:175
+#: src/pages/dashboard/page.tsx:102
 msgid "Total Products"
 msgstr "Общо Продукти"
 

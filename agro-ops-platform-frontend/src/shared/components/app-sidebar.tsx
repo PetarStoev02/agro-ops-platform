@@ -1,21 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  Users,
-  Calendar,
-  MapPin,
-  Activity,
-  Warehouse,
-  FileText,
-  CreditCard,
-  ShieldCheck,
-  BarChart3,
-  Bell,
-  Upload,
-  LayoutDashboard,
-  Building2,
-} from "lucide-react";
+import { Calendar, MapPin, Warehouse, LayoutDashboard } from "lucide-react";
 import { useOrganization } from "@clerk/nextjs";
 import { useLocation } from "@tanstack/react-router";
 import { Trans } from "@lingui/react";
@@ -35,29 +21,9 @@ const baseNavItems = [
     icon: LayoutDashboard,
   },
   {
-    titleKey: "Organizations & Roles",
-    url: "/organizations",
-    icon: Building2,
-  },
-  {
-    titleKey: "Farm Profile",
-    url: "/farm-profile",
-    icon: Users,
-  },
-  {
-    titleKey: "Seasons & Campaigns",
-    url: "/seasons",
-    icon: Calendar,
-  },
-  {
     titleKey: "Fields & Plots",
     url: "/fields",
     icon: MapPin,
-  },
-  {
-    titleKey: "Activities",
-    url: "/activities",
-    icon: Activity,
   },
   {
     titleKey: "Warehouse & Inventory",
@@ -65,34 +31,9 @@ const baseNavItems = [
     icon: Warehouse,
   },
   {
-    titleKey: "Diaries for БАБХ",
-    url: "/diaries",
-    icon: FileText,
-  },
-  {
-    titleKey: "Credits & Payments",
-    url: "/credits",
-    icon: CreditCard,
-  },
-  {
-    titleKey: "Audits & Compliance",
-    url: "/audits",
-    icon: ShieldCheck,
-  },
-  {
-    titleKey: "Reports & Analytics",
-    url: "/reports",
-    icon: BarChart3,
-  },
-  {
-    titleKey: "Notifications",
-    url: "/notifications",
-    icon: Bell,
-  },
-  {
-    titleKey: "Imports & Exports",
-    url: "/imports-exports",
-    icon: Upload,
+    titleKey: "Seasons & Campaigns",
+    url: "/seasons",
+    icon: Calendar,
   },
 ];
 
