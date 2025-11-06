@@ -11,6 +11,8 @@ import { Skeleton } from "@/src/shared/components/ui/skeleton";
 import { AlertTriangle, Package } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { Trans } from "@lingui/react";
+import { useNavigate, useParams } from "@tanstack/react-router";
+import { useOrganization } from "@clerk/nextjs";
 
 interface InventoryAlert {
   _id: string;
@@ -28,6 +30,18 @@ interface InventoryAlertsProps {
 }
 
 export function InventoryAlerts({ alerts, isLoading }: InventoryAlertsProps) {
+  const navigate = useNavigate();
+  const { organization } = useOrganization();
+
+  const handleAlertClick = (category: string) => {
+    if (organization?.slug) {
+      navigate({
+        to: "/$companySlug/warehouse",
+        params: { companySlug: organization.slug },
+      });
+    }
+  };
+
   if (isLoading) {
     return (
       <Card>
@@ -57,12 +71,12 @@ export function InventoryAlerts({ alerts, isLoading }: InventoryAlertsProps) {
       <Card>
         <CardHeader>
           <CardTitle>
-            <Trans id="Inventory Alerts" message="Inventory Alerts" />
+            <Trans id="Inventory Alerts" message="Сигнали за Инвентар" />
           </CardTitle>
           <CardDescription>
             <Trans
               id="Low stock and expiry warnings"
-              message="Low stock and expiry warnings"
+              message="Предупреждения за ниски наличности и срок на годност"
             />
           </CardDescription>
         </CardHeader>
@@ -72,7 +86,7 @@ export function InventoryAlerts({ alerts, isLoading }: InventoryAlertsProps) {
             <AlertDescription>
               <Trans
                 id="All inventory items are well stocked and not near expiry"
-                message="All inventory items are well stocked and not near expiry"
+                message="Всички артикули в инвентара са добре на склад и не са близо до изтичане на срока"
               />
             </AlertDescription>
           </Alert>
@@ -85,97 +99,115 @@ export function InventoryAlerts({ alerts, isLoading }: InventoryAlertsProps) {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <AlertTriangle className="h-5 w-5 text-amber-500" />
-          <Trans id="Inventory Alerts" message="Inventory Alerts" />
+          <AlertTriangle className="h-5 w-5 text-destructive" />
+          <Trans id="Inventory Alerts" message="Сигнали за Инвентар" />
         </CardTitle>
         <CardDescription>
           {safeAlerts.length === 0 ? (
             <Trans
               id="0 items requiring attention"
-              message="0 items requiring attention"
+              message="0 артикула изискват внимание"
             />
           ) : safeAlerts.length === 1 ? (
             <Trans
               id="1 item requiring attention"
-              message="1 item requiring attention"
+              message="1 артикул изисква внимание"
             />
           ) : (
             <Trans
               id="{count} items requiring attention"
-              message="{count} items requiring attention"
+              message="{count} артикула изискват внимание"
               values={{ count: safeAlerts.length }}
             />
           )}
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="space-y-3">
+        <div className="space-y-3 w-full">
           {safeAlerts.map((item) => (
             <Alert
               key={item._id}
               variant="destructive"
-              className="border-amber-500/50 bg-amber-50 dark:bg-amber-950/20"
+              className="w-full border-destructive/50 bg-destructive/5 dark:bg-destructive/10 cursor-pointer hover:bg-destructive/10 dark:hover:bg-destructive/20 transition-colors !grid-cols-1"
+              onClick={() => handleAlertClick(item.category)}
             >
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-medium text-sm">{item.name}</span>
-                    <Badge variant="outline" className="text-xs">
-                      {item.category}
-                    </Badge>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-xs text-muted-foreground">
-                      <Trans
-                        id="Current stock: {quantity} {unit}"
-                        message="Current stock: {quantity} {unit}"
-                        values={{ quantity: item.quantity, unit: item.unit }}
-                      />
-                    </p>
-                    {item.alertType === "low_stock" && (
-                      <p className="text-xs text-amber-700 dark:text-amber-400">
-                        ⚠️{" "}
-                        <Trans id="Low stock alert" message="Low stock alert" />
-                      </p>
+              <div className="w-full min-w-0 flex flex-col">
+                <div className="flex items-center gap-2 mb-2 flex-wrap">
+                  <span className="font-medium text-sm text-destructive flex-shrink-0">
+                    {item.name}
+                  </span>
+                  <Badge variant="outline" className="text-xs flex-shrink-0">
+                    {item.category === "chemical" ? (
+                      <Trans id="Chemical" message="Chemical" />
+                    ) : item.category === "fertilizer" ? (
+                      <Trans id="Fertilizer" message="Fertilizer" />
+                    ) : (
+                      item.category
                     )}
-                    {item.alertType === "near_expiry" && item.expiryDate && (
-                      <p className="text-xs text-amber-700 dark:text-amber-400">
-                        ⚠️{" "}
+                  </Badge>
+                </div>
+                <div className="space-y-1.5 w-full min-w-0">
+                  <p className="text-xs text-muted-foreground break-words">
+                    <Trans
+                      id="Current stock: {quantity} {unit}"
+                      message="Текущ запас: {quantity} {unit}"
+                      values={{ quantity: item.quantity, unit: item.unit }}
+                    />
+                  </p>
+                  {item.alertType === "low_stock" && (
+                    <div className="flex items-center gap-1.5">
+                      <AlertTriangle className="h-3.5 w-3.5 text-destructive flex-shrink-0" />
+                      <span className="text-xs text-destructive whitespace-nowrap">
+                        <Trans
+                          id="Low stock alert"
+                          message="Предупреждение за ниски наличности"
+                        />
+                      </span>
+                    </div>
+                  )}
+                  {item.alertType === "near_expiry" && item.expiryDate && (
+                    <div className="flex items-center gap-1.5">
+                      <AlertTriangle className="h-3.5 w-3.5 text-destructive flex-shrink-0" />
+                      <span className="text-xs text-destructive">
                         <Trans
                           id="Expires {time}"
-                          message="Expires {time}"
+                          message="Изтича на {time}"
                           values={{
                             time: formatDistanceToNow(item.expiryDate, {
                               addSuffix: true,
                             }),
                           }}
                         />
-                      </p>
-                    )}
-                    {item.alertType === "both" && item.expiryDate && (
-                      <div className="text-xs text-amber-700 dark:text-amber-400">
-                        <p>
-                          ⚠️{" "}
+                      </span>
+                    </div>
+                  )}
+                  {item.alertType === "both" && item.expiryDate && (
+                    <div className="space-y-1.5">
+                      <div className="flex items-center gap-1.5">
+                        <AlertTriangle className="h-3.5 w-3.5 text-destructive flex-shrink-0" />
+                        <span className="text-xs text-destructive whitespace-nowrap">
                           <Trans
                             id="Low stock alert"
-                            message="Low stock alert"
+                            message="Предупреждение за ниски наличности"
                           />
-                        </p>
-                        <p>
-                          ⚠️{" "}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <AlertTriangle className="h-3.5 w-3.5 text-destructive flex-shrink-0" />
+                        <span className="text-xs text-destructive">
                           <Trans
                             id="Expires {time}"
-                            message="Expires {time}"
+                            message="Изтича на {time}"
                             values={{
                               time: formatDistanceToNow(item.expiryDate, {
                                 addSuffix: true,
                               }),
                             }}
                           />
-                        </p>
+                        </span>
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </Alert>

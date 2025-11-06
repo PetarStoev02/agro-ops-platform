@@ -135,6 +135,10 @@ export default defineSchema({
     expiryDate: v.optional(v.number()),
     cropTypes: v.optional(v.array(v.string())), // Applicable crop types for chemicals/fertilizers
     applicableFor: v.optional(v.array(v.string())), // Activity types this item can be used for
+    // Fertilizer-specific fields
+    contents: v.optional(v.string()), // Free text description of fertilizer contents
+    nitrogenContent: v.optional(v.number()), // Nitrogen percentage for fertilizers
+    fertilizerType: v.optional(v.string()), // "гранулиран" or "листен"
     createdAt: v.number(),
     updatedAt: v.number(),
   })
