@@ -1,22 +1,27 @@
 "use client";
 
-import { useQuery } from "convex/react";
+import { useQuery, useAction } from "convex/react";
 import { useOrganization } from "@clerk/nextjs";
 import { api } from "@/convex/_generated/api";
 import { Trans } from "@lingui/react";
 import { Button } from "@/src/shared/components/ui/button";
 import { Card, CardContent } from "@/src/shared/components/ui/card";
-import { FileText, Edit } from "lucide-react";
+import { FileText, Edit, Loader2 } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export function OrganizationProfile() {
   const { organization } = useOrganization();
   const navigate = useNavigate();
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const convexOrg = useQuery(
     api.organizations.getByClerkOrgId,
     organization?.id ? { clerkOrgId: organization.id } : "skip",
   );
+
+  const generateBABH = useAction(api.babhDocument.generateBABHDocument);
 
   if (!convexOrg) {
     return null;
@@ -28,10 +33,49 @@ export function OrganizationProfile() {
     navigate({ to: "/onboarding" });
   };
 
-  const handleGenerateBABH = () => {
-    // TODO: Implement BABH homepage generation
-    // This would consume 1 credit
-    console.log("Generate BABH homepage");
+  const handleGenerateBABH = async () => {
+    if (!organization?.id) {
+      toast.error("Organization not found");
+      return;
+    }
+
+    setIsGenerating(true);
+    try {
+      const result = await generateBABH({
+        clerkOrgId: organization.id,
+      });
+
+      // Convert base64 to blob and download
+      const binaryString = atob(result.document);
+      const bytes = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      const blob = new Blob([bytes], {
+        type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      });
+
+      // Create download link
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = result.filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      toast.success("BABH document generated successfully");
+    } catch (error) {
+      console.error("Error generating BABH document:", error);
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "Failed to generate BABH document"
+      );
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   return (
@@ -131,8 +175,13 @@ export function OrganizationProfile() {
             variant="outline"
             className="w-full"
             onClick={handleGenerateBABH}
+            disabled={isGenerating}
           >
-            <FileText className="mr-2 h-4 w-4" />
+            {isGenerating ? (
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            ) : (
+              <FileText className="mr-2 h-4 w-4" />
+            )}
             <Trans
               id="Generate home page for BABH"
               message="Generate home page for BABH"

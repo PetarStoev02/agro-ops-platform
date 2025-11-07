@@ -9,11 +9,13 @@
  */
 
 import type * as activities from "../activities.js";
+import type * as babhDocument from "../babhDocument.js";
 import type * as dashboard from "../dashboard.js";
 import type * as fields from "../fields.js";
 import type * as inventory from "../inventory.js";
 import type * as organizations from "../organizations.js";
 import type * as seasons from "../seasons.js";
+import type * as templateBase64Constant from "../templateBase64Constant.js";
 
 import type {
   ApiFromModules,
@@ -31,11 +33,13 @@ import type {
  */
 declare const fullApi: ApiFromModules<{
   activities: typeof activities;
+  babhDocument: typeof babhDocument;
   dashboard: typeof dashboard;
   fields: typeof fields;
   inventory: typeof inventory;
   organizations: typeof organizations;
   seasons: typeof seasons;
+  templateBase64Constant: typeof templateBase64Constant;
 }>;
 declare const fullApiWithMounts: typeof fullApi;
 
