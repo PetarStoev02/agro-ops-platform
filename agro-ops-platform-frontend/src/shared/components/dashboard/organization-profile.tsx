@@ -71,7 +71,7 @@ export function OrganizationProfile() {
       toast.error(
         error instanceof Error
           ? error.message
-          : "Failed to generate BABH document"
+          : "Failed to generate BABH document",
       );
     } finally {
       setIsGenerating(false);

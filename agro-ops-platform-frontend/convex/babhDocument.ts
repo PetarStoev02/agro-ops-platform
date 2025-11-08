@@ -15,7 +15,7 @@ export const generateBABHDocument = action({
     clerkOrgId: v.string(),
     seasonId: v.optional(v.id("seasons")),
   },
-  handler: async (ctx, args) => {
+  handler: async (ctx, args): Promise<{ document: string; filename: string }> => {
     // Fetch organization data
     const org = await ctx.runQuery(api.organizations.getByClerkOrgId, {
       clerkOrgId: args.clerkOrgId,
@@ -74,6 +74,25 @@ export const generateBABHDocument = action({
     // - {agriculture_directorate} - Областна дирекция "Земеделие" гр.
     // - {ekatte} - ЕКАТТЕ на регистрация
     // - {odbh} - Областна дирекция по безопасност на храните (ОДБХ) гр.
+
+    // For the inspections table, we need to flatten the structure
+    // Instead of nested loops {#fields}{#inspections}, we'll create a flat array
+    // of all inspections with field information
+    const allInspections: Array<{
+      field_number: string;
+      crop_type: string;
+      serial_number: number;
+      date: string;
+      phenological_phase: string;
+      disease: string;
+      surveyed_area: string;
+      attacked_area: string;
+      attack_degree: string;
+      pest: string;
+      development_stages: string;
+      density: string;
+    }> = [];
+
     const templateData = {
       // Organization data - Page 1 fields (where dots are)
       municipality: org.municipality || "",
@@ -86,7 +105,7 @@ export const generateBABHDocument = action({
       
       // Current date
       current_date: new Date().toLocaleDateString("bg-BG"),
-
+      
       // Fields data - we'll process each field
       fields: fields.map((field) => {
         const fieldIdStr = field._id;
@@ -107,9 +126,10 @@ export const generateBABHDocument = action({
             ? new Date(field.sowingDate).toLocaleDateString("bg-BG")
             : "",
           crop_type: field.cropType || "",
-          // Placeholders for missing data - these will remain as placeholders in the document
-          variety: "",
-          predecessor: "",
+          // Page 2 field variables - these are used in the template
+          // Placeholders for missing data - these will remain empty for manual filling
+          variety: "", // Сорт/хибрид - not in database yet
+          predecessor: "", // Предшественик - not in database yet
           warehouse: "",
           cadastral_number: field.bzsNumber || "",
           field_number: field.bzsNumber || field.name || "",
@@ -137,21 +157,29 @@ export const generateBABHDocument = action({
             : [],
 
           // Field inspections
-          inspections: fieldActivities.inspections.length > 0
-            ? fieldActivities.inspections.map((act, idx) => ({
-                serial_number: idx + 1,
-                date: new Date(act.date).toLocaleDateString("bg-BG"),
-                phenological_phase: act.phenologicalPhase || "",
-                bbch_code: "",
-                disease: act.damageType || "",
-                surveyed_area: act.surveyedArea ? act.surveyedArea.toString() : "",
-                attacked_area: act.attackedArea ? act.attackedArea.toString() : "",
-                attack_degree: act.attackDensity || "",
-                pest: act.damage || "",
-                development_stages: "",
-                density: act.attackDensity || "",
-              }))
-            : [],
+          // Always include inspections array, even if empty, so docxtemplater can process the loop
+          inspections: fieldActivities.inspections.map((act) => {
+            const inspection = {
+              serial_number: allInspections.length + 1,
+              date: new Date(act.date).toLocaleDateString("bg-BG"),
+              phenological_phase: act.phenologicalPhase || "",
+              bbch_code: "",
+              disease: act.damageType || "",
+              surveyed_area: act.surveyedArea ? act.surveyedArea.toString() : "",
+              attacked_area: act.attackedArea ? act.attackedArea.toString() : "",
+              attack_degree: act.attackDensity || "",
+              pest: act.damage || "",
+              development_stages: "",
+              density: act.attackDensity || "",
+            };
+            // Add to flat array for table
+            allInspections.push({
+              field_number: field.bzsNumber || field.name || "",
+              crop_type: field.cropType || "",
+              ...inspection,
+            });
+            return inspection;
+          }),
 
           // Fertilizers
           fertilizers: fieldActivities.fertilizers.length > 0
@@ -166,6 +194,9 @@ export const generateBABHDocument = action({
             : [],
         };
       }),
+
+      // Flat array of all inspections for the table (simpler than nested loops)
+      all_inspections: allInspections,
 
       // Global placeholders for missing data - leave empty so they can be filled manually
       // These are fields that don't exist in the database yet
@@ -192,6 +223,20 @@ export const generateBABHDocument = action({
       // Convert base64 to buffer
       const templateBuffer = Buffer.from(TEMPLATE_BASE64, "base64");
       const zip = new PizZip(templateBuffer);
+      
+      // Validate XML structure before using docxtemplater
+      // Note: Word documents can have slightly unbalanced XML (Word is tolerant),
+      // but docxtemplater requires valid XML. We'll try to use it anyway and catch errors.
+      const docXml = zip.files["word/document.xml"].asText();
+      const trOpen = (docXml.match(/<w:tr[^>]*>/g) || []).length;
+      const trClose = (docXml.match(/<\/w:tr>/g) || []).length;
+      
+      if (trOpen !== trClose) {
+        console.warn(`XML validation warning: Unbalanced table rows (${trOpen} open, ${trClose} close)`);
+        console.warn("This might cause docxtemplater to fail. The template may need to be fixed.");
+        // Don't throw here - let docxtemplater try to parse it and give a better error message
+      }
+      
       const doc = new Docxtemplater(zip, {
         paragraphLoop: true,
         linebreaks: true,
@@ -209,17 +254,40 @@ export const generateBABHDocument = action({
         console.log("Fields count:", templateData.fields.length);
         if (templateData.fields.length > 0) {
           console.log("First field data:", JSON.stringify(templateData.fields[0], null, 2));
+          console.log("First field inspections count:", templateData.fields[0].inspections.length);
+          if (templateData.fields[0].inspections.length > 0) {
+            console.log("First inspection:", JSON.stringify(templateData.fields[0].inspections[0], null, 2));
+          }
         }
       } catch (error) {
         // Handle rendering errors
         if (error instanceof Error) {
-          const e = error as any;
+          // Check if it's an XML parsing error
+          if (error.message && error.message.includes("invalid xml")) {
+            throw new Error(
+              `Invalid XML structure in template. This usually happens when the template has unbalanced XML tags. ` +
+              `Please check the template file or regenerate it using the add-template-variables.js script. ` +
+              `Original error: ${error.message}`
+            );
+          }
+          // Check for docxtemplater-specific error properties
+          const e = error as Error & {
+            properties?: {
+              errors?: Array<{
+                properties?: {
+                  key?: string;
+                  message?: string;
+                };
+                message?: string;
+              }>;
+            };
+          };
           if (e.properties && e.properties.errors instanceof Array) {
             const errorMessages = e.properties.errors
-              .map((error: any) => {
-                return error.properties
-                  ? `${error.properties.key} - ${error.properties.message}`
-                  : error.message;
+              .map((err) => {
+                return err.properties
+                  ? `${err.properties.key} - ${err.properties.message}`
+                  : err.message;
               })
               .join(", ");
             throw new Error(`Template rendering error: ${errorMessages}`);

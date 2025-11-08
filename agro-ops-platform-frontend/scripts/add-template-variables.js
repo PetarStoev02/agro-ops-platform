@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require("fs");
 const path = require("path");
 const PizZip = require("pizzip");
@@ -76,9 +77,16 @@ const simpleReplacements = [
   },
   {
     // Населено място - might have different spacing
+    // This pattern should catch it on page 1
+    pattern: /(<w:t[^>]*>)(Населено място\s+)(\.{20,})(\s*<\/w:t>)/g,
+    replacement: "$1$2{settlement}$4",
+    description: "Населено място (page 1)",
+  },
+  {
+    // Населено място - alternative pattern with more flexible spacing
     pattern: /(<w:t[^>]*>)(Населено място[^<]*?)(\.{15,})(\s*<\/w:t>)/g,
     replacement: "$1$2{settlement}$4",
-    description: "Населено място",
+    description: "Населено място (flexible)",
   },
   {
     pattern: /(<w:t[^>]*>)(Земеделски производител[^<]*?)(\.{15,})(\s*<\/w:t>)/g,
@@ -127,6 +135,47 @@ const simpleReplacements = [
   },
 ];
 
+// Page 2 field variables - these appear after "ПОЯВА, РАЗВИТИЕ"
+const page2Replacements = [
+  {
+    // № на полето според единния регистър на площите - dots are split across multiple nodes
+    // Structure: text with dots, then </w:t></w:r><w:r>...<w:t>....</w:t>...<w:t>.....</w:t>
+    pattern: /(№ на полето според единния регистър на площите[^<]*)(\.{10,})(<\/w:t>[^<]*<w:r[^>]*>[^<]*<w:t[^>]*>)(\.{3,})(<\/w:t>[^<]*<w:r[^>]*>[^<]*<w:t[^>]*>)(\.{3,})(<\/w:t>)/g,
+    replacement: "$1{field_number}$3$7",
+    description: "№ на полето (split nodes)",
+  },
+  {
+    // Alternative: if all dots are in single text node
+    pattern: /(<w:t[^>]*>)(№ на полето според единния регистър на площите[^<]*?)(\.{15,})(<\/w:t>)/g,
+    replacement: "$1$2{field_number}$4",
+    description: "№ на полето (single node)",
+  },
+  {
+    // Култура
+    pattern: /(<w:t[^>]*>)(Култура[^<]*?)(\.{15,})(\s*<\/w:t>)/g,
+    replacement: "$1$2{crop_type}$4",
+    description: "Култура",
+  },
+  {
+    // Сорт/хибрид
+    pattern: /(<w:t[^>]*>)(Сорт\/хибрид[^<]*?)(\.{15,})(\s*<\/w:t>)/g,
+    replacement: "$1$2{variety}$4",
+    description: "Сорт/хибрид",
+  },
+  {
+    // Засята площ (дка)
+    pattern: /(<w:t[^>]*>)(Засята площ\s*\(дка\)[^<]*?)(\.{10,})(\s*<\/w:t>)/g,
+    replacement: "$1$2{area}$4",
+    description: "Засята площ (дка)",
+  },
+  {
+    // Предшественик
+    pattern: /(<w:t[^>]*>)(Предшественик[^<]*?)(\.{15,})(\s*<\/w:t>)/g,
+    replacement: "$1$2{predecessor}$4",
+    description: "Предшественик",
+  },
+];
+
 // Apply replacements
 let modifiedDoc = doc;
 let replacementCount = 0;
@@ -152,12 +201,77 @@ for (const { pattern, replacement, description } of simpleReplacements) {
   }
 }
 
+// Apply page 2 replacements
+for (const { pattern, replacement, description } of page2Replacements) {
+  const beforeReplace = modifiedDoc;
+  modifiedDoc = modifiedDoc.replace(pattern, replacement);
+  if (beforeReplace !== modifiedDoc) {
+    const matches = beforeReplace.match(pattern);
+    replacementCount += matches ? matches.length : 1;
+    console.log(`✅ Replaced: ${description}`);
+  }
+}
+
 // Check if there are still text nodes with many dots that weren't replaced
 const dotPattern = /(<w:t[^>]*>)(\.{15,})(<\/w:t>)/g;
 const dotMatches = modifiedDoc.match(dotPattern);
 if (dotMatches && dotMatches.length > 0) {
   console.log(`\n⚠️  Found ${dotMatches.length} text node(s) with dots that weren't matched.`);
   console.log("   These might need manual variable assignment in the template.");
+}
+
+// Add loop syntax for inspections table (Table 3)
+// NOTE: We're NOT modifying the table structure to avoid breaking XML
+// Instead, we'll just add variables in the first data row
+// The loop tags will be added manually or handled differently
+const page2Start = modifiedDoc.indexOf("ПОЯВА, РАЗВИТИЕ");
+if (page2Start > -1) {
+  const table3Start = modifiedDoc.indexOf("<w:tbl>", page2Start);
+  if (table3Start > -1) {
+    const table3End = modifiedDoc.indexOf("</w:tbl>", table3Start);
+    if (table3End > -1) {
+      // Find the first data row positions in the full document
+      const firstTrStart = modifiedDoc.indexOf('<w:tr', table3Start);
+      const firstTrEnd = modifiedDoc.indexOf('</w:tr>', firstTrStart);
+      const secondTrStart = modifiedDoc.indexOf('<w:tr', firstTrEnd + 6);
+      const secondTrEnd = modifiedDoc.indexOf('</w:tr>', secondTrStart);
+      
+      if (firstTrStart > -1 && firstTrEnd > -1 && secondTrStart > -1 && secondTrEnd > -1) {
+        // Get the first data row (complete with <w:tr> and </w:tr>)
+        let firstDataRow = modifiedDoc.substring(secondTrStart, secondTrEnd + 6);
+        
+        // Replace numbers with variables - ONLY in text content, don't modify structure
+        firstDataRow = firstDataRow.replace(/(<w:t[^>]*>)(1)(<\/w:t>)/g, "$1{#all_inspections}{serial_number}$3");
+        firstDataRow = firstDataRow.replace(/(<w:t[^>]*>)(2)(<\/w:t>)/g, "$1{date}$3");
+        firstDataRow = firstDataRow.replace(/(<w:t[^>]*>)(3)(<\/w:t>)/g, "$1{phenological_phase}$3");
+        firstDataRow = firstDataRow.replace(/(<w:t[^>]*>)(4)(<\/w:t>)/g, "$1{disease}$3");
+        firstDataRow = firstDataRow.replace(/(<w:t[^>]*>)(5)(<\/w:t>)/g, "$1{surveyed_area}$3");
+        firstDataRow = firstDataRow.replace(/(<w:t[^>]*>)(6)(<\/w:t>)/g, "$1{attacked_area}$3");
+        firstDataRow = firstDataRow.replace(/(<w:t[^>]*>)(7)(<\/w:t>)/g, "$1{attack_degree}$3");
+        firstDataRow = firstDataRow.replace(/(<w:t[^>]*>)(8)(<\/w:t>)/g, "$1{pest}$3");
+        firstDataRow = firstDataRow.replace(/(<w:t[^>]*>)(9)(<\/w:t>)/g, "$1{development_stages}$3");
+        firstDataRow = firstDataRow.replace(/(<w:t[^>]*>)(10)(<\/w:t>)/g, "$1{density}$3");
+        firstDataRow = firstDataRow.replace(/(<w:t[^>]*>)(11)(<\/w:t>)/g, "$1{/all_inspections}$3");
+        
+        // Replace the first data row - preserve exact structure
+        modifiedDoc = modifiedDoc.substring(0, secondTrStart) + firstDataRow + modifiedDoc.substring(secondTrEnd + 6);
+        
+        console.log(`✅ Added loop syntax and variables for inspections table`);
+        replacementCount++;
+      }
+    }
+  }
+}
+
+// Validate XML structure before saving
+const trOpenBefore = (modifiedDoc.match(/<w:tr[^>]*>/g) || []).length;
+const trCloseBefore = (modifiedDoc.match(/<\/w:tr>/g) || []).length;
+
+if (trOpenBefore !== trCloseBefore) {
+  console.log(`\n⚠️  XML validation: Unbalanced table rows (${trOpenBefore} open, ${trCloseBefore} close)`);
+  console.log("Note: Original template also has this issue, but Word can handle it.");
+  console.log("docxtemplater requires valid XML, so this might cause issues.");
+  // Don't try to fix automatically - it's too risky and might break more things
 }
 
 console.log(`\n📊 Total replacements: ${replacementCount}`);
