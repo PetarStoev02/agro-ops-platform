@@ -28,6 +28,15 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/src/shared/components/ui/alert";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/src/shared/components/ui/pagination";
 import { AlertTriangleIcon, ShieldCheckIcon } from "lucide-react";
 import { toast } from "sonner";
 
@@ -48,6 +57,30 @@ export default function AdminImportChemicalsPage() {
 
   // Get all imported chemicals
   const allChemicals = useQuery(api.chemicals.getAll);
+
+  // Pagination state
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const itemsPerPage = 50;
+
+  // Calculate pagination values
+  const totalPages = allChemicals
+    ? Math.ceil(allChemicals.length / itemsPerPage)
+    : 0;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedChemicals = allChemicals?.slice(startIndex, endIndex) || [];
+
+  // Reset to page 1 when chemicals change
+  React.useEffect(() => {
+    if (allChemicals && currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(1);
+    }
+  }, [allChemicals, currentPage, totalPages]);
+
+  // Scroll to top when page changes
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
 
   // Redirect if not admin (commented out for now - enable when admin check is implemented)
   // React.useEffect(() => {
@@ -175,7 +208,7 @@ export default function AdminImportChemicalsPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {allChemicals.slice(0, 100).map((chemical) => (
+                  {paginatedChemicals.map((chemical) => (
                     <TableRow key={chemical._id}>
                       <TableCell className="font-medium">
                         {chemical.name}
@@ -197,13 +230,122 @@ export default function AdminImportChemicalsPage() {
                   ))}
                 </TableBody>
               </Table>
-              {allChemicals.length > 100 && (
-                <div className="p-4 text-center text-sm text-muted-foreground">
-                  <Trans
-                    id="Showing first 100 of {total} chemicals"
-                    message="Показване на първите 100 от {total} препарати"
-                    values={{ total: allChemicals.length }}
-                  />
+              {totalPages > 1 && (
+                <div className="p-4 border-t">
+                  <Pagination>
+                    <PaginationContent>
+                      <PaginationItem>
+                        <PaginationPrevious
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            if (currentPage > 1) {
+                              setCurrentPage(currentPage - 1);
+                            }
+                          }}
+                          className={
+                            currentPage === 1
+                              ? "pointer-events-none opacity-50"
+                              : "cursor-pointer"
+                          }
+                        />
+                      </PaginationItem>
+                      {(() => {
+                        const pages: (number | "ellipsis")[] = [];
+                        const showEllipsis = totalPages > 7;
+
+                        if (!showEllipsis) {
+                          // Show all pages if total pages <= 7
+                          for (let i = 1; i <= totalPages; i++) {
+                            pages.push(i);
+                          }
+                        } else {
+                          // Always show first page
+                          pages.push(1);
+
+                          if (currentPage <= 4) {
+                            // Near the beginning: 1 2 3 4 5 ... last
+                            for (let i = 2; i <= 5; i++) {
+                              pages.push(i);
+                            }
+                            pages.push("ellipsis");
+                            pages.push(totalPages);
+                          } else if (currentPage >= totalPages - 3) {
+                            // Near the end: 1 ... (n-4) (n-3) (n-2) (n-1) n
+                            pages.push("ellipsis");
+                            for (let i = totalPages - 4; i <= totalPages; i++) {
+                              pages.push(i);
+                            }
+                          } else {
+                            // In the middle: 1 ... (c-1) c (c+1) ... last
+                            pages.push("ellipsis");
+                            for (
+                              let i = currentPage - 1;
+                              i <= currentPage + 1;
+                              i++
+                            ) {
+                              pages.push(i);
+                            }
+                            pages.push("ellipsis");
+                            pages.push(totalPages);
+                          }
+                        }
+
+                        return pages.map((item, index) => {
+                          if (item === "ellipsis") {
+                            return (
+                              <PaginationItem key={`ellipsis-${index}`}>
+                                <PaginationEllipsis />
+                              </PaginationItem>
+                            );
+                          }
+
+                          return (
+                            <PaginationItem key={item}>
+                              <PaginationLink
+                                href="#"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  setCurrentPage(item);
+                                }}
+                                isActive={currentPage === item}
+                                className="cursor-pointer"
+                              >
+                                {item}
+                              </PaginationLink>
+                            </PaginationItem>
+                          );
+                        });
+                      })()}
+                      <PaginationItem>
+                        <PaginationNext
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            if (currentPage < totalPages) {
+                              setCurrentPage(currentPage + 1);
+                            }
+                          }}
+                          className={
+                            currentPage === totalPages
+                              ? "pointer-events-none opacity-50"
+                              : "cursor-pointer"
+                          }
+                        />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+                  <div className="mt-2 text-center text-sm text-muted-foreground">
+                    <Trans
+                      id="Showing {start} to {end} of {total} chemicals"
+                      message="Показване на {start} до {end} от {total} препарати"
+                      values={{
+                        start: startIndex + 1,
+                        end: Math.min(endIndex, totalCount),
+                        total: totalCount,
+                      }}
+                    />
+                  </div>
                 </div>
               )}
             </div>
