@@ -213,5 +213,16 @@ export default defineSchema({
     .index("by_organization", ["organizationId"])
     .index("by_status", ["status"])
     .index("by_date", ["date"]),
+
+  // Allowed Chemicals (global registry from BFSA)
+  allowed_chemicals: defineTable({
+    name: v.string(), // Chemical name
+    dose: v.string(), // Dose with unit (e.g., "2.5 л/дка")
+    dangerTypes: v.array(v.string()), // Array of danger classifications
+    isPrimary: v.boolean(), // Mark primary entry when duplicates exist
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_name", ["name"]),
 });
 

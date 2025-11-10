@@ -9,6 +9,7 @@
  */
 
 import type * as activities from "../activities.js";
+import type * as chemicals from "../chemicals.js";
 import type * as dashboard from "../dashboard.js";
 import type * as fields from "../fields.js";
 import type * as inventory from "../inventory.js";
@@ -31,6 +32,7 @@ import type {
  */
 declare const fullApi: ApiFromModules<{
   activities: typeof activities;
+  chemicals: typeof chemicals;
   dashboard: typeof dashboard;
   fields: typeof fields;
   inventory: typeof inventory;

@@ -28,6 +28,7 @@ import {
   FormMessage,
 } from "@/src/shared/components/ui/form";
 import { Input } from "@/src/shared/components/ui/input";
+import { Combobox } from "@/src/shared/components/ui/combobox";
 import { toast } from "sonner";
 import { useSyncOrganization } from "@/src/shared/hooks/use-sync-organization";
 
@@ -64,6 +65,9 @@ export function AddChemicalForm({
     api.inventory.getById,
     editItemId ? { itemId: editItemId as Id<"inventory"> } : "skip",
   );
+
+  // Query allowed chemicals from global registry
+  const allowedChemicals = useQuery(api.chemicals.getPrimary);
 
   const { i18n } = useLingui();
   const t = (msg: string) => i18n._(msg);
@@ -141,7 +145,7 @@ export function AddChemicalForm({
             {isEditMode ? (
               <Trans id="Edit Chemical" message="Редактиране на препарат" />
             ) : (
-              <Trans id="Add Chemical" message="Добавяне на препарат" />
+              <Trans id="Add Chemical" message="Add Chemical" />
             )}
           </DialogTitle>
           <DialogDescription>
@@ -170,9 +174,33 @@ export function AddChemicalForm({
                     <span className="text-destructive">*</span>
                   </FormLabel>
                   <FormControl>
-                    <Input
+                    <Combobox
+                      options={
+                        allowedChemicals?.map((chemical) => ({
+                          value: chemical.name,
+                          label: chemical.name,
+                          dose: chemical.dose,
+                          dangerTypes: chemical.dangerTypes,
+                        })) || []
+                      }
+                      value={field.value}
+                      onValueChange={(value) => {
+                        field.onChange(value);
+                      }}
                       placeholder={i18n._("Name of preparation/product")}
-                      {...field}
+                      searchPlaceholder={i18n._("Search chemicals...")}
+                      emptyMessage={i18n._("No chemicals found.")}
+                      renderOption={(option) => (
+                        <div className="flex flex-col">
+                          <span>{option.label}</span>
+                          {Array.isArray(option.dangerTypes) &&
+                            option.dangerTypes.length > 0 && (
+                              <span className="text-xs text-muted-foreground">
+                                {option.dangerTypes.join(", ")}
+                              </span>
+                            )}
+                        </div>
+                      )}
                     />
                   </FormControl>
                   <FormMessage />

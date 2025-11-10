@@ -22,6 +22,7 @@ import { Route as AuthedCompanySlugWarehouseRouteImport } from './routes/_authed
 import { Route as AuthedCompanySlugSeasonsRouteImport } from './routes/_authed/$companySlug/seasons'
 import { Route as AuthedCompanySlugFieldsRouteImport } from './routes/_authed/$companySlug/fields'
 import { Route as AuthedCompanySlugFieldsFieldIdRouteImport } from './routes/_authed/$companySlug/fields/$fieldId'
+import { Route as AuthedCompanySlugAdminImportChemicalsRouteImport } from './routes/_authed/$companySlug/admin/import-chemicals'
 
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
@@ -90,6 +91,12 @@ const AuthedCompanySlugFieldsFieldIdRoute =
     path: '/$fieldId',
     getParentRoute: () => AuthedCompanySlugFieldsRoute,
   } as any)
+const AuthedCompanySlugAdminImportChemicalsRoute =
+  AuthedCompanySlugAdminImportChemicalsRouteImport.update({
+    id: '/admin/import-chemicals',
+    path: '/admin/import-chemicals',
+    getParentRoute: () => AuthedCompanySlugRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/auth': typeof AuthRouteWithChildren
@@ -103,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/$companySlug/seasons': typeof AuthedCompanySlugSeasonsRoute
   '/$companySlug/warehouse': typeof AuthedCompanySlugWarehouseRoute
   '/$companySlug/': typeof AuthedCompanySlugIndexRoute
+  '/$companySlug/admin/import-chemicals': typeof AuthedCompanySlugAdminImportChemicalsRoute
   '/$companySlug/fields/$fieldId': typeof AuthedCompanySlugFieldsFieldIdRoute
 }
 export interface FileRoutesByTo {
@@ -115,6 +123,7 @@ export interface FileRoutesByTo {
   '/$companySlug/seasons': typeof AuthedCompanySlugSeasonsRoute
   '/$companySlug/warehouse': typeof AuthedCompanySlugWarehouseRoute
   '/$companySlug': typeof AuthedCompanySlugIndexRoute
+  '/$companySlug/admin/import-chemicals': typeof AuthedCompanySlugAdminImportChemicalsRoute
   '/$companySlug/fields/$fieldId': typeof AuthedCompanySlugFieldsFieldIdRoute
 }
 export interface FileRoutesById {
@@ -131,6 +140,7 @@ export interface FileRoutesById {
   '/_authed/$companySlug/seasons': typeof AuthedCompanySlugSeasonsRoute
   '/_authed/$companySlug/warehouse': typeof AuthedCompanySlugWarehouseRoute
   '/_authed/$companySlug/': typeof AuthedCompanySlugIndexRoute
+  '/_authed/$companySlug/admin/import-chemicals': typeof AuthedCompanySlugAdminImportChemicalsRoute
   '/_authed/$companySlug/fields/$fieldId': typeof AuthedCompanySlugFieldsFieldIdRoute
 }
 export interface FileRouteTypes {
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/$companySlug/seasons'
     | '/$companySlug/warehouse'
     | '/$companySlug/'
+    | '/$companySlug/admin/import-chemicals'
     | '/$companySlug/fields/$fieldId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
     | '/$companySlug/seasons'
     | '/$companySlug/warehouse'
     | '/$companySlug'
+    | '/$companySlug/admin/import-chemicals'
     | '/$companySlug/fields/$fieldId'
   id:
     | '__root__'
@@ -174,6 +186,7 @@ export interface FileRouteTypes {
     | '/_authed/$companySlug/seasons'
     | '/_authed/$companySlug/warehouse'
     | '/_authed/$companySlug/'
+    | '/_authed/$companySlug/admin/import-chemicals'
     | '/_authed/$companySlug/fields/$fieldId'
   fileRoutesById: FileRoutesById
 }
@@ -275,6 +288,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthedCompanySlugFieldsFieldIdRouteImport
       parentRoute: typeof AuthedCompanySlugFieldsRoute
     }
+    '/_authed/$companySlug/admin/import-chemicals': {
+      id: '/_authed/$companySlug/admin/import-chemicals'
+      path: '/admin/import-chemicals'
+      fullPath: '/$companySlug/admin/import-chemicals'
+      preLoaderRoute: typeof AuthedCompanySlugAdminImportChemicalsRouteImport
+      parentRoute: typeof AuthedCompanySlugRoute
+    }
   }
 }
 
@@ -297,6 +317,7 @@ interface AuthedCompanySlugRouteChildren {
   AuthedCompanySlugSeasonsRoute: typeof AuthedCompanySlugSeasonsRoute
   AuthedCompanySlugWarehouseRoute: typeof AuthedCompanySlugWarehouseRoute
   AuthedCompanySlugIndexRoute: typeof AuthedCompanySlugIndexRoute
+  AuthedCompanySlugAdminImportChemicalsRoute: typeof AuthedCompanySlugAdminImportChemicalsRoute
 }
 
 const AuthedCompanySlugRouteChildren: AuthedCompanySlugRouteChildren = {
@@ -304,6 +325,8 @@ const AuthedCompanySlugRouteChildren: AuthedCompanySlugRouteChildren = {
   AuthedCompanySlugSeasonsRoute: AuthedCompanySlugSeasonsRoute,
   AuthedCompanySlugWarehouseRoute: AuthedCompanySlugWarehouseRoute,
   AuthedCompanySlugIndexRoute: AuthedCompanySlugIndexRoute,
+  AuthedCompanySlugAdminImportChemicalsRoute:
+    AuthedCompanySlugAdminImportChemicalsRoute,
 }
 
 const AuthedCompanySlugRouteWithChildren =

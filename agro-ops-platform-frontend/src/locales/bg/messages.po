@@ -14,45 +14,20 @@ msgstr ""
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:148
 #: src/shared/components/fields/create-season-modal.tsx:75
-#: src/shared/components/warehouse/add-chemical-form.tsx:97
+#: src/shared/components/warehouse/add-chemical-form.tsx:101
 #: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:123
 #: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:123
 msgid "Organization not found. Please try again."
 msgstr "Организацията не е намерена. Моля опитайте отново."
 
 #. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-chemical-form.tsx:109
-msgid "Chemical updated successfully"
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:137
+msgid "Foliar fertilizer updated successfully"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-chemical-form.tsx:118
-msgid "Chemical added successfully"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-chemical-form.tsx:128
-msgid "Failed to update chemical"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-chemical-form.tsx:129
-msgid "Failed to add chemical"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-chemical-form.tsx:174
-msgid "Name of preparation/product"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:137
-msgid "Granular fertilizer updated successfully"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:149
-msgid "Granular fertilizer added successfully"
+#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:149
+msgid "Foliar fertilizer added successfully"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -80,13 +55,52 @@ msgid "Select unit"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:137
-msgid "Foliar fertilizer updated successfully"
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:137
+msgid "Granular fertilizer updated successfully"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:149
-msgid "Foliar fertilizer added successfully"
+#: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:149
+msgid "Granular fertilizer added successfully"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:113
+msgid "Chemical updated successfully"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/admin/add-chemical-form.tsx:73
+#: src/shared/components/warehouse/add-chemical-form.tsx:122
+msgid "Chemical added successfully"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:132
+msgid "Failed to update chemical"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/admin/add-chemical-form.tsx:81
+#: src/shared/components/warehouse/add-chemical-form.tsx:133
+msgid "Failed to add chemical"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/warehouse/add-chemical-form.tsx:190
+msgid "Name of preparation/product"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:411
+#: src/shared/components/warehouse/add-chemical-form.tsx:191
+msgid "Search chemicals..."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:412
+#: src/shared/components/warehouse/add-chemical-form.tsx:192
+msgid "No chemicals found."
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -136,12 +150,58 @@ msgid "Create new season"
 msgstr "Създай нов сезон"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:183
+#: src/shared/components/admin/add-chemical-form.tsx:101
+msgid "Enter chemical name"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/admin/add-chemical-form.tsx:117
+msgid "e.g., 2.5 л/дка"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/admin/add-chemical-form.tsx:139
+msgid "e.g., A, B or A;B"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:208
 #: src/shared/components/activities/farm-activity-form.tsx:119
-#: src/shared/components/activities/fertilizer-form.tsx:173
+#: src/shared/components/activities/fertilizer-form.tsx:171
 #: src/shared/components/activities/field-inspection-form.tsx:112
 msgid "Organization or user not found"
 msgstr "Организацията или потребителят не са намерени"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:132
+msgid "Field inspection updated successfully"
+msgstr "Инспекцията на полето е обновена успешно"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:149
+msgid "Field inspection created successfully"
+msgstr "Инспекцията на полето е създадена успешно"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:159
+msgid "Failed to save field inspection"
+msgstr "Неуспешно запазване на инспекцията на полето"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:316
+#: src/shared/components/activities/field-inspection-form.tsx:333
+msgid "Type of damage"
+msgstr "Вид на вреда"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:354
+msgid "Density or degree of attack"
+msgstr "Плътност или степен на нападение"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/field-inspection-form.tsx:376
+msgid "Phenological phase"
+msgstr "Фенологична фаза"
 
 #. js-lingui-explicit-id
 #: src/shared/components/activities/farm-activity-form.tsx:138
@@ -174,100 +234,77 @@ msgid "10 pieces/dka or 10 kg/dka"
 msgstr "10 броя/дка или 10 кг/дка"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:188
-msgid "Please select a chemical"
-msgstr "Моля изберете препарат"
+#: src/shared/components/activities/chemical-treatment-form.tsx:198
+#: src/shared/components/activities/chemical-treatment-form.tsx:219
+#: src/shared/components/activities/fertilizer-form.tsx:161
+#: src/shared/components/activities/fertilizer-form.tsx:182
+msgid "Insufficient quantity available"
+msgstr ""
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:218
-msgid "Chemical treatment updated successfully"
-msgstr "Химическата обработка е обновена успешно"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:235
-msgid "Chemical treatment created successfully"
-msgstr "Химическата обработка е създадена успешно"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:245
-msgid "Failed to save chemical treatment"
-msgstr "Неуспешно запазване на химическата обработка"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:385
-msgid "Select chemical"
-msgstr "Избери препарат"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:424
-msgid "Type of infestation"
-msgstr "Вид на вредител"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:532
-msgid "Equipment used"
-msgstr "Използвана техника"
-
-#. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:178
+#: src/shared/components/activities/fertilizer-form.tsx:176
 msgid "Please select a fertilizer"
 msgstr "Моля изберете тор"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:206
+#: src/shared/components/activities/fertilizer-form.tsx:200
 msgid "Fertilizer application updated successfully"
 msgstr "Приложението на тор е обновено успешно"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:221
+#: src/shared/components/activities/fertilizer-form.tsx:215
 msgid "Fertilizer application created successfully"
 msgstr "Приложението на тор е създадено успешно"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:231
+#: src/shared/components/activities/fertilizer-form.tsx:225
 msgid "Failed to save fertilizer application"
 msgstr "Неуспешно запазване на приложението на тор"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:373
+#: src/shared/components/activities/fertilizer-form.tsx:367
 msgid "Select fertilizer"
 msgstr "Избери тор"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:472
+#: src/shared/components/activities/fertilizer-form.tsx:466
 msgid "Type of fertilizer, seeds, PPP"
 msgstr "Вид на Торове, Семена, ПРЗ"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:132
-msgid "Field inspection updated successfully"
-msgstr "Инспекцията на полето е обновена успешно"
+#: src/shared/components/activities/chemical-treatment-form.tsx:213
+msgid "Please select a chemical"
+msgstr "Моля изберете препарат"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:149
-msgid "Field inspection created successfully"
-msgstr "Инспекцията на полето е създадена успешно"
+#: src/shared/components/activities/chemical-treatment-form.tsx:239
+msgid "Chemical treatment updated successfully"
+msgstr "Химическата обработка е обновена успешно"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:159
-msgid "Failed to save field inspection"
-msgstr "Неуспешно запазване на инспекцията на полето"
+#: src/shared/components/activities/chemical-treatment-form.tsx:256
+msgid "Chemical treatment created successfully"
+msgstr "Химическата обработка е създадена успешно"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:316
-#: src/shared/components/activities/field-inspection-form.tsx:333
-msgid "Type of damage"
-msgstr "Вид на вреда"
+#: src/shared/components/activities/chemical-treatment-form.tsx:266
+msgid "Failed to save chemical treatment"
+msgstr "Неуспешно запазване на химическата обработка"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:354
-msgid "Density or degree of attack"
-msgstr "Плътност или степен на нападение"
+#: src/shared/components/activities/chemical-treatment-form.tsx:410
+msgid "Search and select chemical..."
+msgstr ""
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/field-inspection-form.tsx:376
-msgid "Phenological phase"
-msgstr "Фенологична фаза"
+#: src/shared/components/activities/chemical-treatment-form.tsx:451
+msgid "Type of infestation"
+msgstr "Вид на вредител"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:559
+msgid "Equipment used"
+msgstr "Използвана техника"
 
 #. js-lingui-explicit-id
 #: src/pages/warehouse/page.tsx:126
@@ -305,6 +342,11 @@ msgstr "Дейността е изтрита успешно"
 #: src/pages/fields/[fieldId]/page.tsx:147
 msgid "Failed to delete activity"
 msgstr "Неуспешно изтриване на дейността"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:385
+#~ msgid "Select chemical"
+#~ msgstr "Избери препарат"
 
 #. js-lingui-explicit-id
 #: src/pages/warehouse/page.tsx:126
@@ -580,7 +622,7 @@ msgstr "Вид Мероприятие"
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:491
 #: src/shared/components/onboarding/invite-members-step.tsx:142
-#: src/shared/components/warehouse/add-chemical-form.tsx:221
+#: src/shared/components/warehouse/add-chemical-form.tsx:249
 #: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:367
 #: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:367
 msgid "Add"
@@ -592,7 +634,14 @@ msgid "Add Activity"
 msgstr "Добави Дейност"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:266
+#: src/pages/admin/import-chemicals/page.tsx:116
+#: src/shared/components/admin/add-chemical-form.tsx:156
+#: src/shared/components/warehouse/add-chemical-form.tsx:148
+msgid "Add Chemical"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:287
 msgid "Add Chemical Treatment"
 msgstr "Добави Химическа Обработка"
 
@@ -602,7 +651,7 @@ msgid "Add Farm Activity"
 msgstr "Добави Дейност в Стопанството"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:253
+#: src/shared/components/activities/fertilizer-form.tsx:247
 msgid "Add Fertilizer Application"
 msgstr "Добави Приложение на Тор"
 
@@ -691,7 +740,7 @@ msgstr "Дневник за заверка в БАБХ"
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:483
-#: src/shared/components/warehouse/add-chemical-form.tsx:215
+#: src/shared/components/warehouse/add-chemical-form.tsx:243
 #: src/shared/components/warehouse/add-fertilizer-type-modal.tsx:64
 #: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:361
 #: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:361
@@ -722,18 +771,18 @@ msgstr "НОМЕР по БЗС"
 #: src/pages/fields/[fieldId]/page.tsx:661
 #: src/pages/fields/page.tsx:443
 #: src/pages/warehouse/page.tsx:493
-#: src/shared/components/activities/chemical-treatment-form.tsx:545
+#: src/shared/components/activities/chemical-treatment-form.tsx:572
 #: src/shared/components/activities/farm-activity-form.tsx:392
-#: src/shared/components/activities/fertilizer-form.tsx:487
+#: src/shared/components/activities/fertilizer-form.tsx:481
 #: src/shared/components/activities/field-inspection-form.tsx:391
 #: src/shared/components/fields/create-season-modal.tsx:153
 msgid "Cancel"
 msgstr "Отказ"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:374
+#: src/shared/components/activities/chemical-treatment-form.tsx:395
 #: src/shared/components/dashboard/inventory-alerts.tsx:141
-#: src/shared/components/warehouse/add-chemical-form.tsx:169
+#: src/shared/components/warehouse/add-chemical-form.tsx:173
 #: src/shared/components/warehouse/add-item-type-modal.tsx:50
 msgid "Chemical"
 msgstr "Препарат"
@@ -749,9 +798,9 @@ msgid "Clone Activities"
 msgstr "Клонирай мероприятия"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:548
+#: src/shared/components/activities/chemical-treatment-form.tsx:575
 #: src/shared/components/activities/farm-activity-form.tsx:395
-#: src/shared/components/activities/fertilizer-form.tsx:490
+#: src/shared/components/activities/fertilizer-form.tsx:484
 #: src/shared/components/activities/field-inspection-form.tsx:394
 msgid "Continue"
 msgstr "Продължи"
@@ -820,8 +869,8 @@ msgid "Damage Type"
 msgstr "Вид на вреда"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:327
-#: src/shared/components/activities/fertilizer-form.tsx:314
+#: src/shared/components/activities/chemical-treatment-form.tsx:348
+#: src/shared/components/activities/fertilizer-form.tsx:308
 msgid "Date"
 msgstr "Дата"
 
@@ -867,14 +916,19 @@ msgid "dka"
 msgstr "дка"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:440
+#: src/shared/components/activities/chemical-treatment-form.tsx:467
 msgid "Dose (l/dka)"
 msgstr "Доза (л/дка)"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:410
+#: src/shared/components/activities/fertilizer-form.tsx:404
 msgid "Dose (per dka)"
 msgstr "Доза (в /дка)"
+
+#. js-lingui-explicit-id
+#: src/shared/components/activities/chemical-treatment-form.tsx:428
+msgid "Dose: {dose}"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/pages/fields/page.tsx:332
@@ -890,7 +944,7 @@ msgid "Edit"
 msgstr "Редактирай"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:261
+#: src/shared/components/activities/chemical-treatment-form.tsx:282
 msgid "Edit Chemical Treatment"
 msgstr "Редактирай Химическа Обработка"
 
@@ -900,7 +954,7 @@ msgid "Edit Farm Activity"
 msgstr "Редактирай Дейност в Стопанството"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:248
+#: src/shared/components/activities/fertilizer-form.tsx:242
 msgid "Edit Fertilizer Application"
 msgstr "Редактирай Приложение на Тор"
 
@@ -936,7 +990,7 @@ msgid "End Date"
 msgstr "Крайна Дата"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:528
+#: src/shared/components/activities/chemical-treatment-form.tsx:555
 msgid "Equipment"
 msgstr "Техника"
 
@@ -961,12 +1015,12 @@ msgid "Farm Name"
 msgstr "Име на стопанство"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:437
+#: src/shared/components/activities/fertilizer-form.tsx:431
 msgid "Fertilized Area (dka)"
 msgstr "Наторена площ (дка)"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:361
+#: src/shared/components/activities/fertilizer-form.tsx:355
 #: src/shared/components/dashboard/activity-feed.tsx:223
 #: src/shared/components/dashboard/inventory-alerts.tsx:143
 #: src/shared/components/warehouse/add-item-type-modal.tsx:57
@@ -974,7 +1028,7 @@ msgid "Fertilizer"
 msgstr "Тор"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:468
+#: src/shared/components/activities/fertilizer-form.tsx:462
 msgid "Fertilizer Type"
 msgstr "Вид Тор"
 
@@ -1022,7 +1076,7 @@ msgid "Fill in the required information to create a new field."
 msgstr "Попълнете необходимата информация за създаване на ново поле."
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:279
+#: src/shared/components/activities/chemical-treatment-form.tsx:300
 msgid "Fill in the required information to record a chemical treatment."
 msgstr "Попълнете необходимата информация за записване на химическа обработка."
 
@@ -1032,7 +1086,7 @@ msgid "Fill in the required information to record a farm activity."
 msgstr "Попълнете необходимата информация за записване на дейност в стопанството."
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:266
+#: src/shared/components/activities/fertilizer-form.tsx:260
 msgid "Fill in the required information to record a fertilizer application."
 msgstr "Попълнете необходимата информация за записване на приложение на тор."
 
@@ -1103,7 +1157,7 @@ msgid "Infestation"
 msgstr "Вредител"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:419
+#: src/shared/components/activities/chemical-treatment-form.tsx:446
 msgid "Infestation Type"
 msgstr "Вид на вредител"
 
@@ -1187,6 +1241,7 @@ msgid "Municipality"
 msgstr "Община"
 
 #. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:164
 #: src/pages/warehouse/page.tsx:242
 #: src/pages/warehouse/page.tsx:328
 msgid "Name"
@@ -1218,12 +1273,12 @@ msgid "No activities recorded yet"
 msgstr "Все още няма записани дейности"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:291
+#: src/shared/components/activities/chemical-treatment-form.tsx:312
 msgid "No available chemicals"
 msgstr "Няма налични препарати"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:278
+#: src/shared/components/activities/fertilizer-form.tsx:272
 msgid "No available fertilizers"
 msgstr "Няма налични торове"
 
@@ -1283,10 +1338,10 @@ msgid "Phenological Phase"
 msgstr "Фенологична фаза"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:344
+#: src/shared/components/activities/chemical-treatment-form.tsx:365
 #: src/shared/components/activities/farm-activity-form.tsx:223
 #: src/shared/components/activities/farm-activity-form.tsx:270
-#: src/shared/components/activities/fertilizer-form.tsx:331
+#: src/shared/components/activities/fertilizer-form.tsx:325
 #: src/shared/components/activities/field-inspection-form.tsx:220
 #: src/shared/components/fields/create-field-form.tsx:364
 msgid "Pick a date"
@@ -1322,7 +1377,7 @@ msgstr "Марж на Печалбата"
 #. js-lingui-explicit-id
 #: src/pages/warehouse/page.tsx:245
 #: src/pages/warehouse/page.tsx:334
-#: src/shared/components/warehouse/add-chemical-form.tsx:189
+#: src/shared/components/warehouse/add-chemical-form.tsx:217
 #: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:288
 #: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:288
 msgid "Quantity"
@@ -1334,7 +1389,7 @@ msgid "Quantity (kg./l./dka.)"
 msgstr "Количество (кг./л./дка.)"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:467
+#: src/shared/components/activities/chemical-treatment-form.tsx:494
 msgid "Quarantine Period (0 = none)"
 msgstr "Карантинен срок (0 - няма)"
 
@@ -1367,8 +1422,7 @@ msgid "Report generation functionality coming soon"
 msgstr "* Функционалността за генериране на отчети скоро"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:398
-#: src/shared/components/activities/fertilizer-form.tsx:388
+#: src/shared/components/activities/fertilizer-form.tsx:382
 msgid "Required: {quantity} {unit}"
 msgstr "Изисква се: {quantity} {unit}"
 
@@ -1451,8 +1505,8 @@ msgid "These members will be invited when you click 'Send Invitations'"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:313
-#: src/shared/components/activities/fertilizer-form.tsx:300
+#: src/shared/components/activities/chemical-treatment-form.tsx:334
+#: src/shared/components/activities/fertilizer-form.tsx:294
 msgid "To warehouse"
 msgstr "Към склада"
 
@@ -1462,7 +1516,7 @@ msgid "Total Products"
 msgstr "Общо Продукти"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:498
+#: src/shared/components/activities/chemical-treatment-form.tsx:525
 msgid "Treated Area (dka)"
 msgstr "Третирана площ (дка)"
 
@@ -1492,14 +1546,14 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/shared/components/fields/create-field-form.tsx:489
-#: src/shared/components/warehouse/add-chemical-form.tsx:219
+#: src/shared/components/warehouse/add-chemical-form.tsx:247
 #: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:365
 #: src/shared/components/warehouse/add-granular-fertilizer-form.tsx:365
 msgid "Update"
 msgstr "Обнови"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:274
+#: src/shared/components/activities/chemical-treatment-form.tsx:295
 msgid "Update the chemical treatment information below."
 msgstr "Обновете информацията за химическата обработка по-долу."
 
@@ -1509,7 +1563,7 @@ msgid "Update the farm activity information below."
 msgstr "Обновете информацията за дейността в стопанството по-долу."
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:261
+#: src/shared/components/activities/fertilizer-form.tsx:255
 msgid "Update the fertilizer application information below."
 msgstr "Обновете информацията за приложението на тор по-долу."
 
@@ -1541,12 +1595,12 @@ msgid "Year"
 msgstr "Година"
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/chemical-treatment-form.tsx:297
+#: src/shared/components/activities/chemical-treatment-form.tsx:318
 msgid "You do not have any chemicals applicable to {cropType} in your warehouse. Please navigate to your warehouse and add the necessary chemicals."
 msgstr "Не разполагате с препарати приложими върху {cropType}. Моля навигирайте към склада си и добавете нужните препарати."
 
 #. js-lingui-explicit-id
-#: src/shared/components/activities/fertilizer-form.tsx:284
+#: src/shared/components/activities/fertilizer-form.tsx:278
 msgid "You do not have any fertilizers applicable to {cropType} in your warehouse. Please navigate to your warehouse and add the necessary fertilizers."
 msgstr "Не разполагате с торове приложими върху {cropType}. Моля навигирайте към склада си и добавете нужните торове."
 
@@ -1561,9 +1615,40 @@ msgid "Your organization has been set up successfully. Redirecting to dashboard.
 msgstr ""
 
 #. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:99
+msgid "Admin: Manage Chemicals"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:170
+#: src/shared/components/admin/add-chemical-form.tsx:136
+msgid "Danger Types"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:214
+msgid "No chemicals added yet. Use the form above to add chemicals."
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/shared/components/dashboard/inventory-alerts.tsx:87
 msgid "All inventory items are well stocked and not near expiry"
 msgstr "Всички артикули в инвентара са добре на склад и не са близо до изтичане на срока"
+
+#. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:133
+msgid "All Chemicals"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/admin/add-chemical-form.tsx:142
+msgid "Enter danger types separated by comma or semicolon (e.g., A, B or A;B)"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/admin/add-chemical-form.tsx:120
+msgid "Enter dose with unit (e.g., 2.5 л/дка)"
+msgstr ""
 
 #. js-lingui-explicit-id
 #: src/shared/components/warehouse/add-foliar-fertilizer-form.tsx:242
@@ -1583,13 +1668,34 @@ msgid "Granulated Fertilizer"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-chemical-form.tsx:144
-msgid "Add Chemical"
+#: src/pages/admin/import-chemicals/page.tsx:119
+msgid "Add a new chemical to the global registry. If a chemical with the same name exists but with different danger types, it will be added as a secondary entry."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:105
+msgid "Add chemicals to the global registry"
 msgstr ""
 
 #. js-lingui-explicit-id
 #: src/shared/components/warehouse/add-fertilizer-type-modal.tsx:41
 msgid "Add Fertilizer"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/admin/add-chemical-form.tsx:154
+msgid "Adding..."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:167
+#: src/shared/components/admin/add-chemical-form.tsx:114
+msgid "Dose"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:77
+msgid "Access Denied"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -1606,6 +1712,11 @@ msgstr "Изтича на {time}"
 #. js-lingui-explicit-id
 #: src/pages/warehouse/page.tsx:482
 msgid "Delete Item"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/shared/components/admin/add-chemical-form.tsx:98
+msgid "Chemical Name"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -1639,6 +1750,11 @@ msgid "Liter (l)"
 msgstr ""
 
 #. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:80
+msgid "You need admin privileges to access this page."
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/pages/warehouse/page.tsx:231
 msgid "No chemicals found. Click 'Add Item' to add a chemical."
 msgstr ""
@@ -1659,8 +1775,28 @@ msgid "Update the foliar fertilizer information below."
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-chemical-form.tsx:149
+#: src/shared/components/warehouse/add-chemical-form.tsx:153
 msgid "Update the chemical information below."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:147
+msgid "Total Chemicals"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:173
+msgid "Primary"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:153
+msgid "Primary Entries"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:202
+msgid "Showing first 100 of {total} chemicals"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -1674,8 +1810,13 @@ msgid "Fill in the required information to add a foliar fertilizer."
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-chemical-form.tsx:154
+#: src/shared/components/warehouse/add-chemical-form.tsx:158
 msgid "Fill in the required information to add a chemical."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/admin/import-chemicals/page.tsx:136
+msgid "Overview of all chemicals in the registry"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -1705,7 +1846,7 @@ msgid "Edit Foliar Fertilizer"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/shared/components/warehouse/add-chemical-form.tsx:142
+#: src/shared/components/warehouse/add-chemical-form.tsx:146
 msgid "Edit Chemical"
 msgstr ""
 
