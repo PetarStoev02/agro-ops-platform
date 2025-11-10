@@ -38,6 +38,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/src/shared/components/ui/select";
+import { Combobox } from "@/src/shared/components/ui/combobox";
 import { Calendar } from "@/src/shared/components/ui/calendar";
 import {
   Popover,
@@ -60,7 +61,8 @@ const getChemicalTreatmentSchema = (t: (msg: string) => string) =>
       date: z.date({
         message: t("Date is required"),
       }),
-      chemicalId: z.string().min(1, t("Chemical is required")),
+      allowedChemicalId: z.string().min(1, t("Chemical is required")),
+      chemicalId: z.string().optional(), // Optional inventory reference
       infestationType: z.string().min(1, t("Infestation type is required")),
       dose: z.number().min(0, t("Dose must be positive")),
       quarantinePeriod: z
@@ -128,6 +130,9 @@ export function ChemicalTreatmentForm({
         : "skip",
   );
 
+  // Query allowed chemicals from global registry
+  const allowedChemicals = useQuery(api.chemicals.getPrimary);
+
   const field = useQuery(api.fields.getById, fieldId ? { fieldId } : "skip");
 
   const isEditMode = !!initialData?.activityId;
@@ -136,6 +141,7 @@ export function ChemicalTreatmentForm({
     resolver: zodResolver(getChemicalTreatmentSchema(t)),
     defaultValues: {
       date: initialData?.date ? new Date(initialData.date) : new Date(),
+      allowedChemicalId: "",
       chemicalId: initialData?.chemicalId || "",
       infestationType: initialData?.infestationType || "",
       dose: initialData?.dose ?? 0,
@@ -147,30 +153,49 @@ export function ChemicalTreatmentForm({
 
   // Watch for changes to calculate required quantity
   const selectedChemicalId = form.watch("chemicalId");
+  const selectedAllowedChemicalId = form.watch("allowedChemicalId");
   const dose = form.watch("dose");
   const treatedArea = form.watch("treatedArea");
 
-  // Get selected chemical details
+  // Get selected allowed chemical details
+  const selectedAllowedChemical = React.useMemo(() => {
+    if (!selectedAllowedChemicalId || !allowedChemicals) return null;
+    return allowedChemicals.find((c) => c._id === selectedAllowedChemicalId);
+  }, [selectedAllowedChemicalId, allowedChemicals]);
+
+  // Get selected inventory chemical details (for quantity validation)
   const selectedChemical = React.useMemo(() => {
     if (!selectedChemicalId || !availableChemicals) return null;
     return availableChemicals.find((c) => c._id === selectedChemicalId);
   }, [selectedChemicalId, availableChemicals]);
 
-  // Calculate required quantity and validate
+  // Auto-fill dose when allowed chemical is selected
+  React.useEffect(() => {
+    if (selectedAllowedChemical?.dose) {
+      // Extract numeric value from dose string (e.g., "2.5 л/дка" -> 2.5)
+      const doseMatch = selectedAllowedChemical.dose.match(/[\d.]+/);
+      if (doseMatch) {
+        const numericDose = parseFloat(doseMatch[0]);
+        if (!isNaN(numericDose)) {
+          form.setValue("dose", numericDose);
+        }
+      }
+    }
+  }, [selectedAllowedChemical, form]);
+
+  // Calculate required quantity and validate (if inventory item is selected)
   const requiredQuantity = React.useMemo(() => {
     if (!dose || !treatedArea || !selectedChemical) return 0;
     return dose * treatedArea;
   }, [dose, treatedArea, selectedChemical]);
 
-  // Validate quantity availability
+  // Validate quantity availability (only if inventory item is selected)
   React.useEffect(() => {
     if (selectedChemical && requiredQuantity > 0) {
       if (requiredQuantity > selectedChemical.quantity) {
         form.setError("chemicalId", {
           type: "manual",
-          message: i18n._(
-            `Insufficient quantity. Available: ${selectedChemical.quantity} ${selectedChemical.unit}, Required: ${requiredQuantity.toFixed(2)} ${selectedChemical.unit}`,
-          ),
+          message: i18n._("Insufficient quantity available"),
         });
       } else {
         form.clearErrors("chemicalId");
@@ -184,18 +209,14 @@ export function ChemicalTreatmentForm({
       return;
     }
 
-    if (!selectedChemical) {
+    if (!selectedAllowedChemical) {
       toast.error(i18n._("Please select a chemical"));
       return;
     }
 
-    // Final quantity check
-    if (requiredQuantity > selectedChemical.quantity) {
-      toast.error(
-        i18n._(
-          `Insufficient quantity. Available: ${selectedChemical.quantity} ${selectedChemical.unit}, Required: ${requiredQuantity.toFixed(2)} ${selectedChemical.unit}`,
-        ),
-      );
+    // Final quantity check (only if inventory item is selected)
+    if (selectedChemical && requiredQuantity > selectedChemical.quantity) {
+      toast.error(i18n._("Insufficient quantity available"));
       return;
     }
 
@@ -206,8 +227,8 @@ export function ChemicalTreatmentForm({
           category: "chemical_treatment",
           type: "chemical_treatment",
           date: data.date.getTime(),
-          chemicalId: data.chemicalId as Id<"inventory">,
-          chemicalName: selectedChemical.name,
+          chemicalId: data.chemicalId as Id<"inventory"> | undefined,
+          chemicalName: selectedAllowedChemical.name,
           infestationType: data.infestationType,
           dose: data.dose,
           quarantinePeriod: data.quarantinePeriod,
@@ -224,8 +245,8 @@ export function ChemicalTreatmentForm({
           type: "chemical_treatment",
           date: data.date.getTime(),
           userId: user.id,
-          chemicalId: data.chemicalId as Id<"inventory">,
-          chemicalName: selectedChemical.name,
+          chemicalId: data.chemicalId as Id<"inventory"> | undefined,
+          chemicalName: selectedAllowedChemical.name,
           infestationType: data.infestationType,
           dose: data.dose,
           quarantinePeriod: data.quarantinePeriod,
@@ -367,41 +388,47 @@ export function ChemicalTreatmentForm({
 
             <FormField
               control={form.control}
-              name="chemicalId"
+              name="allowedChemicalId"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
                     <Trans id="Chemical" message="Chemical" />{" "}
                     <span className="text-destructive">*</span>
                   </FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                    value={field.value}
-                    disabled={hasNoChemicals}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder={i18n._("Select chemical")} />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {availableChemicals?.map((chemical) => (
-                        <SelectItem key={chemical._id} value={chemical._id}>
-                          {chemical.name} ({chemical.quantity} {chemical.unit})
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {selectedChemical && requiredQuantity > 0 && (
+                  <FormControl>
+                    <Combobox
+                      options={
+                        allowedChemicals?.map((chemical) => ({
+                          value: chemical._id,
+                          label: chemical.name,
+                          dose: chemical.dose,
+                          dangerTypes: chemical.dangerTypes,
+                        })) || []
+                      }
+                      value={field.value}
+                      onValueChange={field.onChange}
+                      placeholder={i18n._("Search and select chemical...")}
+                      searchPlaceholder={i18n._("Search chemicals...")}
+                      emptyMessage={i18n._("No chemicals found.")}
+                      renderOption={(option) => (
+                        <div className="flex flex-col">
+                          <span>{option.label}</span>
+                          {Array.isArray(option.dangerTypes) &&
+                            option.dangerTypes.length > 0 && (
+                              <span className="text-xs text-muted-foreground">
+                                {option.dangerTypes.join(", ")}
+                              </span>
+                            )}
+                        </div>
+                      )}
+                    />
+                  </FormControl>
+                  {selectedAllowedChemical && (
                     <p className="text-sm text-muted-foreground mt-1">
                       <Trans
-                        id="Required: {quantity} {unit}"
-                        message="Required: {quantity} {unit}"
-                        values={{
-                          quantity: requiredQuantity.toFixed(2),
-                          unit: selectedChemical.unit,
-                        }}
+                        id="Dose: {dose}"
+                        message="Dose: {dose}"
+                        values={{ dose: selectedAllowedChemical.dose }}
                       />
                     </p>
                   )}

@@ -158,9 +158,7 @@ export function FertilizerForm({
       if (requiredQuantity > selectedFertilizer.quantity) {
         form.setError("fertilizerId", {
           type: "manual",
-          message: i18n._(
-            `Insufficient quantity. Available: ${selectedFertilizer.quantity} ${selectedFertilizer.unit}, Required: ${requiredQuantity.toFixed(2)} ${selectedFertilizer.unit}`,
-          ),
+          message: i18n._("Insufficient quantity available"),
         });
       } else {
         form.clearErrors("fertilizerId");
@@ -181,11 +179,7 @@ export function FertilizerForm({
 
     // Final quantity check
     if (requiredQuantity > selectedFertilizer.quantity) {
-      toast.error(
-        i18n._(
-          `Insufficient quantity. Available: ${selectedFertilizer.quantity} ${selectedFertilizer.unit}, Required: ${requiredQuantity.toFixed(2)} ${selectedFertilizer.unit}`,
-        ),
-      );
+      toast.error(i18n._("Insufficient quantity available"));
       return;
     }
 
