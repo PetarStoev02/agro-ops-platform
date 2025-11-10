@@ -1,6 +1,11 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
-export default clerkMiddleware();
+export default clerkMiddleware((auth, req) => {
+  // Allow public access to API routes
+  if (req.nextUrl.pathname.startsWith("/api/babh-template")) {
+    return;
+  }
+});
 
 export const config = {
   matcher: [
