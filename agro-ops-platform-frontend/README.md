@@ -1,4 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Agro Ops Platform
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) for managing agricultural operations and generating compliance documents.
+
+## 📊 Data Schema Documentation
+
+This project includes comprehensive documentation about the data structure and relationships:
+
+- **[DATA_SCHEMA.md](./DATA_SCHEMA.md)** - Detailed text-based schema with all tables, fields, relationships, and missing data analysis
+- **[DATA_SCHEMA_VISUAL.md](./DATA_SCHEMA_VISUAL.md)** - Visual diagrams and ER models using Mermaid syntax
+
+### Quick Overview
+
+The platform manages agricultural data through the following main entities:
+
+```mermaid
+erDiagram
+    ORGANIZATIONS ||--o{ SEASONS : "има"
+    ORGANIZATIONS ||--o{ FIELDS : "има"
+    ORGANIZATIONS ||--o{ ACTIVITIES : "има"
+    ORGANIZATIONS ||--o{ INVENTORY : "има"
+    SEASONS ||--o{ FIELDS : "включва"
+    FIELDS ||--o{ ACTIVITIES : "има"
+    INVENTORY ||--o{ ACTIVITIES : "използва се в"
+```
+
+**Main Data Entities:**
+- **Organizations** - Farm/company information
+- **Seasons** - Agricultural seasons/campaigns
+- **Fields** - Agricultural fields/plots
+- **Activities** - Farming activities (treatments, inspections, fertilization)
+- **Inventory** - Warehouse stock (chemicals, fertilizers, seeds)
+- **Diaries** - Field notes and logs
+- **Credits** - Financial records
+- **Audits** - Compliance audits
+- **Reports** - Generated reports
+- **Notifications** - User notifications
+
+For complete documentation, see [DATA_SCHEMA.md](./DATA_SCHEMA.md) and [DATA_SCHEMA_VISUAL.md](./DATA_SCHEMA_VISUAL.md).
 
 ## Getting Started
 
