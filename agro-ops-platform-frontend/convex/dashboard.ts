@@ -208,37 +208,37 @@ export const getRecentActivities = query({
 });
 
 /**
- * Helper function to check if quantity is under 100 kg/liters
+ * Helper function to check if quantity is under the provided threshold
  */
-function isLowStock(item: {
-  quantity: number;
-  unit: string;
-  category: string;
-  fertilizerType?: string;
-}): boolean {
+function isLowStock(
+  item: {
+    quantity: number;
+    unit: string;
+    category: string;
+    fertilizerType?: string;
+  },
+  threshold: number
+): boolean {
+  const normalizedThreshold = Math.max(threshold, 0);
+
   // For granular fertilizers, convert to kg
   if (item.category === "fertilizer" && item.fertilizerType === "гранулиран") {
     if (item.unit === "Тон") {
-      return item.quantity * 1000 < 100;
+      return item.quantity * 1000 < normalizedThreshold;
     }
     if (item.unit === "Килограм (кг.)") {
-      return item.quantity < 100;
+      return item.quantity < normalizedThreshold;
     }
   }
-  // For foliar fertilizers, check liters
+  // For foliar fertilizers, check liters or kilograms directly against threshold
   if (item.category === "fertilizer" && item.fertilizerType === "листен") {
-    if (item.unit === "Литър (л.)") {
-      return item.quantity < 100;
-    }
-    if (item.unit === "Килограм (кг.)") {
-      return item.quantity < 100;
+    if (item.unit === "Литър (л.)" || item.unit === "Килограм (кг.)") {
+      return item.quantity < normalizedThreshold;
     }
   }
   // For chemicals, check liters
-  if (item.category === "chemical") {
-    if (item.unit === "Литър (л.)") {
-      return item.quantity < 100;
-    }
+  if (item.category === "chemical" && item.unit === "Литър (л.)") {
+    return item.quantity < normalizedThreshold;
   }
   return false;
 }
@@ -253,6 +253,7 @@ export const getLowStockInventory = query({
     quantityThreshold: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
+    const threshold = args.quantityThreshold ?? 100;
     const thirtyDaysFromNow = Date.now() + 30 * 24 * 60 * 60 * 1000;
 
     const inventory = await ctx.db
@@ -263,7 +264,9 @@ export const getLowStockInventory = query({
       .collect();
 
     // Filter low stock items (under 100 kg/liters) and near expiry items
-    const lowStockItems = inventory.filter(item => isLowStock(item));
+    const lowStockItems = inventory.filter((item) =>
+      isLowStock(item, threshold)
+    );
     const nearExpiryItems = inventory.filter(
       item => item.expiryDate && item.expiryDate < thirtyDaysFromNow
     );
