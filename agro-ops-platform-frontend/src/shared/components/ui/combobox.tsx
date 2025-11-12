@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
+import { useLingui } from "@lingui/react";
 
 import { cn } from "@/src/shared/lib/utils";
 import { Button } from "@/src/shared/components/ui/button";
@@ -41,30 +42,83 @@ export function Combobox({
   options,
   value,
   onValueChange,
-  placeholder = "Select option...",
-  searchPlaceholder = "Search...",
-  emptyMessage = "No option found.",
+  placeholder,
+  searchPlaceholder,
+  emptyMessage,
   disabled = false,
   className,
   renderOption,
 }: ComboboxProps) {
+  const { i18n } = useLingui();
   const [open, setOpen] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState("");
+  const [popoverWidth, setPopoverWidth] = React.useState<number | undefined>();
 
-  // Limit to 50 items and filter by search query
-  const filteredOptions = React.useMemo(() => {
-    let filtered = options;
+  // Localized default values
+  const defaultPlaceholder = placeholder || i18n._("Select option...");
+  const defaultSearchPlaceholder = searchPlaceholder || i18n._("Search...");
+  const defaultEmptyMessage = emptyMessage || i18n._("No option found.");
 
-    // Filter by search query (case-insensitive)
-    if (searchQuery.trim()) {
-      const queryLower = searchQuery.toLowerCase();
-      filtered = options.filter((option) =>
-        option.label.toLowerCase().includes(queryLower),
-      );
+  React.useEffect(() => {
+    if (!open) {
+      setSearchQuery("");
+      return;
     }
 
-    // Limit to 50 items
-    return filtered.slice(0, 50);
+    requestAnimationFrame(() => {
+      const triggerElement = document.querySelector(
+        '[role="combobox"][aria-expanded="true"]',
+      ) as HTMLElement | null;
+
+      if (triggerElement) {
+        setPopoverWidth(triggerElement.offsetWidth);
+      }
+    });
+  }, [open]);
+
+  const filteredOptions = React.useMemo(() => {
+    if (!options?.length) {
+      return [];
+    }
+
+    const hasSearchQuery = searchQuery.trim().length > 0;
+    if (!hasSearchQuery) {
+      return options.slice(0, 50);
+    }
+
+    const queryLower = searchQuery.toLowerCase().normalize("NFC");
+    const filtered = options.filter((option) => {
+      if (!option?.label) {
+        return false;
+      }
+
+      const labelNormalized = String(option.label)
+        .toLowerCase()
+        .normalize("NFC");
+      const labelMatch = labelNormalized.includes(queryLower);
+
+      const dangerTypesMatch =
+        option.dangerTypes && Array.isArray(option.dangerTypes)
+          ? option.dangerTypes.some((dt: string) =>
+              String(dt).toLowerCase().normalize("NFC").includes(queryLower),
+            )
+          : false;
+
+      const otherFieldsMatch = Object.entries(option)
+        .filter(
+          ([key]) => key !== "value" && key !== "label" && key !== "dangerTypes",
+        )
+        .some(([, val]) => {
+          if (typeof val !== "string") {
+            return false;
+          }
+          return val.toLowerCase().normalize("NFC").includes(queryLower);
+        });
+
+      return labelMatch || dangerTypesMatch || otherFieldsMatch;
+    });
+
+    return filtered.slice(0, 200);
   }, [options, searchQuery]);
 
   const selectedOption = React.useMemo(
@@ -86,54 +140,63 @@ export function Combobox({
             ? renderOption
               ? renderOption(selectedOption)
               : selectedOption.label
-            : placeholder}
+            : defaultPlaceholder}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full p-0" align="start">
+      <PopoverContent
+        className="p-0"
+        align="start"
+        onOpenAutoFocus={(e) => e.preventDefault()}
+        style={popoverWidth ? { width: `${popoverWidth}px` } : undefined}
+      >
         <Command shouldFilter={false}>
           <CommandInput
-            placeholder={searchPlaceholder}
+            placeholder={defaultSearchPlaceholder}
             value={searchQuery}
-            onValueChange={setSearchQuery}
+            onValueChange={(value) => setSearchQuery(value || "")}
           />
           <CommandList>
-            <CommandEmpty>{emptyMessage}</CommandEmpty>
-            <CommandGroup>
-              {filteredOptions.map((option) => {
-                // Create searchable value that includes label and any additional searchable fields
-                const searchableValue = [
-                  option.label,
-                  option.dangerTypes && Array.isArray(option.dangerTypes)
-                    ? option.dangerTypes.join(" ")
-                    : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ");
+            {filteredOptions.length === 0 ? (
+              <CommandEmpty>{defaultEmptyMessage}</CommandEmpty>
+            ) : (
+              <CommandGroup>
+                {filteredOptions.map((option, index) => {
+                  const searchableValue = [
+                    option.label,
+                    option.dangerTypes && Array.isArray(option.dangerTypes)
+                      ? option.dangerTypes.join(" ")
+                      : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ");
 
-                return (
-                  <CommandItem
-                    key={option.value}
-                    value={searchableValue}
-                    onSelect={() => {
-                      onValueChange?.(
-                        option.value === value ? "" : option.value,
-                      );
-                      setOpen(false);
-                      setSearchQuery("");
-                    }}
-                  >
-                    <Check
-                      className={cn(
-                        "mr-2 h-4 w-4",
-                        value === option.value ? "opacity-100" : "opacity-0",
-                      )}
-                    />
-                    {renderOption ? renderOption(option) : option.label}
-                  </CommandItem>
-                );
-              })}
-            </CommandGroup>
+                  const uniqueKey = `${option.value}-${index}`;
+
+                  return (
+                    <CommandItem
+                      key={uniqueKey}
+                      value={searchableValue}
+                      onSelect={() => {
+                        onValueChange?.(
+                          option.value === value ? "" : option.value,
+                        );
+                        setOpen(false);
+                        setSearchQuery("");
+                      }}
+                    >
+                      <Check
+                        className={cn(
+                          "mr-2 h-4 w-4",
+                          value === option.value ? "opacity-100" : "opacity-0",
+                        )}
+                      />
+                      {renderOption ? renderOption(option) : option.label}
+                    </CommandItem>
+                  );
+                })}
+              </CommandGroup>
+            )}
           </CommandList>
         </Command>
       </PopoverContent>

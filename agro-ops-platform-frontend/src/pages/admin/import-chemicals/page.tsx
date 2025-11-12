@@ -49,10 +49,17 @@ export default function AdminImportChemicalsPage() {
   // Check if user is admin (organization admin or has admin role)
   const isAdmin = React.useMemo(() => {
     if (!organization || !user) return false;
-    // Check if user is org admin or has admin role
-    // For now, allow all authenticated users (you can restrict this later)
-    // In production, check: organization.role === "org:admin" || user.publicMetadata?.isAdmin === true
-    return true; // Temporarily allow all users - change this to proper admin check
+
+    const membershipRole = organization.membership?.role;
+    const roleAllowsAdmin =
+      membershipRole === "org:admin" || membershipRole === "org:owner";
+
+    const userMetadata = user.publicMetadata as Record<string, unknown> | undefined;
+    const userPrivateMetadata = user.privateMetadata as Record<string, unknown> | undefined;
+    const metadataAllowsAdmin =
+      userMetadata?.isAdmin === true || userPrivateMetadata?.isAdmin === true;
+
+    return roleAllowsAdmin || metadataAllowsAdmin;
   }, [organization, user]);
 
   // Get all imported chemicals
@@ -82,16 +89,18 @@ export default function AdminImportChemicalsPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
-  // Redirect if not admin (commented out for now - enable when admin check is implemented)
-  // React.useEffect(() => {
-  //   if (organization && user && !isAdmin) {
-  //     toast.error(i18n._("Access denied. Admin privileges required."));
-  //     navigate({
-  //       to: "/$companySlug",
-  //       params: { companySlug: organization.slug || "" },
-  //     });
-  //   }
-  // }, [isAdmin, organization, user, navigate, i18n]);
+  // Redirect if not admin
+  React.useEffect(() => {
+    if (organization && user && !isAdmin) {
+      toast.error(i18n._("Access denied. Admin privileges required."));
+      if (organization.slug) {
+        navigate({
+          to: "/$companySlug",
+          params: { companySlug: organization.slug },
+        });
+      }
+    }
+  }, [isAdmin, organization, user, navigate, i18n]);
 
   if (!organization || !user) {
     return (
