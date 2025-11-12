@@ -1,0 +1,28 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Install pnpm globally
+        - npm install -g pnpm@latest
+        # Navigate to frontend directory
+        - cd agro-ops-platform-frontend
+        # Install dependencies
+        - pnpm install
+    build:
+      commands:
+        # Run the build command (skip GitHub Pages specific script for Amplify)
+        - pnpm run lingui:extract
+        - pnpm run lingui:compile
+        - pnpm run generate:routes
+        - next build
+  artifacts:
+    baseDirectory: agro-ops-platform-frontend
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - agro-ops-platform-frontend/node_modules/**/*
+      - agro-ops-platform-frontend/.next/cache/**/*
+
+
